@@ -46,8 +46,13 @@ public class PlayerControl : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, transform);
-
+        GameObject bullet = ObjectPool.Instance.GetPooledObject();
+        if (bullet != null)
+        {
+            bullet.transform.position = this.transform.position;
+            bullet.transform.rotation = this.transform.rotation;
+            bullet.SetActive(true);
+        }
         bullet.transform.parent = null;
     }
 }

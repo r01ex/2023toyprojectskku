@@ -18,6 +18,10 @@ public class Bullet : MonoBehaviour
 
     public void DestroySelf()
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        this.gameObject.GetComponent<Animator>().Play("BulletFly");
     }
 }
