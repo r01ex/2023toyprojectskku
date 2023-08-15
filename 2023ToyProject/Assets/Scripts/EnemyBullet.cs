@@ -18,10 +18,16 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Nuclear")
         {
             Debug.Log("ÇÇ°Ý");
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
+        }
+        else if(collision.tag == "Shield")
+        {
+            Debug.Log("½¯µå");
+            this.gameObject.SetActive(false);
         }
     }
+    
 }
