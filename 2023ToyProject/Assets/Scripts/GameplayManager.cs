@@ -32,4 +32,8 @@ public class GameplayManager : MonoBehaviour
     {
         
     }
+
+    public void stageClear(){
+        
+    } 
 }
