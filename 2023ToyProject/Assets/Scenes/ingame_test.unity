@@ -1409,9 +1409,7 @@ MonoBehaviour:
   speed: 600
   width: 3.2
   height: 4.5
-  bulletPrefab: {fileID: 820469620680039316, guid: c3eeb2504a049ff499abcd7eb0ced2c5, type: 3}
   iskeyboardControl: 0
-  Electricfield: {fileID: 1279888504}
 --- !u!114 &1459312271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1425,7 +1423,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBullet: 5
+  currentBullet: 0
   bulletcircle: {fileID: 1137578306}
+  Electricfield: {fileID: 1279888504}
+  shieldtime: 0.5
 --- !u!1 &1544567710
 GameObject:
   m_ObjectHideFlags: 0
