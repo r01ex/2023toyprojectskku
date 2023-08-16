@@ -22,11 +22,11 @@ public class EnemybulletInner : MonoBehaviour
         {
             if (collision.tag == "ElectricField")
             {
-                Debug.Log("Èí¼ö");
+                Debug.Log("absorb");
                 PlayerManager.Instance.addbullet(1);
                 this.transform.parent.gameObject.SetActive(false);
             }
         }
-        isHit = true;
+        isHit = false;
     }
 }
