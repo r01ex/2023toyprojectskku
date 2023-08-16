@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
+    [SerializeField]
+    private float moveSpeed = 3f;
+
+    private float minY = -7;
+    public void setMoveSpeed(float moveSpeed){
+        this.moveSpeed = moveSpeed;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -13,20 +20,23 @@ public class EnemyBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+        if(transform.position.y < minY){
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Nuclear")
         {
-            Debug.Log("ÇÇ°Ý");
+            Debug.Log("ï¿½Ç°ï¿½");
             this.transform.GetChild(0).GetComponent<EnemybulletInner>().isHit = true;
             this.gameObject.SetActive(false);
         }
         else if(collision.tag == "Shield")
         {
-            Debug.Log("½¯µå");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½");
             this.gameObject.SetActive(false);
         }
     }
