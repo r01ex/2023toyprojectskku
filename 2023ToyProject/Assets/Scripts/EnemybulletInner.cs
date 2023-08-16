@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemybulletInner : MonoBehaviour
 {
+    public bool isHit = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,15 @@ public class EnemybulletInner : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "ElectricField")
+        if (isHit == false)
         {
-            Debug.Log("Èí¼ö");
-            PlayerManager.Instance.addbullet(1);
-            this.transform.parent.gameObject.SetActive(false);
+            if (collision.tag == "ElectricField")
+            {
+                Debug.Log("Èí¼ö");
+                PlayerManager.Instance.addbullet(1);
+                this.transform.parent.gameObject.SetActive(false);
+            }
         }
+        isHit = true;
     }
 }

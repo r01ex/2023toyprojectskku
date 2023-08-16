@@ -21,6 +21,7 @@ public class EnemyBullet : MonoBehaviour
         if (collision.tag == "Nuclear")
         {
             Debug.Log("ÇÇ°Ý");
+            this.transform.GetChild(0).GetComponent<EnemybulletInner>().isHit = true;
             this.gameObject.SetActive(false);
         }
         else if(collision.tag == "Shield")

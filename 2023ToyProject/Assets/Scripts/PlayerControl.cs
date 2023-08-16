@@ -7,12 +7,10 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float width;
     [SerializeField] float height;
-    [SerializeField] GameObject bulletPrefab;
 
     [SerializeField] bool iskeyboardControl = false;
     Camera maincamera;
 
-    [SerializeField] GameObject Electricfield;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,11 +49,11 @@ public class PlayerControl : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                Shoot();
+                PlayerManager.Instance.Shoot();
             }
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKey(KeyCode.X))
             {
-                Shield();
+                PlayerManager.Instance.Shield();
             }
             transform.position = new Vector3(Mathf.Clamp(moveX + transform.position.x, -width, width), Mathf.Clamp(moveY + transform.position.y, -height, height), 0);
         }
@@ -65,31 +63,12 @@ public class PlayerControl : MonoBehaviour
             transform.position = new Vector3(Mathf.Clamp(mousepos.x, -width, width), Mathf.Clamp(mousepos.y, -height, height), 0);
             if(Input.GetMouseButtonUp(0))
             {
-                Shoot();
+                PlayerManager.Instance.Shoot();
             }
-            else if(Input.GetMouseButtonDown(1))
+            else if(Input.GetMouseButton(1))
             {
-                Shield();
+                PlayerManager.Instance.Shield();
             }
         }
-    }
-
-    void Shoot()
-    {
-        GameObject bullet = BulletObjectPool.Instance.GetPooledPlayerBullet();
-        if (bullet != null)
-        {
-            bullet.transform.position = this.transform.position;
-            bullet.transform.rotation = this.transform.rotation;
-            bullet.SetActive(true);
-        }
-        bullet.transform.parent = null;
-    }
-    void Shield()
-    {
-        //TODO art
-        //TODO rule
-        Debug.Log("shield");
-        Electricfield.tag = "Shield";
     }
 }
