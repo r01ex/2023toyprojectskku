@@ -7,6 +7,8 @@ TagManager:
   - Nuclear
   - ElectricField
   - Shield
+  - Bullet
+  - BulletDestroyWall
   layers:
   - Default
   - TransparentFX

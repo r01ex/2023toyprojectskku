@@ -12,13 +12,18 @@ public class Stage1Enemy : MonoBehaviour
 
     private Animator anim;
 
+    [SerializeField]
+    Shoot5Row Shoot5RowPattern;
+
+    [SerializeField]
+    float patternInterval;
     private void Awake() {
         anim = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartEnemyRoutine();
     }
 
     // Update is called once per frame
@@ -26,9 +31,39 @@ public class Stage1Enemy : MonoBehaviour
     {
         
     }
+    void StartEnemyRoutine()
+    {
+        StartCoroutine("EnemyRoutine");
+    }
+    public void StopEnemyRoutine()
+    {
+        StopCoroutine("EnemyRoutine");
+    }
+    IEnumerator EnemyRoutine()
+    {
+        yield return new WaitForSeconds(3f);
+
+        float moveSpeed = 5f;
+        int spawnCount = 0;
+        while (true)
+        {
+            Shoot5RowPattern.Shoot(moveSpeed);
+            spawnCount++;
+            if (spawnCount % 5 == 0)
+            {
+                moveSpeed += 2;
+            }
+            if (moveSpeed > 10)
+            {
+                moveSpeed = 3f;
+            }
+
+            yield return new WaitForSeconds(patternInterval);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("충돌");
         if (other.gameObject.CompareTag("Bullet"))
         {
             hp -= damage;
@@ -42,6 +77,7 @@ public class Stage1Enemy : MonoBehaviour
 
             if (hp <= 0)
             {
+                //death
                 Destroy(gameObject);
             }
         }
