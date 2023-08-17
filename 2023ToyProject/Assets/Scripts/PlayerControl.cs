@@ -7,52 +7,68 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float width;
     [SerializeField] float height;
-    [SerializeField] GameObject bulletPrefab;
+
+    [SerializeField] bool iskeyboardControl = false;
+    Camera maincamera;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        maincamera = Camera.main;
+        if (!Application.isEditor)
+        {
+            Invoke("setCursor", 0.1f);
+        }
     }
-
+    void setCursor()
+    {
+        Cursor.visible = false;
+    }
     // Update is called once per frame
     void Update()
     {
-        float moveX = 0;
-        float moveY = 0;
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (iskeyboardControl)
         {
-            moveY += 0.01f * speed;
+            float moveX = 0;
+            float moveY = 0;
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                moveY += 0.01f * speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                moveY += -0.01f * speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                moveX += -0.01f * speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                moveX += 0.01f * speed * Time.deltaTime;
+            }
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                PlayerManager.Instance.Shoot();
+            }
+            if (Input.GetKey(KeyCode.X))
+            {
+                PlayerManager.Instance.Shield();
+            }
+            transform.position = new Vector3(Mathf.Clamp(moveX + transform.position.x, -width, width), Mathf.Clamp(moveY + transform.position.y, -height, height), 0);
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        else
         {
-            moveY += -0.01f * speed;
+            Vector3 mousepos = maincamera.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector3(Mathf.Clamp(mousepos.x, -width, width), Mathf.Clamp(mousepos.y, -height, height), 0);
+            if(Input.GetMouseButtonUp(0))
+            {
+                PlayerManager.Instance.Shoot();
+            }
+            else if(Input.GetMouseButton(1))
+            {
+                PlayerManager.Instance.Shield();
+            }
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            moveX += -0.01f * speed;
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            moveX += 0.01f * speed;
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Shoot();
-        }
-
-        transform.position = new Vector3(Mathf.Clamp(moveX + transform.position.x, -width, width), Mathf.Clamp(moveY + transform.position.y, -height, height), 0);
-    }
-
-    void Shoot()
-    {
-        GameObject bullet = ObjectPool.Instance.GetPooledObject();
-        if (bullet != null)
-        {
-            bullet.transform.position = this.transform.position;
-            bullet.transform.rotation = this.transform.rotation;
-            bullet.SetActive(true);
-        }
-        bullet.transform.parent = null;
     }
 }
