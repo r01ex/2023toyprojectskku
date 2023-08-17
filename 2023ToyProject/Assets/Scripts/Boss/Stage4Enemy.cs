@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Stage4Enemy : MonoBehaviour
 {
     // To indicate that the boss hp
@@ -36,6 +36,8 @@ public class Stage4Enemy : MonoBehaviour
     [SerializeField]
     private float nextMoveTime;
 
+    [SerializeField]
+    Image healthbar;
     private void Awake() {
         anim = GetComponent<Animator>();
     }
@@ -105,6 +107,7 @@ public class Stage4Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             hp -= damage;
+            healthbar.fillAmount = hp / maxHp;
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
             //anim.SetTrigger("doHitted");
             enemyRenderer.material.color = flashColor;
