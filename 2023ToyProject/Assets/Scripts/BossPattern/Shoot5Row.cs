@@ -35,4 +35,8 @@ public class Shoot5Row : MonoBehaviour
     {
         
     }
+    //temporary
+    public void StopEnemyRoutine(){
+        StopCoroutine("EnemyRoutine");
+    }
 }
