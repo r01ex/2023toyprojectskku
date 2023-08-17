@@ -27,6 +27,5 @@ public class EnemybulletInner : MonoBehaviour
                 this.transform.parent.gameObject.SetActive(false);
             }
         }
-        isHit = false;
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Stage5Enemy : MonoBehaviour
 {
     // To indicate that the boss hp
@@ -21,6 +21,8 @@ public class Stage5Enemy : MonoBehaviour
     [SerializeField]
     float patternInterval;
 
+    [SerializeField]
+    Image healthbar;
 
     private Color flashColor = Color.red; // Red color when is hit
     private float flashDuration = 0.02f; // To indicate that the time of change color
@@ -105,6 +107,7 @@ public class Stage5Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             hp -= damage;
+            healthbar.fillAmount = hp / maxHp;
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
             //anim.SetTrigger("doHitted");
             enemyRenderer.material.color = flashColor;

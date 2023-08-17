@@ -7,6 +7,7 @@ public class EnemyBullet : MonoBehaviour
 
     public void move1Init(float speed)
     {
+        this.transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;
         StartCoroutine(move1(speed));
     }
     IEnumerator move1(float moveSpeed)
