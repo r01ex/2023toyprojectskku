@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stage1Enemy : MonoBehaviour
+public class Stage2Enemy : MonoBehaviour
 {
     [SerializeField]
-    private float hp = 10f;
-    private float maxHp = 10f;
+    private float hp = 20f;
+    private float maxHp = 20f;
 
     [SerializeField]
     private float damage = 1f;  //To indicate that the damage of each electrons
@@ -26,12 +26,22 @@ public class Stage1Enemy : MonoBehaviour
     private Color originalColor;
     private Renderer enemyRenderer;
 
+    //Random Move
+
+    private float minX = -2f;         // X Min
+    private float maxX = 2f;         // X Max
+    private float moveInterval = 2f; 
+
+    [SerializeField]
+    private float nextMoveTime;
+
     private void Awake() {
         anim = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
     {
+        nextMoveTime = Time.time + moveInterval;
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine();
@@ -45,6 +55,18 @@ public class Stage1Enemy : MonoBehaviour
         } else{
             anim.SetBool("isLowHp", false);
         }
+        if (Time.time >= nextMoveTime)
+        {
+            // Random Y position
+            float newX = Random.Range(minX, maxX);
+
+            Vector3 newPosition = transform.position;
+            newPosition.x = newX;
+            transform.position = newPosition;
+
+            
+            nextMoveTime = Time.time + moveInterval;
+        }
     }
     void StartEnemyRoutine()
     {
@@ -56,7 +78,7 @@ public class Stage1Enemy : MonoBehaviour
     }
     IEnumerator EnemyRoutine()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.8f);
 
         float moveSpeed = 5f;
         int spawnCount = 0;
