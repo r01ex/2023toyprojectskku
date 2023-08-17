@@ -32,7 +32,7 @@ public class Stage2Enemy : MonoBehaviour
 
     private float minX = -2f;         // X Min
     private float maxX = 2f;         // X Max
-    private float moveInterval = 2f; 
+    private float moveInterval = 1.2f; 
 
     [SerializeField]
     private float nextMoveTime;

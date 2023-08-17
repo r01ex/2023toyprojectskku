@@ -53,11 +53,11 @@ public class Stage3Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(hp < maxHp * 0.3){
-        //    anim.SetBool("isLowHp", true);
-        //} else{
-        //    anim.SetBool("isLowHp", false);
-        //}
+        if(hp < maxHp * 0.3){
+            anim.SetBool("isLowHp", true);
+        } else{
+            anim.SetBool("isLowHp", false);
+        }
         if (Time.time >= nextMoveTime)
         {
             // Random Y position
@@ -109,7 +109,7 @@ public class Stage3Enemy : MonoBehaviour
             hp -= damage;
             healthbar.fillAmount = hp / maxHp;
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
-            //anim.SetTrigger("doHitted");
+            anim.SetTrigger("doHitted");
             enemyRenderer.material.color = flashColor;
         
 
