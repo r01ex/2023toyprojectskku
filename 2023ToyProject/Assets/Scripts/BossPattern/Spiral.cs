@@ -17,7 +17,7 @@ public class Spiral : MonoBehaviour
     }
     public void debug()
     {
-        StartCoroutine(Shoot(6, 200, 30, 20));
+        StartCoroutine(Shoot(6, 20, 30, 20));
     }
     public IEnumerator Shoot(float moveSpeed, int totalbullet, int interval, float angle_increment)
     {
