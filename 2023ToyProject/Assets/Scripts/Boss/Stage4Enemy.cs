@@ -82,24 +82,6 @@ public class Stage4Enemy : MonoBehaviour
     IEnumerator EnemyRoutine()
     {
         yield return new WaitForSeconds(1.8f);
-
-        float moveSpeed = 5f;
-        int spawnCount = 0;
-        while (true)
-        {
-            Shoot5RowPattern.Shoot(moveSpeed);
-            spawnCount++;
-            if (spawnCount % 5 == 0)
-            {
-                moveSpeed += 2;
-            }
-            if (moveSpeed > 10)
-            {
-                moveSpeed = 3f;
-            }
-
-            yield return new WaitForSeconds(patternInterval);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

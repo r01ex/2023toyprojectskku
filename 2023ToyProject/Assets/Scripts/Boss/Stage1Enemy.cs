@@ -64,7 +64,7 @@ public class Stage1Enemy : MonoBehaviour
         int spawnCount = 0;
         while (true)
         {
-            Shoot5RowPattern.Shoot(moveSpeed);
+            Shoot5RowPattern.Shoot(moveSpeed,Random.Range(-1.3f,1.3f));
             spawnCount++;
             if (spawnCount % 5 == 0)
             {
@@ -89,7 +89,6 @@ public class Stage1Enemy : MonoBehaviour
             anim.SetTrigger("doHitted");
             enemyRenderer.material.color = flashColor;
         
-
             if (bullet != null)
             {
                 bullet.DestroySelf();

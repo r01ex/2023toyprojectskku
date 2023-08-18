@@ -8,7 +8,7 @@ public class BulletObjectPool : MonoBehaviour
     public List<GameObject> pulledEnemyBullets;
     [SerializeField] GameObject playerBulletToPool;
     [SerializeField] GameObject enemyBulletToPool;
-    public int amountToPool;
+    public int amountToPool=100;
     #region singleton
     public static BulletObjectPool Instance;
     private void Awake()
