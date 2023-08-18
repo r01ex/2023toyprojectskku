@@ -156,8 +156,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3f190f57345b73f4c81896d7833dbb94, type: 3}
   - {fileID: 21300000, guid: 8963d7991e7d0af4bb1796a84f78a560, type: 3}
   - {fileID: 21300000, guid: 580d15a1605c90a45a804644c759ec26, type: 3}
+  - {fileID: 21300000, guid: 7fcef05ee01ff79419a83fb7b25d23df, type: 3}
+  - {fileID: 21300000, guid: 14988152217767648acec29e282a05fd, type: 3}
+  - {fileID: 21300000, guid: 06fcd1a9a99e7be43a5b7e64601fa543, type: 3}
   - {fileID: 21300000, guid: 5df401989f51f44449eb38da1f6940cb, type: 3}
-  - {fileID: 21300000, guid: 8f8c0f12a78650741ad4c7eb063772b8, type: 3}
+  - {fileID: 21300000, guid: 4a87a8fa66264fb4b95240872333f714, type: 3}
+  - {fileID: 21300000, guid: 4e935f3208c9fde4cbf4806790ccf509, type: 3}
   stageImagePlaceholder: {fileID: 362727033}
   nextstageBtn: {fileID: 395589894}
   prevstageBtn: {fileID: 1939182125}
@@ -167,6 +171,10 @@ MonoBehaviour:
   - Stage3
   - Stage4
   - Stage5
+  - Stage6
+  - Stage7
+  - Stage8
+  - Stage9
 --- !u!4 &616225
 Transform:
   m_ObjectHideFlags: 0
