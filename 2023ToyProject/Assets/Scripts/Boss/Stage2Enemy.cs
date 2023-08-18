@@ -15,6 +15,14 @@ public class Stage2Enemy : MonoBehaviour
 
     [SerializeField]
     Shoot5Row Shoot5RowPattern;
+    [SerializeField]
+    float shoot5Speed = 5;
+    [SerializeField]
+    ShotGun5 ShotGun5Pattern;
+    [SerializeField]
+    float shotgunSpeed = 10;
+    [SerializeField]
+    int shotgunVolleys = 10;
 
     [SerializeField]
     float patternInterval;
@@ -65,7 +73,6 @@ public class Stage2Enemy : MonoBehaviour
             Vector3 newPosition = transform.position;
             newPosition.x = newX;
             transform.position = newPosition;
-
             
             nextMoveTime = Time.time + moveInterval;
         }
@@ -82,20 +89,12 @@ public class Stage2Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(1.8f);
 
-        float moveSpeed = 5f;
-        int spawnCount = 0;
         while (true)
         {
-            Shoot5RowPattern.Shoot(moveSpeed);
-            spawnCount++;
-            if (spawnCount % 5 == 0)
-            {
-                moveSpeed += 2;
-            }
-            if (moveSpeed > 10)
-            {
-                moveSpeed = 3f;
-            }
+            Shoot5RowPattern.Shoot(shoot5Speed, Random.Range(-1.3f, 1.3f));
+            yield return new WaitForSeconds(patternInterval);
+
+            yield return StartCoroutine(ShotGun5Pattern.Shotgun(shotgunVolleys, shotgunSpeed));
 
             yield return new WaitForSeconds(patternInterval);
         }
