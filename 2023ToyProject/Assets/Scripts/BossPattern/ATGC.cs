@@ -19,9 +19,19 @@ public class ATGC : MonoBehaviour
 
     public void debug()
     {
-        Shoot(5, Random.Range(-1.7f, 1.7f), Random.Range(-20f, 20f), 0);
-    }    
-
+        Shoot(5, Random.Range(-2.1f, 2.1f), Random.Range(-25f, 25f), 8);
+    }
+    /// <summary>
+    /// A : offset 1.4, rotation 30
+    /// T : offset 2.2, rotation 30
+    /// G : offset 1.8, rotation 30
+    /// C : offset 1.8, rotation 30
+    /// BigO : offset 2.5, rotation 0
+    /// SmallO : offset 2.9, rotation 0
+    /// ExclMark : offset 2.3, rotation 25
+    /// SmallQuesMark : offset 2.5, rotation 25
+    /// BigQuesMark : offset 2.1, rotation 25
+    /// </summary>
     public void Shoot(float moveSpeed, float offset, float rotation, int letterNum)
     {
         GameObject letter = Instantiate(letterPrefabs[letterNum]);
