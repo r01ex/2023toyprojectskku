@@ -17,6 +17,8 @@ public class Stage4Enemy : MonoBehaviour
 
     [SerializeField]
     Shoot5Row Shoot5RowPattern;
+    [SerializeField]
+    N2Gimmick N2Gimmick;
 
     [SerializeField]
     float patternInterval;
@@ -53,11 +55,6 @@ public class Stage4Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(hp < maxHp * 0.3){
-            anim.SetBool("isLowHp", true);
-        } else{
-            anim.SetBool("isLowHp", false);
-        }
         if (Time.time >= nextMoveTime)
         {
             // Random Y position
@@ -73,22 +70,45 @@ public class Stage4Enemy : MonoBehaviour
     }
     void StartEnemyRoutine()
     {
-        StartCoroutine("EnemyRoutine");
-    }
-    public void StopEnemyRoutine()
-    {
-        StopCoroutine("EnemyRoutine");
+        StartCoroutine(EnemyRoutine());
+        StartCoroutine(Gimmick());
     }
     IEnumerator EnemyRoutine()
     {
         yield return new WaitForSeconds(1.8f);
     }
-
+    IEnumerator Gimmick()
+    {
+        yield return new WaitForSeconds(3f);
+        while (true)
+        {
+            anim.SetTrigger("doInhale");
+            N2Gimmick.Inhale(true);
+            yield return new WaitForSeconds(5f);
+            anim.SetTrigger("endInhale");
+            N2Gimmick.Inhale(false);
+            yield return new WaitForSeconds(2f);
+            anim.SetTrigger("doEmission");
+            N2Gimmick.Emission(true);
+            yield return new WaitForSeconds(5f);
+            anim.SetTrigger("endEmission");
+            N2Gimmick.Emission(false);
+            yield return new WaitForSeconds(2f);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
             hp -= damage;
+            if (hp < maxHp * 0.3)
+            {
+                anim.SetBool("isLowHp", true);
+            }
+            else
+            {
+                anim.SetBool("isLowHp", false);
+            }
             healthbar.fillAmount = hp / maxHp;
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
             anim.SetTrigger("doHitted");

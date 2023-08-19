@@ -34,7 +34,7 @@ EditorBuildSettings:
     guid: 57786e2499f12b446935bc91ab5479f8
   - enabled: 1
     path: Assets/Scenes/Status&SkillScene.unity
-    guid: 8801244bf1193124793fcf16fd7650ee
+    guid: 02700d34fd9da1744a239cacc70ad2a2
   - enabled: 1
     path: Assets/Scenes/Stage/Stage1.unity
     guid: 606f26af9178b6543aef1211045e5a7e

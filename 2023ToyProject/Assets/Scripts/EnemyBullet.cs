@@ -9,6 +9,9 @@ public class EnemyBullet : MonoBehaviour
     Vector3 Pos1;
     Vector3 Target;
     Vector3 Direction;
+    Vector2 InitialVector;
+    Vector2 AccelVector;
+    float AccelAmount;
     public void move1Init(float speed)
     {
         this.transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;
@@ -42,6 +45,20 @@ public class EnemyBullet : MonoBehaviour
     {
         this.transform.Translate(moveDir * moveSpeed * Time.deltaTime);
     }
+
+    public void move4Init(float moveSpeed, Vector2 initialVector, Vector2 accelVector, float accelamount)
+    {
+        InitialVector = initialVector;
+        AccelVector = accelVector;
+        AccelAmount = accelamount;
+        Speed = moveSpeed;
+        this.gameObject.GetComponent<Rigidbody2D>().velocity = InitialVector * Speed;
+        moveNumber = 4;
+    }
+    void move4()
+    {
+        this.gameObject.GetComponent<Rigidbody2D>().velocity += AccelVector * AccelAmount * Time.deltaTime;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +78,9 @@ public class EnemyBullet : MonoBehaviour
                 break;
             case 3:
                 move3(Speed, Direction);
+                break;
+            case 4:
+                move4();
                 break;
             default:
                 break;

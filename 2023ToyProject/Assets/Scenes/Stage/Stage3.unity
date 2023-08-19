@@ -1585,9 +1585,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 2001673152}
   stageMaxTime: 20
-  gameOverPanel: {fileID: 688951333}
+  bossClearPanel: {fileID: 0}
   isGameOver: 0
-  nextStageName: 
+  bossPrefabs: []
 --- !u!4 &1414689359
 Transform:
   m_ObjectHideFlags: 0
