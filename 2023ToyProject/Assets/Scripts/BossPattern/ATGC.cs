@@ -40,7 +40,7 @@ public class ATGC : MonoBehaviour
         letter.transform.Rotate(new Vector3(0, 0, rotation));
         foreach (Transform t in letter.transform)
         {
-            t.gameObject.GetComponent<EnemyBullet>().move1Init(moveSpeed);
+            t.gameObject.GetComponent<EnemyBulletSet>().move1Init(moveSpeed);
         }
     }
 }
