@@ -63,4 +63,15 @@ public class BulletObjectPool : MonoBehaviour
         }
         return null;
     }
+    public void TurnOffAll()
+    {
+        for (int i = 0; i < amountToPool; i++)
+        {
+            pulledEnemyBullets[i].SetActive(false);           
+        }
+        for (int i = 0; i < amountToPool; i++)
+        {
+            pulledPlayerBullets[i].SetActive(false);
+        }
+    }
 }

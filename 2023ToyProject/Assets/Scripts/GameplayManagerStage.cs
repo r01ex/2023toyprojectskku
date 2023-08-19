@@ -2,33 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class GameplayManager : MonoBehaviour
+public class GameplayManagerStage : MonoBehaviour
 {
-    public static GameplayManager Instance = null;
+    public static GameplayManagerStage instance = null;
     [SerializeField] Image timer;
     [SerializeField] int stageMaxTime;
     float currenttime = 0;
 
     [SerializeField]
-    private GameObject bossClearPanel;
+    private GameObject gameOverPanel;
 
     [HideInInspector]
     public bool isGameOver = false;
 
-    int currentBoss=0;
     [SerializeField]
-    GameObject[] bossPrefabs;
+    string nextStageName;
 
     // Start is called before the first frame update
 
     private void Awake() {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
+        if(instance == null){
+            instance = this;
         }
     }
     void Start()
@@ -58,19 +52,15 @@ public class GameplayManager : MonoBehaviour
     public void SetGameOver(){
         isGameOver = true;
         BulletObjectPool.Instance.TurnOffAll();
-        Debug.Log("1");
         Invoke("ShowGameOverPanel", 1f);
     }
 
     void ShowGameOverPanel(){
-        Debug.Log("2");
-        bossClearPanel.SetActive(true);
-        Debug.Log(bossClearPanel.activeInHierarchy);
-        bossClearPanel.GetComponent<Skill>().Init();
+        gameOverPanel.SetActive(true);
+        gameOverPanel.GetComponent<Skill>().Init();
     }
 
-    public void spawnNextBoss(){
-        currentBoss++;
-        Instantiate(bossPrefabs[currentBoss]);
+    public void stageClear(){
+        
     } 
 }

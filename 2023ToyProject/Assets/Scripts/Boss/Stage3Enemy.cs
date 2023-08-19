@@ -104,7 +104,7 @@ public class Stage3Enemy : MonoBehaviour
             {
                 //death
                 Destroy(gameObject);
-                GameplayManager.instance.SetGameOver();
+                GameplayManager.Instance.SetGameOver();
             }
             // To change origin color
             Invoke("ResetColor", flashDuration);

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
-    public int maxBullet;
+    [SerializeField] int maxBullet;
     public int currentBullet = 0;
     [SerializeField] Image bulletcircle;
     [SerializeField] GameObject Electricfield;
@@ -106,4 +106,12 @@ public class PlayerManager : MonoBehaviour
             Electricfield.GetComponent<SpriteRenderer>().color = new Color(0, 0.07f, 1, 0.45f);
         }
     }
+
+    #region player skill
+    public void addMaxBullet(int n)
+    {
+        maxBullet += n;
+    }
+
+    #endregion
 }
