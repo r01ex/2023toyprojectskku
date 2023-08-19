@@ -28,6 +28,14 @@ public class Stage1Enemy : MonoBehaviour
     private Color originalColor;
     private Renderer enemyRenderer;
 
+    //Sound
+    [SerializeField]
+    private H2OSoundManager soundManager;
+
+    //Death transparent
+    private Renderer bossRenderer;
+    private bool isDead = false;
+
     private void Awake() {
         anim = GetComponent<Animator>();
     }
@@ -37,12 +45,13 @@ public class Stage1Enemy : MonoBehaviour
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine();
+        bossRenderer = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(hp < maxHp * 0.3){
+        if(hp < maxHp * 0.3){ 
             anim.SetBool("isLowHp", true);
         } else{
             anim.SetBool("isLowHp", false);
@@ -64,6 +73,7 @@ public class Stage1Enemy : MonoBehaviour
         int spawnCount = 0;
         while (true)
         {
+            soundManager.PlaySound("BUBBLE");   //Sound Bubble
             Shoot5RowPattern.Shoot(moveSpeed,Random.Range(-1.3f,1.3f));
             spawnCount++;
             if (spawnCount % 5 == 0)
@@ -83,6 +93,7 @@ public class Stage1Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
+            
             hp -= damage;
             healthbar.fillAmount = hp / maxHp;
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
@@ -97,8 +108,11 @@ public class Stage1Enemy : MonoBehaviour
             if (hp <= 0)
             {
                 //death
-                Destroy(gameObject);
+                soundManager.PlaySound("DEATH");
+                Die();
                 GameplayManager.instance.SetGameOver();
+            } else{
+                soundManager.PlaySound("ATTACKED");
             }
             // To change origin color
             Invoke("ResetColor", flashDuration);
@@ -107,5 +121,19 @@ public class Stage1Enemy : MonoBehaviour
     private void ResetColor()
     {
         enemyRenderer.material.color = originalColor;
+    }
+    private void Die()
+    {
+        if (!isDead)
+        {
+            isDead = true;
+
+            // Transparent
+            //Color originalColor = bossRenderer.material.color;
+            //Color transparentColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0.0f);
+            //bossRenderer.material.color = transparentColor;
+            
+            bossRenderer.enabled = false;
+        }
     }
 }
