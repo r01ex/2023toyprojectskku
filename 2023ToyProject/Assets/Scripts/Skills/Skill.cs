@@ -78,7 +78,7 @@ public class Skill : MonoBehaviour
                 break;
             case 5:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[5];
-                Panel.transform.Find("SkillName").GetComponent<Text>().text = "Extended Grab Range";
+                Panel.transform.Find("SkillName").GetComponent<Text>().text = "Extpanded Grab Range";
                 Panel.transform.Find("Description").GetComponent<Text>().text = "The grab range is slightly increased." +
                     " This effect lasts until the end of the game.";
                 break;
@@ -103,19 +103,19 @@ public class Skill : MonoBehaviour
             case 9:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[9];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Lightning Fast";
-                Panel.transform.Find("Description").GetComponent<Text>().text = "The size of the atomic" +
+                Panel.transform.Find("Description").GetComponent<Text>().text = "Movement speed is greatly increased." +
                     " However, this effect is only effective in the next stage.";
                 break;
             case 10:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[10];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Unbreakable shield";
-                Panel.transform.Find("Description").GetComponent<Text>().text = "The size of the atomic" +
+                Panel.transform.Find("Description").GetComponent<Text>().text = "Shield time greatly increased." +
                     " However, this effect is only effective in the next stage.";
                 break;
             case 11:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[11];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Magnetic Grab";
-                Panel.transform.Find("Description").GetComponent<Text>().text = "The size of the atomic" +
+                Panel.transform.Find("Description").GetComponent<Text>().text = "The grab range is greatly increased." +
                     " However, this effect is only effective in the next stage.";
                 break;
         }
