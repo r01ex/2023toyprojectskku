@@ -341,6 +341,7 @@ MonoBehaviour:
   hp: 80
   damage: 1
   Shoot5RowPattern: {fileID: 6797181772759083641}
+  N2Gimmick: {fileID: 1053031504361258914}
   patternInterval: 0.6
   nextMoveTime: 1.2
   healthbar: {fileID: 2492725002401187667}
