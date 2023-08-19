@@ -17,7 +17,7 @@ public class Helix : MonoBehaviour
     }
     public void debug()
     {
-        StartCoroutine(ShootDouble(6, 140, 30, 10, 0.35f, 1.8f, true));
+        StartCoroutine(ShootDouble(6, 140, 10, 10, 0.35f, 1.8f, true));
     }
 
     /// <summary>
