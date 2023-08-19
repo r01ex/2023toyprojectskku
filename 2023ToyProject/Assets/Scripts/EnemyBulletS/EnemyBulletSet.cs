@@ -15,7 +15,7 @@ public class EnemyBulletSet : MonoBehaviour
     float AccelAmount;
     public void move1Init(float speed)
     {
-        this.transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;
+        this.transform.GetChild(0).gameObject.GetComponent<EnemyBulletSetInner>().isHit = false;
         Speed = speed;
         moveNumber = 1;
     }
@@ -25,7 +25,7 @@ public class EnemyBulletSet : MonoBehaviour
     }
     public void move2Init(float speed, Vector3 target)
     {
-        this.transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;
+        this.transform.GetChild(0).gameObject.GetComponent<EnemyBulletSetInner>().isHit = false;
         Speed = speed;
         Target = target;
         moveNumber = 2;
@@ -37,7 +37,7 @@ public class EnemyBulletSet : MonoBehaviour
 
     public void move3Init(float speed, Vector3 moveDir)
     {
-        this.transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;
+        this.transform.GetChild(0).gameObject.GetComponent<EnemyBulletSetInner>().isHit = false;
         Speed = speed;
         Direction = moveDir;
         moveNumber = 3;
@@ -93,7 +93,7 @@ public class EnemyBulletSet : MonoBehaviour
         if (collision.tag == "Nuclear")
         {
             Debug.Log("hit");
-            this.transform.GetChild(0).GetComponent<EnemybulletInner>().isHit = true;
+            this.transform.GetChild(0).GetComponent<EnemyBulletSetInner>().isHit = true;
             Destroy(this.gameObject);
         }
         else if (collision.tag == "Shield")

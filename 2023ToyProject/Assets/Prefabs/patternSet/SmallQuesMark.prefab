@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 3408630575884725848}
   - component: {fileID: 4558580896056847152}
   - component: {fileID: 5778590538981103325}
-  - component: {fileID: 2640484441602004422}
+  - component: {fileID: 5547575750213227278}
   m_Layer: 0
   m_Name: InnerTrigger
   m_TagString: Untagged
@@ -258,7 +258,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &2640484441602004422
+--- !u!114 &5547575750213227278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 405620493975744917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e42ac1065b081a24ca91c31fc47ca0f4, type: 3}
+  m_Script: {fileID: 11500000, guid: f08b7867a1e97bb43b1c430224516111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 4545276914746407633}
   - component: {fileID: 6386738329174587535}
   - component: {fileID: 7466376832222211951}
-  - component: {fileID: 3585562011499326322}
+  - component: {fileID: 1329233001561611697}
   m_Layer: 0
   m_Name: InnerTrigger
   m_TagString: Untagged
@@ -367,7 +367,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &3585562011499326322
+--- !u!114 &1329233001561611697
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 442829265794238238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e42ac1065b081a24ca91c31fc47ca0f4, type: 3}
+  m_Script: {fileID: 11500000, guid: f08b7867a1e97bb43b1c430224516111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 7755539116665515339}
   - component: {fileID: 23909197745812786}
   - component: {fileID: 7292948839429220214}
-  - component: {fileID: 6872850457160689436}
+  - component: {fileID: 2644279523774350066}
   m_Layer: 0
   m_Name: InnerTrigger
   m_TagString: Untagged
@@ -476,7 +476,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &6872850457160689436
+--- !u!114 &2644279523774350066
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 867064608839693421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e42ac1065b081a24ca91c31fc47ca0f4, type: 3}
+  m_Script: {fileID: 11500000, guid: f08b7867a1e97bb43b1c430224516111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
@@ -824,7 +824,7 @@ GameObject:
   - component: {fileID: 343664313851715905}
   - component: {fileID: 2876168477845520516}
   - component: {fileID: 1009921592920431356}
-  - component: {fileID: 1075979713109391122}
+  - component: {fileID: 6499378032552733546}
   m_Layer: 0
   m_Name: InnerTrigger
   m_TagString: Untagged
@@ -909,7 +909,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &1075979713109391122
+--- !u!114 &6499378032552733546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -918,7 +918,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2281882663492805130}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e42ac1065b081a24ca91c31fc47ca0f4, type: 3}
+  m_Script: {fileID: 11500000, guid: f08b7867a1e97bb43b1c430224516111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 1739837818191465953}
   - component: {fileID: 7560378524471981675}
   - component: {fileID: 7724898750007774833}
-  - component: {fileID: 2587379942325719210}
+  - component: {fileID: 8795476996660063318}
   m_Layer: 0
   m_Name: InnerTrigger
   m_TagString: Untagged
@@ -1018,7 +1018,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &2587379942325719210
+--- !u!114 &8795476996660063318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1027,7 +1027,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2540379261781148077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e42ac1065b081a24ca91c31fc47ca0f4, type: 3}
+  m_Script: {fileID: 11500000, guid: f08b7867a1e97bb43b1c430224516111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
@@ -1366,7 +1366,7 @@ GameObject:
   - component: {fileID: 3385618043924309381}
   - component: {fileID: 6720396304337586714}
   - component: {fileID: 1533517339850805933}
-  - component: {fileID: 7201843087831687647}
+  - component: {fileID: 5088369612144421354}
   m_Layer: 0
   m_Name: InnerTrigger
   m_TagString: Untagged
@@ -1451,7 +1451,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &7201843087831687647
+--- !u!114 &5088369612144421354
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4056813487196867773}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e42ac1065b081a24ca91c31fc47ca0f4, type: 3}
+  m_Script: {fileID: 11500000, guid: f08b7867a1e97bb43b1c430224516111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
@@ -1475,7 +1475,7 @@ GameObject:
   - component: {fileID: 6801437955141935090}
   - component: {fileID: 5864901257626543720}
   - component: {fileID: 2453254883344496129}
-  - component: {fileID: 4268271609397675243}
+  - component: {fileID: 197402667997840968}
   m_Layer: 0
   m_Name: InnerTrigger
   m_TagString: Untagged
@@ -1560,7 +1560,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &4268271609397675243
+--- !u!114 &197402667997840968
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1569,7 +1569,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4348244860894138900}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e42ac1065b081a24ca91c31fc47ca0f4, type: 3}
+  m_Script: {fileID: 11500000, guid: f08b7867a1e97bb43b1c430224516111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
@@ -1584,7 +1584,7 @@ GameObject:
   - component: {fileID: 927942397278875967}
   - component: {fileID: 5232076357162910805}
   - component: {fileID: 5999085493442985113}
-  - component: {fileID: 1333060927337960697}
+  - component: {fileID: 6420688178052756256}
   m_Layer: 0
   m_Name: InnerTrigger
   m_TagString: Untagged
@@ -1669,7 +1669,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &1333060927337960697
+--- !u!114 &6420688178052756256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1678,7 +1678,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4906252539058302996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e42ac1065b081a24ca91c31fc47ca0f4, type: 3}
+  m_Script: {fileID: 11500000, guid: f08b7867a1e97bb43b1c430224516111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
@@ -2177,6 +2177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9061045038460462402}
+  - component: {fileID: 4947758192092263456}
   m_Layer: 0
   m_Name: SmallQuesMark
   m_TagString: Untagged
@@ -2208,6 +2209,18 @@ Transform:
   - {fileID: 725868872575911010}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4947758192092263456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7942060451425687864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96570d17d2121af4bac34a19c1a5fd99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8481597375354379408
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,7 +2394,7 @@ GameObject:
   - component: {fileID: 7363889637125882014}
   - component: {fileID: 8303933923852404610}
   - component: {fileID: 4948636036688517976}
-  - component: {fileID: 8876108291925428570}
+  - component: {fileID: 7019733659668963547}
   m_Layer: 0
   m_Name: InnerTrigger
   m_TagString: Untagged
@@ -2466,7 +2479,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &8876108291925428570
+--- !u!114 &7019733659668963547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2475,7 +2488,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9041639425371991729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e42ac1065b081a24ca91c31fc47ca0f4, type: 3}
+  m_Script: {fileID: 11500000, guid: f08b7867a1e97bb43b1c430224516111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isHit: 0
