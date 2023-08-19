@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 136379002}
   - component: {fileID: 136379003}
   - component: {fileID: 136379004}
+  - component: {fileID: 136379005}
   m_Layer: 0
   m_Name: patterntestholder
   m_TagString: Untagged
@@ -356,6 +357,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26a61ae2eb87161458f4efe2d2e30a6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &136379005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136378995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7714041f20f334e8ea79d7c07ac5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &179720941
@@ -2268,8 +2281,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 136379004}
-        m_TargetAssemblyTypeName: RandomFall, Assembly-CSharp
+      - m_Target: {fileID: 136379005}
+        m_TargetAssemblyTypeName: Fireworks, Assembly-CSharp
         m_MethodName: debug
         m_Mode: 1
         m_Arguments:
