@@ -59,6 +59,15 @@ public class EnemyBullet : MonoBehaviour
     {
         this.gameObject.GetComponent<Rigidbody2D>().velocity += AccelVector * AccelAmount * Time.deltaTime;
     }
+    public void move5Init(float moveSpeed)
+    {
+        Speed = moveSpeed;
+        moveNumber = 5;
+    }
+    void move5(float moveSpeed)
+    {
+        this.transform.position = Vector3.MoveTowards(this.transform.position, PlayerManager.Instance.transform.position, moveSpeed * Time.deltaTime);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +90,9 @@ public class EnemyBullet : MonoBehaviour
                 break;
             case 4:
                 move4();
+                break;
+            case 5:
+                move5(Speed);
                 break;
             default:
                 break;

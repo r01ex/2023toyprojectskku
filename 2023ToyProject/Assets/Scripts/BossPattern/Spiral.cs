@@ -26,7 +26,7 @@ public class Spiral : MonoBehaviour
         {
             float dirx = this.transform.position.x + Mathf.Cos((angle * Mathf.PI) / 180f);
             float diry = this.transform.position.y + Mathf.Sin((angle * Mathf.PI) / 180f);
-            Vector3 movedir = (new Vector3(dirx, diry, 0) - this.transform.position).normalized;
+            Vector3 movedir = (new Vector3(dirx, diry, 0) - this.transform.position);
             Vector3 spawnPos = this.transform.position;
             GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
             if (enemyObject != null)
