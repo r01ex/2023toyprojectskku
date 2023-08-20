@@ -24,4 +24,8 @@ public class Bullet : MonoBehaviour
     {
         this.gameObject.GetComponent<Animator>().Play("BulletFly");
     }
+
+    public void increaseSize(){
+        this.GetComponent<Transform>().localScale = new Vector3(0.05f, 0.05f, 0.0f);
+    }
 }
