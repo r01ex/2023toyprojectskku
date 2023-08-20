@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] float attack = 1;
 
-    [SerializeField] float speed = 600;
+    [SerializeField] public float speed = 600;
 
     [SerializeField] float shieldtime;
     private void Awake()
