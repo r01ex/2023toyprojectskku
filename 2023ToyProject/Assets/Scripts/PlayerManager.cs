@@ -6,8 +6,6 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
 
-     public  GameObject bullet;
-
     [SerializeField] int maxBullet;
     public int currentBullet = 0;
     [SerializeField] Image bulletcircle;
@@ -93,7 +91,7 @@ public class PlayerManager : MonoBehaviour
 
     public void increaseBulletSize(){
        
-        bullet.GetComponent<Bullet>().increaseSize();
+        Bullet.Instance.increaseSize();
     }
     
      public void superIncreaseAttack(float increaseAmount){
