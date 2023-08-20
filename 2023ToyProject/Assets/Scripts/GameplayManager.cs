@@ -58,12 +58,10 @@ public class GameplayManager : MonoBehaviour
     public void SetGameOver(){
         isGameOver = true;
         BulletObjectPool.Instance.TurnOffAll();
-        Debug.Log("1");
-        Invoke("ShowGameOverPanel", 1f);
+        Invoke("ShowGameOverPanel", 0.3f);
     }
 
     void ShowGameOverPanel(){
-        Debug.Log("2");
         bossClearPanel.SetActive(true);
         Debug.Log(bossClearPanel.activeInHierarchy);
         bossClearPanel.GetComponent<Skill>().Init();

@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    float speed = PlayerManager.Instance.speed;
+    public static PlayerControl Instance;
+    [SerializeField]
+    float speed = 5;
     [SerializeField] float width;
     [SerializeField] float height;
 
     [SerializeField] bool iskeyboardControl = false;
     Camera maincamera;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +36,10 @@ public class PlayerControl : MonoBehaviour
     void setCursor()
     {
         Cursor.visible = false;
+    }
+    public void addSpeed(float Speed)
+    {
+        speed += Speed;
     }
     // Update is called once per frame
     void Update()

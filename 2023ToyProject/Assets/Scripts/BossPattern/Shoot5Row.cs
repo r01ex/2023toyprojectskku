@@ -25,7 +25,6 @@ public class Shoot5Row : MonoBehaviour
             }
         }
     }
-
     // Update is called once per frame
     void Update()
     {

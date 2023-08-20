@@ -17,7 +17,13 @@ public class Skill : MonoBehaviour
     [SerializeField]
     GameObject skillPanel3;
 
-    private bool stage = true;
+    private int lastSuperUpgrade = -1;
+
+    [SerializeField] float attackBaseInc;
+    [SerializeField] float speedBaseInc;
+    [SerializeField] float shieldTimeBaseInc;
+    [SerializeField] float grabRangeBaseInc;
+    [SerializeField] float bulletSizeBaseInc;
 
     // Start is called before the first frame update
     void Start()
@@ -44,16 +50,22 @@ public class Skill : MonoBehaviour
     }
     void UpdateUI(GameObject Panel, int index)
     {
-        if(stage == false) {
-
-            PlayerManager.Instance.rollBackAttack(3f);
-            PlayerManager.Instance.rollBackSpeed(50f);
-            PlayerManager.Instance.rollBackSheildTime(0.3f);
-            PlayerManager.Instance.rollBackGrabRange();
-            stage = true;
-
+        switch (lastSuperUpgrade)
+        {
+            case 0:
+                PlayerManager.Instance.increaseAttack(-3 * attackBaseInc);
+                break;
+            case 1:
+                PlayerManager.Instance.increaseSpeed(-3 * speedBaseInc);
+                break;
+            case 2:
+                PlayerManager.Instance.increaseShieldTime(-3 * shieldTimeBaseInc);
+                break;
+            case 3:
+                PlayerManager.Instance.increaseGrabRange(-3 * grabRangeBaseInc);
+                break;
         }
-
+        lastSuperUpgrade = -1;
         switch (index)
         {
             case 0:
@@ -62,8 +74,8 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Description").GetComponent<Text>().text = "The size of the atomic" +
                     " nucleus decreases. This will be useful for avoiding patterns.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); });
-                
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
+
                 break;
             case 1:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[1];
@@ -72,7 +84,7 @@ public class Skill : MonoBehaviour
                     " nucleus decreases. This will be useful for avoiding patterns.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.addMaxBullet(5); });
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
             case 2:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[2];
@@ -80,8 +92,8 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Attack power is slightly increased." +
                     " This effect lasts until the end of the game.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseAttack(1f); });
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseAttack(attackBaseInc); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
             case 3:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[3];
@@ -89,8 +101,8 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Movement speed is slightly increased." +
                     " This effect lasts until the end of the game.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseSpeed(20f); });
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseSpeed(speedBaseInc); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
             case 4:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[4];
@@ -98,8 +110,8 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Shield time slightly increased." +
                     " This effect lasts until the end of the game.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseShieldTime(0.1f); });
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseShieldTime(shieldTimeBaseInc); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
             case 5:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[5];
@@ -107,8 +119,8 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Description").GetComponent<Text>().text = "The grab range is slightly increased." +
                     " This effect lasts until the end of the game.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseGrabRange(); });
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseGrabRange(grabRangeBaseInc); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
             case 6:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[6];
@@ -116,7 +128,7 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Loading..." +
                     " ";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
             case 7:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[7];
@@ -124,8 +136,8 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Bullet size is increased." +
                     " This effect lasts until the end of the game.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseBulletSize(); });
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseBulletSize(bulletSizeBaseInc); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
             case 8:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[8];
@@ -133,11 +145,9 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Attack power is greatly increased." +
                     " However, this effect is only effective in the next stage.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
-                if(stage == true){
-                    Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.superIncreaseAttack(3f); });
-                    stage = false;
-                }
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseAttack(attackBaseInc*3); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { lastSuperUpgrade = 0; });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
             case 9:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[9];
@@ -145,11 +155,9 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Movement speed is greatly increased." +
                     " However, this effect is only effective in the next stage.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
-                if(stage == true){
-                    Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.superIncreaseSpeed(50f); });
-                    stage = false;
-                }
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseSpeed(speedBaseInc * 3); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { lastSuperUpgrade = 1; });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
             case 10:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[10];
@@ -157,11 +165,9 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Shield time greatly increased." +
                     " However, this effect is only effective in the next stage.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
-                if(stage == true){
-                    Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.superIncreaseSheildTime(0.3f); });
-                    stage = false;
-                }
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseShieldTime(shieldTimeBaseInc*3); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { lastSuperUpgrade = 2; });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
             case 11:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[11];
@@ -169,11 +175,9 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Description").GetComponent<Text>().text = "The grab range is greatly increased." +
                     " However, this effect is only effective in the next stage.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
-                if(stage == true){
-                    Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.superIncreaseGrabRange(); });
-                    stage = false;
-                }
-                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseGrabRange(grabRangeBaseInc*3); });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { lastSuperUpgrade = 3; });
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
         }
     }

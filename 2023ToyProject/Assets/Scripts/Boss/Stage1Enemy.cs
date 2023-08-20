@@ -15,6 +15,8 @@ public class Stage1Enemy : MonoBehaviour
 
     [SerializeField]
     Shoot5Row Shoot5RowPattern;
+    [SerializeField]
+    Wall WallPattern;
 
     [SerializeField]
     float patternInterval;
@@ -34,6 +36,7 @@ public class Stage1Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        damage = PlayerManager.Instance.attack;
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine();
@@ -60,20 +63,16 @@ public class Stage1Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
 
-        float moveSpeed = 5f;
-        int spawnCount = 0;
         while (true)
         {
-            Shoot5RowPattern.Shoot(moveSpeed,Random.Range(-1.3f,1.3f));
-            spawnCount++;
-            if (spawnCount % 5 == 0)
+            for (int i = 0; i < 5; i++)
             {
-                moveSpeed += 2;
+                Shoot5RowPattern.Shoot(5, Random.Range(-1.3f, 1.3f));
+
+                yield return new WaitForSeconds(patternInterval);
             }
-            if (moveSpeed > 10)
-            {
-                moveSpeed = 3f;
-            }
+
+            StartCoroutine(WallPattern.ShootLines(3.5f, 7.6f, 28, 1, 10));
 
             yield return new WaitForSeconds(patternInterval);
         }

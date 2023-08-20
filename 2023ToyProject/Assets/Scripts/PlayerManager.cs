@@ -11,8 +11,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] Image bulletcircle;
     [SerializeField] GameObject Electricfield;
 
-    [SerializeField] float attack = 1;
-
+    public float attack = 1;
+    Vector3 addedBulletSize = new Vector3(0, 0, 0);
     [SerializeField] public float speed = 600;
 
     [SerializeField] float shieldtime;
@@ -65,6 +65,7 @@ public class PlayerManager : MonoBehaviour
             {
                 bullet.transform.position = this.transform.position;
                 bullet.transform.rotation = this.transform.rotation;
+                bullet.transform.localScale = new Vector3(0.1f, 0.1f, 1) + addedBulletSize;
                 bullet.SetActive(true);
             }
             bullet.transform.parent = null;
@@ -72,58 +73,6 @@ public class PlayerManager : MonoBehaviour
             n--;
         }
     }
-
-    public void increaseAttack(float increaseAmount){
-        attack += increaseAmount;
-    }
-
-    public void increaseSpeed(float increaseAmount){
-        speed += increaseAmount;
-    }
-
-    public void increaseShieldTime(float increaseAmount){
-        shieldtime += increaseAmount;
-    }
-
-    public void increaseGrabRange(){
-        Electricfield.GetComponent<Transform>().localScale = new Vector3(0.1f, 0.1f, 0.0f);
-    }
-
-    public void increaseBulletSize(){
-       
-        Bullet.Instance.increaseSize();
-    }
-    
-     public void superIncreaseAttack(float increaseAmount){
-        attack += increaseAmount;
-    }
-
-
-     public void superIncreaseSpeed(float increaseAmount){
-        attack += increaseAmount;
-    }
-
-     public void superIncreaseSheildTime(float increaseAmount){
-        attack += increaseAmount;
-    }
-
-    public void superIncreaseGrabRange(){
-        Electricfield.GetComponent<Transform>().localScale = new Vector3(0.3f, 0.3f, 0.0f);
-    }
-
-    public void rollBackAttack(float increaseAmount){
-        attack -= increaseAmount;
-    }
-    public void rollBackSpeed(float increaseAmount){
-        attack -= increaseAmount;
-    }
-    public void rollBackSheildTime(float increaseAmount){
-        attack -= increaseAmount;
-    }
-    public void rollBackGrabRange(){
-        Electricfield.GetComponent<Transform>().localScale = new Vector3(-0.3f, -0.3f, 0.0f);
-    }
-
     public void Shield()
     {
         if (Electricfield.tag != "Shield")
@@ -168,6 +117,30 @@ public class PlayerManager : MonoBehaviour
     public void addMaxBullet(int n)
     {
         maxBullet += n;
+    }
+    public void increaseAttack(float increaseAmount)
+    {
+        attack += increaseAmount;
+    }
+
+    public void increaseSpeed(float increaseAmount)
+    {
+        PlayerControl.Instance.addSpeed(increaseAmount);
+    }
+
+    public void increaseShieldTime(float increaseAmount)
+    {
+        shieldtime += increaseAmount;
+    }
+
+    public void increaseGrabRange(float increaseAmount)
+    {
+        Electricfield.GetComponent<Transform>().localScale += new Vector3(increaseAmount, increaseAmount, 0);
+    }
+
+    public void increaseBulletSize(float increaseAmount)
+    {
+        addedBulletSize += new Vector3(increaseAmount, increaseAmount, 0);
     }
 
     #endregion

@@ -4,21 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    
-    public static Bullet Instance;
-
-     private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-    
     void Start()
     {
         
@@ -37,9 +22,5 @@ public class Bullet : MonoBehaviour
     private void OnEnable()
     {
         this.gameObject.GetComponent<Animator>().Play("BulletFly");
-    }
-
-    public void increaseSize(){
-        this.GetComponent<Transform>().localScale = new Vector3(0.05f, 0.05f, 0.0f);
     }
 }

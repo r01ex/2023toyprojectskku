@@ -28,7 +28,7 @@ public class Wall : MonoBehaviour
 
         for (int i = 0; i < lineNum; i++)
         {
-            startPos = Random.Range(-3.5f, 3.5f - width);
+            startPos = Random.Range(-3.8f, 3.8f - width);
             Vector3 spawnPos = new Vector3(startPos, this.transform.position.y, 0);
 
             for (int j = 0; j < bulletNum; j++)
