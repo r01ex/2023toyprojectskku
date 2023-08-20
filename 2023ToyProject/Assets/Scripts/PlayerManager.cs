@@ -5,10 +5,15 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
+
     [SerializeField] int maxBullet;
     public int currentBullet = 0;
     [SerializeField] Image bulletcircle;
     [SerializeField] GameObject Electricfield;
+
+    [SerializeField] float attack = 1;
+
+    [SerializeField] public float speed = 600;
 
     [SerializeField] float shieldtime;
     private void Awake()
@@ -67,6 +72,58 @@ public class PlayerManager : MonoBehaviour
             n--;
         }
     }
+
+    public void increaseAttack(float increaseAmount){
+        attack += increaseAmount;
+    }
+
+    public void increaseSpeed(float increaseAmount){
+        speed += increaseAmount;
+    }
+
+    public void increaseShieldTime(float increaseAmount){
+        shieldtime += increaseAmount;
+    }
+
+    public void increaseGrabRange(){
+        Electricfield.GetComponent<Transform>().localScale = new Vector3(0.1f, 0.1f, 0.0f);
+    }
+
+    public void increaseBulletSize(){
+       
+        Bullet.Instance.increaseSize();
+    }
+    
+     public void superIncreaseAttack(float increaseAmount){
+        attack += increaseAmount;
+    }
+
+
+     public void superIncreaseSpeed(float increaseAmount){
+        attack += increaseAmount;
+    }
+
+     public void superIncreaseSheildTime(float increaseAmount){
+        attack += increaseAmount;
+    }
+
+    public void superIncreaseGrabRange(){
+        Electricfield.GetComponent<Transform>().localScale = new Vector3(0.3f, 0.3f, 0.0f);
+    }
+
+    public void rollBackAttack(float increaseAmount){
+        attack -= increaseAmount;
+    }
+    public void rollBackSpeed(float increaseAmount){
+        attack -= increaseAmount;
+    }
+    public void rollBackSheildTime(float increaseAmount){
+        attack -= increaseAmount;
+    }
+    public void rollBackGrabRange(){
+        Electricfield.GetComponent<Transform>().localScale = new Vector3(-0.3f, -0.3f, 0.0f);
+    }
+
     public void Shield()
     {
         if (Electricfield.tag != "Shield")
