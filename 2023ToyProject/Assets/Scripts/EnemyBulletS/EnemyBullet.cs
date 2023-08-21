@@ -13,6 +13,8 @@ public class EnemyBullet : MonoBehaviour
     Vector2 AccelVector;
     float AccelAmount;
     int TrailDurationCounter;
+    GameObject FollowTarget;
+    float FollowSpeed;
     public void move1Init(float speed)
     {
         this.transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;
@@ -71,19 +73,28 @@ public class EnemyBullet : MonoBehaviour
     }
     public void move6Init(int trailDurationCounter)
     {
-        Debug.Log("move6 init");
         TrailDurationCounter = trailDurationCounter;
         moveNumber = 6;
     }
     void move6()
     {
-        Debug.Log("move6");
         TrailDurationCounter--;
         if(TrailDurationCounter<=0)
         {
             this.gameObject.SetActive(false);
             moveNumber = -1;
         }
+    }
+    public void move7Init(GameObject followTarget, float followSpeed, float fallSpeed)
+    {
+        FollowTarget = followTarget;
+        FollowSpeed = followSpeed;
+        Speed = fallSpeed;
+        moveNumber = 7;
+    }
+    void move7(GameObject followTarget, float followSpeed, float fallSpeed)
+    {
+        transform.position = new Vector2((Mathf.Lerp(transform.position.x, followTarget.transform.position.x, followSpeed * Time.deltaTime)), transform.position.y-fallSpeed*Time.deltaTime);
     }
     // Start is called before the first frame update
     void Start()
@@ -113,6 +124,9 @@ public class EnemyBullet : MonoBehaviour
                 break;
             case 6:
                 move6();
+                break;
+            case 7:
+                move7(FollowTarget,FollowSpeed,Speed);
                 break;
             default:
                 break;
