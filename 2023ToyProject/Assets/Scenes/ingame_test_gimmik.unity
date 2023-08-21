@@ -2279,9 +2279,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 136379011}
-        m_TargetAssemblyTypeName: FollowX, Assembly-CSharp
-        m_MethodName: debug
+      - m_Target: {fileID: 136379008}
+        m_TargetAssemblyTypeName: TrailShots, Assembly-CSharp
+        m_MethodName: debug2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

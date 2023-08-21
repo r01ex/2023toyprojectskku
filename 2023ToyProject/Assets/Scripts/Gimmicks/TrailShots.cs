@@ -23,7 +23,8 @@ public class TrailShots : MonoBehaviour
     public void debug2()
     {
         //SnipeShootSingle(4, 20, 800);
-        StartCoroutine(RandomVolley(5f, 7f, 10, 20, 5, 40, 800));
+        //StartCoroutine(RandomVolley(5f, 7f, 10, 20, 5, 40, 800));
+        ShootSingleFollow(4, 20, 800);
     }
     IEnumerator LeaveTrail(GameObject bullet, int interval, int duration)
     {
@@ -142,6 +143,19 @@ public class TrailShots : MonoBehaviour
             {
                 yield return new WaitForEndOfFrame();
             }
+        }
+    }
+    public void ShootSingleFollow(float moveSpeed, int trailInterval, int trailDuration)
+    {
+        Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+        if (enemyObject != null)
+        {
+            enemyObject.transform.position = spawnPos;
+            enemyObject.SetActive(true);
+            EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
+            enemy.move5Init(moveSpeed);
+            StartCoroutine(LeaveTrail(enemyObject, trailInterval, trailDuration));
         }
     }
 }
