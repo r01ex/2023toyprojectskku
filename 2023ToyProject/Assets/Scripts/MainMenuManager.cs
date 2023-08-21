@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [SerializeField]
+    private string nextSceneName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,9 @@ public class MainMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.anyKeyDown){
+            SceneManager.LoadScene(nextSceneName);
+        }
         
     }
 }
