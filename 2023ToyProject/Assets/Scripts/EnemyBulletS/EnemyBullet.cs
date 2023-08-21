@@ -12,6 +12,7 @@ public class EnemyBullet : MonoBehaviour
     Vector2 InitialVector;
     Vector2 AccelVector;
     float AccelAmount;
+    int TrailDurationCounter;
     public void move1Init(float speed)
     {
         this.transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;
@@ -68,6 +69,22 @@ public class EnemyBullet : MonoBehaviour
     {
         this.transform.position = Vector3.MoveTowards(this.transform.position, PlayerManager.Instance.transform.position, moveSpeed * Time.deltaTime);
     }
+    public void move6Init(int trailDurationCounter)
+    {
+        Debug.Log("move6 init");
+        TrailDurationCounter = trailDurationCounter;
+        moveNumber = 6;
+    }
+    void move6()
+    {
+        Debug.Log("move6");
+        TrailDurationCounter--;
+        if(TrailDurationCounter<=0)
+        {
+            this.gameObject.SetActive(false);
+            moveNumber = -1;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -94,6 +111,9 @@ public class EnemyBullet : MonoBehaviour
             case 5:
                 move5(Speed);
                 break;
+            case 6:
+                move6();
+                break;
             default:
                 break;
         }
@@ -106,15 +126,18 @@ public class EnemyBullet : MonoBehaviour
             Debug.Log("hit");
             this.transform.GetChild(0).GetComponent<EnemybulletInner>().isHit = true;
             this.gameObject.SetActive(false);
+            moveNumber = -1;
         }
         else if(collision.tag == "Shield")
         {
             Debug.Log("shield");
             this.gameObject.SetActive(false);
+            moveNumber = -1;
         }
         else if(collision.tag == "BulletDestroyWall")
         {
             this.gameObject.SetActive(false);
+            moveNumber = -1;
         }
     }
     

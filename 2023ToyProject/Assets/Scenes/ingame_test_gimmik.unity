@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 136379005}
   - component: {fileID: 136379006}
   - component: {fileID: 136379007}
+  - component: {fileID: 136379008}
   m_Layer: 0
   m_Name: patterntestholder
   m_TagString: Untagged
@@ -395,6 +396,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf36ab0ac1b37144aa90d905c3ad64c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &136379008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136378995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7559ddfe9fa723041a4f20004c1dff0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &179720941
@@ -988,8 +1001,8 @@ Transform:
   m_GameObject: {fileID: 436137644}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.6, y: -0.0054, z: 0}
-  m_LocalScale: {x: 1.0897825, y: 9.917967, z: 1}
+  m_LocalPosition: {x: 8.26, y: 0.0115, z: 0}
+  m_LocalScale: {x: 1.0897825, y: 14.218053, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1334,8 +1347,8 @@ Transform:
   m_GameObject: {fileID: 620204724}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.79, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: -5.79, z: 0}
+  m_LocalScale: {x: 18.060818, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1958,6 +1971,8 @@ MonoBehaviour:
   currentBullet: 0
   bulletcircle: {fileID: 1137578306}
   Electricfield: {fileID: 1279888504}
+  attack: 1
+  speed: 600
   shieldtime: 0.5
 --- !u!1 &1544567710
 GameObject:
@@ -2224,9 +2239,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 136379003}
-        m_TargetAssemblyTypeName: Snipe, Assembly-CSharp
-        m_MethodName: debug
+      - m_Target: {fileID: 136379008}
+        m_TargetAssemblyTypeName: TrailShots, Assembly-CSharp
+        m_MethodName: debug2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2844,8 +2859,8 @@ Transform:
   m_GameObject: {fileID: 2071433466}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.82, y: -0.0054, z: 0}
-  m_LocalScale: {x: 1.0897825, y: 9.917967, z: 1}
+  m_LocalPosition: {x: -8.38, y: 0.2825, z: 0}
+  m_LocalScale: {x: 1.0897825, y: 12.7286005, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
