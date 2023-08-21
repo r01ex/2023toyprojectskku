@@ -28,12 +28,11 @@ public class Wall : MonoBehaviour
 
         for (int i = 0; i < lineNum; i++)
         {
-            startPos = Random.Range(-3.8f, 3.8f - width);
+            startPos = Random.Range(-3.5f, 3.5f - width);
             Vector3 spawnPos = new Vector3(startPos, this.transform.position.y, 0);
 
             for (int j = 0; j < bulletNum; j++)
             {
-                spawnPos += new Vector3(width / bulletNum, 0, 0);
                 GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
 
                 if (enemyObject != null )
@@ -43,6 +42,7 @@ public class Wall : MonoBehaviour
                     EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
                     enemy.move1Init(moveSpeed);
                 }
+                spawnPos += new Vector3(width / bulletNum, 0, 0);
             }
             for (int k = 0; k < interval; k++)
             {
