@@ -109,7 +109,7 @@ public class Stage3Enemy : MonoBehaviour
 
             yield return new WaitForSeconds(patternInterval * (-1.5f) + spiralTotalBullet * spiralInterval / 120f);
 
-            StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
+            StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 0f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
 
             yield return new WaitForSeconds(patternInterval * (-1.5f) + helixTotalBullet * helixInterval / 120f);
 
