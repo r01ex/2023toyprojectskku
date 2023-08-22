@@ -6,17 +6,53 @@ public class Stage6Enemy : MonoBehaviour
 {
     // To indicate that the boss hp
     [SerializeField]
-    private float hp = 160f;
-    private float maxHp = 160f;
+    private float hp;
+    private float maxHp = 1f;
 
     
     [SerializeField]
-    private float damage = 1f;  //To indicate that the damage of each electrons
+    private float damage;  //To indicate that the damage of each electrons
 
     private Animator anim;
 
     [SerializeField]
-    Shoot5Row Shoot5RowPattern;
+    TrailShots TrailShotsPattern;
+    [SerializeField]
+    float snipeShootSingleMoveSpeed;
+    [SerializeField]
+    int snipeShootSingleTrailInterval;
+    [SerializeField]
+    int snipeShootSingleTrailDuration;
+    [SerializeField]
+    float randomVolleyMoveSpeedRangeLow;
+    [SerializeField]
+    float randomVolleyMoveSpeedRangeHigh;
+    [SerializeField]
+    int randomVolleyIntervalRangeLow;
+    [SerializeField]
+    int randomVolleyIntervalRangeHigh;
+    [SerializeField]
+    float randomVolleyVolley;
+    [SerializeField]
+    int randomVolleyTrailInterval;
+    [SerializeField]
+    int randomVolleyTrailDuration;
+    [SerializeField]
+    float shootSingleFollowMoveSpeed;
+    [SerializeField]
+    int shootSingleFollowTrailInterval;
+    [SerializeField]
+    int shootSingleFollowTrailDuration;
+    [SerializeField]
+    FollowX FollowXPattern;
+    [SerializeField]
+    float followXFollowSpeed;
+    [SerializeField]
+    float followXVolley;
+    [SerializeField]
+    int followXInterval;
+    [SerializeField]
+    float followXFallSpeed;
 
     [SerializeField]
     float patternInterval;
@@ -61,6 +97,36 @@ public class Stage6Enemy : MonoBehaviour
     IEnumerator EnemyRoutine()
     {
         yield return new WaitForSeconds(1.8f);
+
+        while (true)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                TrailShotsPattern.SnipeShootSingle(snipeShootSingleMoveSpeed, snipeShootSingleTrailInterval, snipeShootSingleTrailDuration);
+
+                yield return new WaitForSeconds(patternInterval * 0.5f);
+            }
+
+            yield return new WaitForSeconds(patternInterval * 0.5f);
+
+            StartCoroutine(TrailShotsPattern.RandomVolley(randomVolleyMoveSpeedRangeLow, randomVolleyMoveSpeedRangeHigh, randomVolleyIntervalRangeLow, randomVolleyIntervalRangeHigh, randomVolleyVolley, randomVolleyTrailInterval, randomVolleyTrailDuration));
+
+            yield return new WaitForSeconds(patternInterval * 1.5f);
+
+            for (int i = 0; i < 3; i++)
+            {
+                StartCoroutine(FollowXPattern.Shoot(followXFollowSpeed, followXVolley, followXInterval, followXFallSpeed));
+
+                yield return new WaitForSeconds(patternInterval);
+            }
+
+            for (int i = 0; i < 2; i++)
+            {
+                TrailShotsPattern.ShootSingleFollow(shootSingleFollowMoveSpeed, shootSingleFollowTrailInterval, shootSingleFollowTrailDuration);
+
+                yield return new WaitForSeconds(patternInterval);
+            }
+        }    
     }
 
     private void OnTriggerEnter2D(Collider2D other)
