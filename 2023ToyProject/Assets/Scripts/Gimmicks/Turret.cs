@@ -23,6 +23,7 @@ public class Turret : MonoBehaviour
         if(intervalCnt<=0)
         {
             anim.SetTrigger("doShot");
+            Debug.Log("shoot");
             atgcPattern.ShootToPlayer(MoveSpeed, Random.Range(-30f, 30f), letterCnt);
             letterCnt++;
             intervalCnt = Interval;

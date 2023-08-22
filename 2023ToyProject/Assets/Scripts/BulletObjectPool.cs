@@ -58,6 +58,7 @@ public class BulletObjectPool : MonoBehaviour
         {
             if (!pulledEnemyBullets[i].activeInHierarchy)
             {
+                pulledEnemyBullets[i].transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;
                 return pulledEnemyBullets[i];
             }
         }

@@ -5,10 +5,23 @@ using UnityEngine;
 public class SpawnTurret : MonoBehaviour
 {
     [SerializeField] GameObject turretPrefab;
+    [SerializeField] GameObject transformParent;
+    int[] randlist = new int[8];
+    int cnt=0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        for (int i = 0; i < 8; i++)
+        {
+            randlist[i] = i;
+        }
+        for (int i = 0; i < 8; i++)
+        {
+            int r = Random.Range(0, 8);
+            int temp = randlist[i];
+            randlist[i] = randlist[r];
+            randlist[r] = temp;
+        }
     }
 
     // Update is called once per frame
@@ -19,8 +32,9 @@ public class SpawnTurret : MonoBehaviour
     public void Spawn()
     {
         GameObject turret = Instantiate(turretPrefab);
-        turret.transform.position = new Vector3(this.transform.position.x + Random.Range(-1.4f, 1.4f), this.transform.position.y - Random.Range(0f, 1.5f), 0);
+        turret.transform.position = transformParent.transform.GetChild(randlist[cnt%8]).position;
         turret.transform.parent = this.gameObject.transform;
         turret.GetComponent<Turret>().Init(4, 5, 240);
+        cnt++;
     }
 }

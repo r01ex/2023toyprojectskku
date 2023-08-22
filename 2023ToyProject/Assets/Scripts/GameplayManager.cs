@@ -82,5 +82,6 @@ public class GameplayManager : MonoBehaviour
         currentBoss++;
         Instantiate(bossPrefabs[currentBoss]);
         background.texture = backGroundSprites[currentBoss].texture;
+        PlayerManager.Instance.gameObject.transform.position = new Vector3(0, -4, 0);
     } 
 }
