@@ -47,6 +47,11 @@ public class PlayerManager : MonoBehaviour
             onbulletfull();
         }
     }
+    public void setBulletZero()
+    {
+        currentBullet = 0;
+        bulletcircle.fillAmount = 0;
+    }
     public void onbulletfull()
     {
         //TODO

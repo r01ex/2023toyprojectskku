@@ -26,6 +26,7 @@ public class GameplayManager : MonoBehaviour
     // Start is called before the first frame update
 
     private void Awake() {
+        Application.targetFrameRate = 30;
         if (Instance == null)
         {
             Instance = this;
@@ -68,7 +69,7 @@ public class GameplayManager : MonoBehaviour
             Destroy(g);
         }
         Invoke("ShowGameOverPanel", 0.3f);
-        PlayerManager.Instance.currentBullet = 0;
+        PlayerManager.Instance.setBulletZero();
     }
 
     void ShowGameOverPanel(){
