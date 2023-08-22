@@ -80,6 +80,7 @@ public class GameplayManager : MonoBehaviour
 
     public void spawnNextBoss(){
         currentBoss++;
+        Camera.main.transform.rotation = Quaternion.identity;
         Instantiate(bossPrefabs[currentBoss]);
         background.texture = backGroundSprites[currentBoss].texture;
         PlayerManager.Instance.gameObject.transform.position = new Vector3(0, -4, 0);

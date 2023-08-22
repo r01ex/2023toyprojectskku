@@ -68,6 +68,12 @@ public class Stage7Enemy : MonoBehaviour
     Image healthbar;
     private void Awake() {
         anim = GetComponent<Animator>();
+        Camera.main.transform.Rotate(new Vector3(0, 0, 180));
+        PlayerControl.Instance.flipMovement();
+    }
+    private void OnDisable()
+    {
+        PlayerControl.Instance.flipMovement();
     }
     // Start is called before the first frame update
     void Start()

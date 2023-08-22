@@ -41,6 +41,10 @@ public class PlayerControl : MonoBehaviour
     {
         speed += Speed;
     }
+    public void flipMovement()
+    {
+        speed *= -1;
+    }
     // Update is called once per frame
     void Update()
     {
