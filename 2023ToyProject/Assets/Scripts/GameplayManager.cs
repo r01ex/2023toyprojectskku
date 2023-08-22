@@ -26,7 +26,7 @@ public class GameplayManager : MonoBehaviour
     // Start is called before the first frame update
 
     private void Awake() {
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = 60;
         if (Instance == null)
         {
             Instance = this;
