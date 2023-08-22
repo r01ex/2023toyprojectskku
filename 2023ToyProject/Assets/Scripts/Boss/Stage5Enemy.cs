@@ -6,17 +6,48 @@ public class Stage5Enemy : MonoBehaviour
 {
     // To indicate that the boss hp
     [SerializeField]
-    private float hp = 120f;
-    private float maxHp = 120f;
+    private float hp;
+    private float maxHp = 10f;
 
     
     [SerializeField]
-    private float damage = 1f;  //To indicate that the damage of each electrons
+    private float damage;  //To indicate that the damage of each electrons
 
     private Animator anim;
 
     [SerializeField]
-    Shoot5Row Shoot5RowPattern;
+    Diagonal DiagonalPattern;
+    [SerializeField]
+    float diagonalMoveSpeed;
+    [SerializeField]
+    int diagonalBulletNum;
+    [SerializeField]
+    Snipe SnipePattern;
+    [SerializeField]
+    int snipeVolley;
+    [SerializeField]
+    float snipeMoveSpeed;
+    [SerializeField]
+    int snipeSignalFrame;
+    [SerializeField]
+    int snipeInterval;
+    [SerializeField]
+    RandomFall RandomFallPattern;
+    [SerializeField]
+    float randomfallMoveSpeedRangeLow;
+    [SerializeField]
+    float randomfallMoveSpeedRangeHigh;
+    [SerializeField]
+    int randomfallIntervalRangeLow;
+    [SerializeField]
+    int randomfallIntervalRangeHigh;
+    [SerializeField]
+    float randomfallVolley;
+
+    [SerializeField]
+    ATGC ATGCGimmick;
+    [SerializeField]
+    float ATGCMoveSpeed;
 
     [SerializeField]
     float patternInterval;
@@ -61,6 +92,40 @@ public class Stage5Enemy : MonoBehaviour
     IEnumerator EnemyRoutine()
     {
         yield return new WaitForSeconds(1.8f);
+
+        while (true)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                DiagonalPattern.ShootDiagonal(diagonalMoveSpeed, Random.Range(1f, 2.6f), diagonalBulletNum, Random.Range(0, 2));
+
+                yield return new WaitForSeconds(patternInterval * 0.25f);
+            }
+
+            yield return new WaitForSeconds(patternInterval * 0.5f);
+
+            for (int i = 0; i < 4; i++)
+            {
+                StartCoroutine(RandomFallPattern.Shoot(randomfallMoveSpeedRangeLow, randomfallMoveSpeedRangeHigh, randomfallIntervalRangeLow, randomfallIntervalRangeHigh, randomfallVolley));
+
+                yield return new WaitForSeconds(patternInterval * 0.25f);
+            }
+
+            yield return new WaitForSeconds(patternInterval * 0.5f);
+
+            StartCoroutine(SnipePattern.RandomvolleyWithSignal(snipeVolley, snipeMoveSpeed, snipeSignalFrame, snipeInterval));
+
+            yield return new WaitForSeconds(patternInterval * 2f);
+
+            for (int i = 0; i < 4; i++)
+            {
+                ATGCGimmick.Shoot(ATGCMoveSpeed, Random.Range(-2.1f, 2.1f), Random.Range(-25f, 25f), Random.Range(0, 2));
+
+                yield return new WaitForSeconds(patternInterval * 0.6f);
+            }
+
+            yield return new WaitForSeconds(patternInterval * 0.5f);
+        }    
     }
 
     private void OnTriggerEnter2D(Collider2D other)
