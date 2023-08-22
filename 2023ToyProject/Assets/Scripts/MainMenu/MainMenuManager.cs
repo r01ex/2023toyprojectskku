@@ -33,12 +33,12 @@ public class MainMenuManager : MonoBehaviour
         panel2.SetActive(false);
 
         StartCoroutine(SceneTransitionCoroutine());
+
+        //Bgm Play
         if (audioMainMenuBgm != null)
         {
-            // AudioSource에 배경 음악 할당
+
             audioSource.clip = audioMainMenuBgm;
-            
-            // 재생
             audioSource.Play();
         }
     }
@@ -62,8 +62,6 @@ public class MainMenuManager : MonoBehaviour
     private IEnumerator SceneTransitionCoroutine()
     {
         yield return new WaitForSeconds(1f);
-
-
         panel1.SetActive(false);
         panel2.SetActive(true);
     }    
@@ -76,12 +74,12 @@ public class MainMenuManager : MonoBehaviour
         }
         
     }
+
+    //Sound
     public void StopBGM()
     {
         audioSource.Stop();
     }
-
-    // 일시 정지
     public void PauseBGM()
     {
         audioSource.Pause();
