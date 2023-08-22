@@ -10,18 +10,19 @@ public class Shoot5Row : MonoBehaviour
     {
         
     }
-    public void Shoot(float moveSpeed,float offset)
+    public void Shoot(float moveSpeed, float offset, int stageNumber)
     {
+        Debug.Log("Change Image shoot5Row"+stageNumber);
         foreach (float posX in arrPosX)
         {
             Vector3 spawnPos = new Vector3(posX+offset, transform.position.y, transform.position.z);
-            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageNumber);
             if (enemyObject != null)
             {
                 enemyObject.transform.position = spawnPos;
                 enemyObject.SetActive(true);
                 EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
-                enemy.move1Init(moveSpeed);
+                enemy.move1Init(moveSpeed, stageNumber);
             }
         }
     }

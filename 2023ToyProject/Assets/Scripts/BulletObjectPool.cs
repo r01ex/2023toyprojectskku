@@ -9,6 +9,9 @@ public class BulletObjectPool : MonoBehaviour
     [SerializeField] GameObject playerBulletToPool;
     [SerializeField] GameObject enemyBulletToPool;
     public int amountToPool=100;
+    [SerializeField]
+    EnemyBulletSoundManager enemyBulletSoundManager;
+
     #region singleton
     public static BulletObjectPool Instance;
     private void Awake()
@@ -21,7 +24,7 @@ public class BulletObjectPool : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+    } 
     #endregion
     void Start()
     {
@@ -52,12 +55,27 @@ public class BulletObjectPool : MonoBehaviour
         }
         return null;
     }
+    public GameObject GetPooledEnemyBullet(int stageNumber)
+    {
+        for (int i = 0; i < amountToPool; i++)
+        {
+            if (!pulledEnemyBullets[i].activeInHierarchy)
+            {
+                enemyBulletSoundManager.PlaySound("ATTACK", stageNumber);
+                pulledEnemyBullets[i].transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;
+                return pulledEnemyBullets[i];
+            }
+        }
+        return null;
+    }
+
     public GameObject GetPooledEnemyBullet()
     {
         for (int i = 0; i < amountToPool; i++)
         {
             if (!pulledEnemyBullets[i].activeInHierarchy)
             {
+                enemyBulletSoundManager.PlaySound("ATTACK", 1);
                 pulledEnemyBullets[i].transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;
                 return pulledEnemyBullets[i];
             }

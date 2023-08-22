@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyBullet : MonoBehaviour
 {
@@ -15,8 +16,19 @@ public class EnemyBullet : MonoBehaviour
     int TrailDurationCounter;
     GameObject FollowTarget;
     float FollowSpeed;
+ 
+    private int currentStageNumber = 1;
+
     public void move1Init(float speed)
     {
+        this.transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;
+        Speed = speed;
+        moveNumber = 1;
+    }
+    public void move1Init(float speed, int stageNumber)
+    {
+        currentStageNumber = stageNumber;
+        
         this.transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;
         Speed = speed;
         moveNumber = 1;
@@ -99,8 +111,8 @@ public class EnemyBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        currentStageNumber = 1;
+    } 
 
     // Update is called once per frame
     void Update()

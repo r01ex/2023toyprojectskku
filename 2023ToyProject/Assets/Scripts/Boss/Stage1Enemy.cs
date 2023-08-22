@@ -30,6 +30,7 @@ public class Stage1Enemy : MonoBehaviour
     private Color originalColor;
     private Renderer enemyRenderer;
 
+
     private void Awake() {
         anim = GetComponent<Animator>();
     }
@@ -67,14 +68,14 @@ public class Stage1Enemy : MonoBehaviour
         {
             for (int i = 0; i < 5; i++)
             {
-                Shoot5RowPattern.Shoot(5, Random.Range(-1.3f, 1.3f));
+                Shoot5RowPattern.Shoot(5, Random.Range(-1.3f, 1.3f), 1);
 
                 yield return new WaitForSeconds(patternInterval);
             }
 
-            StartCoroutine(WallPattern.ShootLines(3.5f, 7.6f, 28, 1, 10));
+            StartCoroutine(WallPattern.ShootLines(3.5f, 7.6f, 28, 1, 10, 1));
 
-            yield return new WaitForSeconds(patternInterval);
+            yield return new WaitForSeconds(patternInterval); 
         }
     }
 

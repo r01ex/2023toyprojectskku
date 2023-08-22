@@ -19,7 +19,36 @@ public class Wall : MonoBehaviour
 
     public void debug()
     {
-        StartCoroutine(ShootLines(5f, 4f, 10, 10, 200));
+        StartCoroutine(ShootLines(5f, 4f, 10, 10, 200, 1));
+    }
+
+    public IEnumerator ShootLines(float moveSpeed, float width, int bulletNum, int lineNum, int interval, int stageIndex)
+    {
+        float startPos;
+
+        for (int i = 0; i < lineNum; i++)
+        {
+            startPos = Random.Range(-3.8f, 3.8f - width);
+            Vector3 spawnPos = new Vector3(startPos, this.transform.position.y, 0);
+
+            for (int j = 0; j < bulletNum; j++)
+            {
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
+
+                if (enemyObject != null )
+                {
+                    enemyObject.transform.position = spawnPos;
+                    enemyObject.SetActive(true);
+                    EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
+                    enemy.move1Init(moveSpeed);
+                }
+                spawnPos += new Vector3(width / bulletNum, 0, 0);
+            }
+            for (int k = 0; k < interval; k++)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+        }
     }
 
     public IEnumerator ShootLines(float moveSpeed, float width, int bulletNum, int lineNum, int interval)
