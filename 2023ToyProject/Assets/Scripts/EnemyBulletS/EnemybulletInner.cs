@@ -24,6 +24,7 @@ public class EnemybulletInner : MonoBehaviour
             {
                 Debug.Log("absorb");
                 PlayerManager.Instance.addbullet(1);
+                this.transform.parent.gameObject.GetComponent<EnemyBullet>().moveNumber = -1;
                 this.transform.parent.gameObject.SetActive(false);
             }
         }
