@@ -5,24 +5,36 @@ using UnityEngine.UI;
 public class Stage2Enemy : MonoBehaviour
 {
     [SerializeField]
-    private float hp = 20f;
-    private float maxHp = 20f;
+    private float hp;
+    private float maxHp;
 
     [SerializeField]
-    private float damage = 1f;  //To indicate that the damage of each electrons
+    private float damage;  //To indicate that the damage of each electrons
 
     private Animator anim;
 
     [SerializeField]
-    Shoot5Row Shoot5RowPattern;
-    [SerializeField]
-    float shoot5Speed = 5;
-    [SerializeField]
     ShotGun5 ShotGun5Pattern;
     [SerializeField]
-    float shotgunSpeed = 10;
+    float shotgunSpeed;
     [SerializeField]
-    int shotgunVolleys = 10;
+    int shotgunVolleys;
+    [SerializeField]
+    Spiral SpiralPattern;
+    [SerializeField]
+    float allAroundShotgunSpeed;
+    [SerializeField]
+    int allAroundShotgunTotalbullet;
+    [SerializeField]
+    float backnforthSpeed;
+    [SerializeField]
+    int backnforthBulletInOneVolley;
+    [SerializeField]
+    int backnforthInterval;
+    [SerializeField]
+    float backnforthAngleIncrement;
+    [SerializeField]
+    int backnforthTotal;
 
     [SerializeField]
     float patternInterval;
@@ -36,12 +48,6 @@ public class Stage2Enemy : MonoBehaviour
     private Color originalColor;
     private Renderer enemyRenderer;
 
-    //Random Move
-
-    private float minX = -2f;         // X Min
-    private float maxX = 2f;         // X Max
-    private float moveInterval = 1.2f; 
-
     [SerializeField]
     private float nextMoveTime;
 
@@ -51,7 +57,6 @@ public class Stage2Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nextMoveTime = Time.time + moveInterval;
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine();
@@ -65,17 +70,7 @@ public class Stage2Enemy : MonoBehaviour
         } else{
             anim.SetBool("isLowHp", false);
         }
-        if (Time.time >= nextMoveTime)
-        {
-            // Random Y position
-            float newX = Random.Range(minX, maxX);
 
-            Vector3 newPosition = transform.position;
-            newPosition.x = newX;
-            transform.position = newPosition;
-            
-            nextMoveTime = Time.time + moveInterval;
-        }
     }
     void StartEnemyRoutine()
     {
@@ -91,12 +86,19 @@ public class Stage2Enemy : MonoBehaviour
 
         while (true)
         {
-            Shoot5RowPattern.Shoot(shoot5Speed, Random.Range(-1.3f, 1.3f));
+            StartCoroutine(ShotGun5Pattern.Shotgun(shotgunVolleys, shotgunSpeed));
             yield return new WaitForSeconds(patternInterval);
 
-            yield return StartCoroutine(ShotGun5Pattern.Shotgun(shotgunVolleys, shotgunSpeed));
+            StartCoroutine(SpiralPattern.ShootBackAndForth(backnforthSpeed, backnforthBulletInOneVolley, backnforthInterval, backnforthAngleIncrement, backnforthTotal));
 
             yield return new WaitForSeconds(patternInterval);
+
+            for (int i = 0; i < 3; i++)
+            {
+                SpiralPattern.allAroundShotgunSingle(allAroundShotgunSpeed, allAroundShotgunTotalbullet + i * 5);
+
+                yield return new WaitForSeconds(patternInterval);
+            }
         }
     }
 

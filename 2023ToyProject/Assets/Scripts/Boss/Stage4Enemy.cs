@@ -6,17 +6,34 @@ public class Stage4Enemy : MonoBehaviour
 {
     // To indicate that the boss hp
     [SerializeField]
-    private float hp = 80f;
-    private float maxHp = 80f;
+    private float hp;
+    private float maxHp = 10f;
 
     
     [SerializeField]
-    private float damage = 1f;  //To indicate that the damage of each electrons
+    private float damage;  //To indicate that the damage of each electrons
 
     private Animator anim;
 
+    private bool isLow = false;
+
     [SerializeField]
-    Shoot5Row Shoot5RowPattern;
+    ATGC BubblePattern;
+    [SerializeField]
+    float ATGCMoveSpeed;
+    [SerializeField]
+    Wall WallPattern;
+    [SerializeField]
+    float wallMoveSpeed;
+    [SerializeField]
+    float wallWidth;
+    [SerializeField]
+    int wallBulletNum;
+    [SerializeField]
+    int wallLineNum;
+    [SerializeField]
+    int wallInterval;
+
     [SerializeField]
     N2Gimmick N2Gimmick;
 
@@ -30,14 +47,6 @@ public class Stage4Enemy : MonoBehaviour
     private Color originalColor;
     private Renderer enemyRenderer;
 
-    //Random Move
-    private float minX = -2f;         // X Min
-    private float maxX = 2f;         // X Max
-    private float moveInterval = 2f; 
-
-    [SerializeField]
-    private float nextMoveTime;
-
     [SerializeField]
     Image healthbar;
     private void Awake() {
@@ -46,7 +55,6 @@ public class Stage4Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nextMoveTime = Time.time + moveInterval;
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine(); 
@@ -55,17 +63,14 @@ public class Stage4Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= nextMoveTime)
+        if (hp < maxHp * 0.3)
         {
-            // Random Y position
-            float newX = Random.Range(minX, maxX);
-
-            Vector3 newPosition = transform.position;
-            newPosition.x = newX;
-            transform.position = newPosition;
-
-            
-            nextMoveTime = Time.time + moveInterval;
+            anim.SetBool("isLowHp", true);
+            isLow = true;
+        }
+        else
+        {
+            anim.SetBool("isLowHp", false);
         }
     }
     void StartEnemyRoutine()
@@ -76,6 +81,40 @@ public class Stage4Enemy : MonoBehaviour
     IEnumerator EnemyRoutine()
     {
         yield return new WaitForSeconds(1.8f);
+
+        while (true)
+        {
+            if (!isLow)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    BubblePattern.Shoot(ATGCMoveSpeed, Random.Range(-2.5f, 2.5f), 0, Random.Range(0, 2));
+
+                    yield return new WaitForSeconds(patternInterval * 0.25f);
+                }
+
+                yield return new WaitForSeconds(patternInterval * 0.5f);
+
+                StartCoroutine(WallPattern.ShootLines(wallMoveSpeed, wallWidth, wallBulletNum, wallLineNum, wallInterval));
+
+                yield return new WaitForSeconds(patternInterval);
+            }
+            else
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    BubblePattern.Shoot(ATGCMoveSpeed * 1.5f, Random.Range(-2.5f, 2.5f), 0, Random.Range(0, 2));
+
+                    yield return new WaitForSeconds(patternInterval * 0.25f);
+                }
+
+                yield return new WaitForSeconds(patternInterval * 0.5f);
+
+                StartCoroutine(WallPattern.ShootLines(wallMoveSpeed * 1.5f, wallWidth, wallBulletNum, wallLineNum, (int)(wallInterval / 1.5f)));
+
+                yield return new WaitForSeconds(patternInterval);
+            }
+        }
     }
     IEnumerator Gimmick()
     {

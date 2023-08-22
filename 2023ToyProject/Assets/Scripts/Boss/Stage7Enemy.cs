@@ -28,14 +28,6 @@ public class Stage7Enemy : MonoBehaviour
     private Color originalColor;
     private Renderer enemyRenderer;
 
-    //Random Move
-    private float minX = -2f;         // X Min
-    private float maxX = 2f;         // X Max
-    private float moveInterval = 2f; 
-
-    [SerializeField]
-    private float nextMoveTime;
-
     [SerializeField]
     Image healthbar;
     private void Awake() {
@@ -44,7 +36,6 @@ public class Stage7Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nextMoveTime = Time.time + moveInterval;
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine(); 
@@ -57,18 +48,6 @@ public class Stage7Enemy : MonoBehaviour
             anim.SetBool("isLowHp", true);
         } else{
             anim.SetBool("isLowHp", false);
-        }
-        if (Time.time >= nextMoveTime)
-        {
-            // Random Y position
-            float newX = Random.Range(minX, maxX);
-
-            Vector3 newPosition = transform.position;
-            newPosition.x = newX;
-            transform.position = newPosition;
-
-            
-            nextMoveTime = Time.time + moveInterval;
         }
     }
     void StartEnemyRoutine()
