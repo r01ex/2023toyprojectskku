@@ -16,7 +16,7 @@ public class NH3Gimmick : MonoBehaviour
         
     }
     /// <summary>
-    /// offsetY´Â 3.5~1»çÀÌ
+    /// offsetYï¿½ï¿½ 3.5~1ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     void spawn(float speed, float spawnY, float accel)
     {
@@ -38,6 +38,19 @@ public class NH3Gimmick : MonoBehaviour
         }
     }
     public IEnumerator Shoot(float volley, float interval)
+    {
+        float xspeed = Random.Range(2f, 4f);
+        float yoffset = Random.Range(1f, 3.5f);
+        for (int i = 0; i < volley; i++)
+        {
+            spawn(xspeed, yoffset, 10);
+            for (int j = 0; j < interval; j++)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+        }
+    }
+    public IEnumerator Shoot(float volley, float interval, int stageIndex)
     {
         float xspeed = Random.Range(2f, 4f);
         float yoffset = Random.Range(1f, 3.5f);

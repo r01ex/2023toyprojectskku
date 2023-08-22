@@ -21,7 +21,7 @@ public class Helix : MonoBehaviour
     }
 
     /// <summary>
-    /// intervalÀº ¹ß»ç¼Óµµ(½¬´Â ÇÁ·¹ÀÓ ±æÀÌ), widthNumber´Â ÁøÆø¿¡ ÀÖ´Â Åº¼ö*2, width_separationÀº Åº°£ °¡·Î °£°Ý, diminisher_mult´Â µÕ±Û¾îÁö´Â Á¤µµ 0-2»çÀÌ°ª, ismiddleÀº Áß¾Ó»ý¼ºÇÒÁö 
+    /// intervalï¿½ï¿½ ï¿½ß»ï¿½Óµï¿½(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½), widthNumberï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ Åºï¿½ï¿½*2, width_separationï¿½ï¿½ Åºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, diminisher_multï¿½ï¿½ ï¿½Õ±Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 0-2ï¿½ï¿½ï¿½Ì°ï¿½, ismiddleï¿½ï¿½ ï¿½ß¾Ó»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
     /// </summary>
     public IEnumerator ShootSingle(float moveSpeed, int totalbullet, int interval, float offset, int widthNumber, float width_separation,float diminisher_mult, bool ismiddle)
     {
@@ -108,8 +108,93 @@ public class Helix : MonoBehaviour
             }
         }
     }
+    public IEnumerator ShootSingle(float moveSpeed, int totalbullet, int interval, float offset, int widthNumber, float width_separation,float diminisher_mult, bool ismiddle, int stageIndex)
+    {
+        float startPos;
+        if (ismiddle)
+        {
+            startPos = 0;
+        }
+        else 
+        {
+            startPos = Random.Range(-2.5f + (widthNumber * width_separation), 2.5f - (widthNumber * width_separation));
+        }
+        for (int i = 0; i < (totalbullet / widthNumber) / 2; i++)
+        {
+            Vector3 spawnPos = new Vector3(startPos + offset, this.transform.position.y, 0);
+            float diminisher = 0;
+            for (int j = 0; j < widthNumber / 2; j++)
+            {
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
+                if (enemyObject != null)
+                {
+                    enemyObject.transform.position = spawnPos;
+                    enemyObject.SetActive(true);
+                    EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
+                    enemy.move1Init(moveSpeed);
+                }
+                spawnPos += new Vector3(width_separation - diminisher, 0, 0);
+                diminisher += diminisher_mult * width_separation / widthNumber;
+                for (int k = 0; k < interval; k++)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+            }
+            for (int j = 0; j < widthNumber / 2; j++)
+            {
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
+                if (enemyObject != null)
+                {
+                    enemyObject.transform.position = spawnPos;
+                    enemyObject.SetActive(true);
+                    EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
+                    enemy.move1Init(moveSpeed);
+                }
+                spawnPos -= new Vector3(width_separation - diminisher, 0, 0);
+                diminisher -= diminisher_mult * width_separation / widthNumber;
+                for (int k = 0; k < interval; k++)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+            }
+            for (int j = 0; j < widthNumber / 2; j++)
+            {
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
+                if (enemyObject != null)
+                {
+                    enemyObject.transform.position = spawnPos;
+                    enemyObject.SetActive(true);
+                    EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
+                    enemy.move1Init(moveSpeed);
+                }
+                spawnPos -= new Vector3(width_separation - diminisher, 0, 0);
+                diminisher += diminisher_mult * width_separation / widthNumber;
+                for (int k = 0; k < interval; k++)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+            }
+            for (int j = 0; j < widthNumber / 2; j++)
+            {
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
+                if (enemyObject != null)
+                {
+                    enemyObject.transform.position = spawnPos;
+                    enemyObject.SetActive(true);
+                    EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
+                    enemy.move1Init(moveSpeed);
+                }
+                spawnPos += new Vector3(width_separation - diminisher, 0, 0);
+                diminisher -= diminisher_mult * width_separation / widthNumber;
+                for (int k = 0; k < interval; k++)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+            }
+        }
+    }
     /// <summary>
-    /// intervalÀº ¹ß»ç¼Óµµ(½¬´Â ÇÁ·¹ÀÓ ±æÀÌ), widthNumber´Â ÁøÆø¿¡ ÀÖ´Â Åº¼ö*2, width_separationÀº Åº°£ °¡·Î °£°Ý, diminisher_mult´Â µÕ±Û¾îÁö´Â Á¤µµ 0-2»çÀÌ°ª, ismiddleÀº Áß¾Ó»ý¼ºÇÒÁö 
+    /// intervalï¿½ï¿½ ï¿½ß»ï¿½Óµï¿½(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½), widthNumberï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ Åºï¿½ï¿½*2, width_separationï¿½ï¿½ Åºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, diminisher_multï¿½ï¿½ ï¿½Õ±Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 0-2ï¿½ï¿½ï¿½Ì°ï¿½, ismiddleï¿½ï¿½ ï¿½ß¾Ó»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
     /// </summary>
     public IEnumerator ShootDouble(float moveSpeed, int totalbullet, int interval, int widthNumber, float width_separation,float diminisher_mult, bool ismiddle)
     {

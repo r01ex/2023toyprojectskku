@@ -32,7 +32,7 @@ public class ATGC : MonoBehaviour
     /// SmallQuesMark : offset 2.5, rotation 25
     /// BigQuesMark : offset 2.1, rotation 25
     /// </summary>
-    public void Shoot(float moveSpeed, float offset, float rotation, int letterNum)
+    public void Shoot(float moveSpeed, float offset, float rotation, int letterNum, int stageIndex = 0)
     {
         GameObject letter = Instantiate(letterPrefabs[letterNum]);
         Vector3 spawnPos = new Vector3(transform.position.x + offset, 6.55f, transform.position.z);

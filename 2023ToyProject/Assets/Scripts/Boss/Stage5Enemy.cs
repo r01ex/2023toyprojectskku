@@ -97,7 +97,7 @@ public class Stage5Enemy : MonoBehaviour
         {
             for (int i = 0; i < 5; i++)
             {
-                DiagonalPattern.ShootDiagonal(diagonalMoveSpeed, Random.Range(1f, 2.6f), diagonalBulletNum, Random.Range(0, 2));
+                DiagonalPattern.ShootDiagonal(diagonalMoveSpeed, Random.Range(1f, 2.6f), diagonalBulletNum, Random.Range(0, 2), 5);
 
                 yield return new WaitForSeconds(patternInterval * 0.25f);
             }
@@ -113,13 +113,13 @@ public class Stage5Enemy : MonoBehaviour
 
             yield return new WaitForSeconds(patternInterval);
 
-            StartCoroutine(SnipePattern.RandomvolleyWithSignal(snipeVolley, snipeMoveSpeed, snipeSignalFrame, snipeInterval));
+            StartCoroutine(SnipePattern.RandomvolleyWithSignal(snipeVolley, snipeMoveSpeed, snipeSignalFrame, snipeInterval, 5));
 
             yield return new WaitForSeconds(patternInterval * 0.5f + (snipeSignalFrame + snipeVolley * snipeInterval * 2) / 120f);
 
             for (int i = 0; i < 4; i++)
             {
-                ATGCGimmick.Shoot(ATGCMoveSpeed, Random.Range(-2.1f, 2.1f), Random.Range(-25f, 25f), Random.Range(0, 2));
+                ATGCGimmick.Shoot(ATGCMoveSpeed, Random.Range(-2.1f, 2.1f), Random.Range(-25f, 25f), Random.Range(0, 2), 5);
 
                 yield return new WaitForSeconds(patternInterval * 0.5f);
             }

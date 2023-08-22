@@ -60,7 +60,7 @@ public class Snipe : MonoBehaviour
             }
         }
     }
-    public IEnumerator RandomvolleyWithSignal(int volley, float moveSpeed, int signalFrame, int interval)
+    public IEnumerator RandomvolleyWithSignal(int volley, float moveSpeed, int signalFrame, int interval, int stageindex = 0)
     {
         for (int i = 0; i < volley; i++)
         {            

@@ -20,8 +20,7 @@ public class Diagonal : MonoBehaviour
     {
         ShootDiagonal(5f, Random.Range(1f, 2.6f), 10, Random.Range(0, 2));
     }
-
-    public void ShootDiagonal(float moveSpeed, float offset, int bulletNum, int directionNum)
+    public void ShootDiagonal(float moveSpeed, float offset, int bulletNum, int directionNum, int stageIndex = 0)
     {
         Vector3 spawnPos = new Vector3(0f, 5.2f + offset, transform.position.z);
         Vector3 midPos = new Vector3(0, 0, 0);
