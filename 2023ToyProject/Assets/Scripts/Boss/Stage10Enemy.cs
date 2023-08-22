@@ -137,16 +137,16 @@ public class Stage10Enemy : MonoBehaviour
                 StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 0f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
                 StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, -2.5f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
 
-                yield return new WaitForSeconds(patternInterval * (-2f) + helixTotalBullet * helixInterval / 120f);
+                yield return new WaitForSeconds(patternInterval * (-3.5f) + helixTotalBullet * helixInterval / 120f);
 
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleOffset, spiralAngleIncrement));
 
-                    yield return new WaitForSeconds(patternInterval * 0f + spiralTotalBullet * spiralInterval / 120f / 3f);
+                    yield return new WaitForSeconds(patternInterval * 0f + spiralTotalBullet * spiralInterval / 120f / 5f);
                 }
 
-                yield return new WaitForSeconds(patternInterval * 2f);
+                yield return new WaitForSeconds(patternInterval);
             }
             else
             {
@@ -157,11 +157,9 @@ public class Stage10Enemy : MonoBehaviour
                     yield return new WaitForSeconds(patternInterval * 0.25f);
                 }
 
-                yield return new WaitForSeconds(patternInterval * 0.5f);
+                yield return new WaitForSeconds(patternInterval * 1.5f);
 
                 StartCoroutine(WallPattern.ShootLines(wallMoveSpeed, wallWidth, wallBulletNum, wallLineNum, wallInterval));
-
-                yield return new WaitForSeconds(patternInterval * 1.5f + wallLineNum * wallInterval / 120f);
 
                 StartCoroutine(SnipePattern.RandomvolleyWithSignal(snipeVolley, snipeMoveSpeed, snipeSignalFrame, snipeInterval));
 

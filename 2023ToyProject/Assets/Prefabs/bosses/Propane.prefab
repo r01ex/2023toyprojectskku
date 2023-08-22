@@ -507,18 +507,18 @@ MonoBehaviour:
   helixWidthSeparation: 1
   helixDiminisherMult: 2
   DiagonalPattern: {fileID: 7941687901939041417}
-  diagonalMoveSpeed: 5
+  diagonalMoveSpeed: 4
   diagonalBulletNum: 15
   SnipePattern: {fileID: 1435341225707192410}
-  snipeVolley: 10
-  snipeMoveSpeed: 30
-  snipeSignalFrame: 180
-  snipeInterval: 40
+  snipeVolley: 20
+  snipeMoveSpeed: 50
+  snipeSignalFrame: 240
+  snipeInterval: 30
   WallPattern: {fileID: 5588034478545373911}
   wallMoveSpeed: 5
   wallWidth: 4
   wallBulletNum: 10
-  wallLineNum: 4
+  wallLineNum: 20
   wallInterval: 60
   patternInterval: 1.2
   healthbar: {fileID: 6755613170452558804}
