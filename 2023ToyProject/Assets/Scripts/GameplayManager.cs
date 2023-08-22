@@ -26,7 +26,7 @@ public class GameplayManager : MonoBehaviour
     // Start is called before the first frame update
 
     private void Awake() {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 120;
         if (Instance == null)
         {
             Instance = this;
@@ -69,10 +69,10 @@ public class GameplayManager : MonoBehaviour
             Destroy(g);
         }
         Invoke("ShowGameOverPanel", 0.3f);
-        PlayerManager.Instance.setBulletZero();
     }
 
     void ShowGameOverPanel(){
+        PlayerManager.Instance.setBulletZero();
         bossClearPanel.SetActive(true);
         Debug.Log(bossClearPanel.activeInHierarchy);
         bossClearPanel.GetComponent<Skill>().Init();

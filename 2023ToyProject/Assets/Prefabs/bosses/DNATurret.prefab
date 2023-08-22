@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4420341372124166389}
   - component: {fileID: 7120882614534637912}
   - component: {fileID: 3056549582297712371}
+  - component: {fileID: 5426217732080663350}
+  - component: {fileID: 1894127709217359537}
   m_Layer: 0
   m_Name: DNATurret
   m_TagString: Untagged
@@ -27,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 218995228102020561}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.818604, y: -0.92804396, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -106,3 +108,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5426217732080663350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218995228102020561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4836358c2c7abb45b82e558f046500c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atgcPattern: {fileID: 1894127709217359537}
+  anim: {fileID: 3056549582297712371}
+--- !u!114 &1894127709217359537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218995228102020561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 819d207b192982745944662185fb7f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  letterPrefabs:
+  - {fileID: 5325264576718493892, guid: f54bf978ee0015d4a8b8e6e0f9fd5718, type: 3}
+  - {fileID: 8440106614971275529, guid: 5919ece2039edd947826678b0ee6e786, type: 3}
+  - {fileID: 5276889227619611137, guid: dbd74260a618954488b2eaf69d9e0f0b, type: 3}
+  - {fileID: 9133298405947023644, guid: 3cddab5b9900a974ca3d9f0b7fc09419, type: 3}

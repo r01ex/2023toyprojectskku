@@ -43,4 +43,16 @@ public class ATGC : MonoBehaviour
             t.gameObject.GetComponent<EnemyBulletSet>().move1Init(moveSpeed);
         }
     }
+    public void ShootToPlayer(float moveSpeed, float rotation, int letterNum)
+    {
+        GameObject letter = Instantiate(letterPrefabs[letterNum]);
+        Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        letter.transform.position = spawnPos;
+        letter.transform.Rotate(new Vector3(0, 0, rotation));
+        Vector3 playerSnapshot = PlayerManager.Instance.transform.position;
+        foreach (Transform t in letter.transform)
+        {
+            t.gameObject.GetComponent<EnemyBulletSet>().move3Init(moveSpeed, (playerSnapshot - this.transform.position).normalized);
+        }
+    }
 }

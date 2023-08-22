@@ -52,8 +52,11 @@ public class PlayerManager : MonoBehaviour
     {
         currentBullet = 0;
         bulletcircle.fillAmount = 0;
-        StopCoroutine(bulletShootCoroutine);
-        bulletShootCoroutine = null;
+        if (bulletShootCoroutine != null)
+        {
+            StopCoroutine(bulletShootCoroutine);
+            bulletShootCoroutine = null;
+        }
     }
     public void onbulletfull()
     {
