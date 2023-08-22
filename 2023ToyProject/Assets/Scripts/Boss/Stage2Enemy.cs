@@ -87,11 +87,11 @@ public class Stage2Enemy : MonoBehaviour
         while (true)
         {
             StartCoroutine(ShotGun5Pattern.Shotgun(shotgunVolleys, shotgunSpeed));
-            yield return new WaitForSeconds(patternInterval);
+            yield return new WaitForSeconds(patternInterval * 0.5f + shotgunVolleys / 12f);
 
             StartCoroutine(SpiralPattern.ShootBackAndForth(backnforthSpeed, backnforthBulletInOneVolley, backnforthInterval, backnforthAngleIncrement, backnforthTotal));
 
-            yield return new WaitForSeconds(patternInterval);
+            yield return new WaitForSeconds(patternInterval * 0.5f + backnforthBulletInOneVolley * backnforthInterval * backnforthTotal / 120f);
 
             for (int i = 0; i < 3; i++)
             {

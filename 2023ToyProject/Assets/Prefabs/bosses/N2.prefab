@@ -363,7 +363,7 @@ MonoBehaviour:
   wallWidth: 4
   wallBulletNum: 10
   wallLineNum: 4
-  wallInterval: 200
+  wallInterval: 60
   N2Gimmick: {fileID: 1053031504361258914}
   patternInterval: 1.2
   healthbar: {fileID: 2492725002401187667}

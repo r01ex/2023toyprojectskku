@@ -133,7 +133,7 @@ MonoBehaviour:
   allAroundShotgunTotalbullet: 30
   backnforthSpeed: 5
   backnforthBulletInOneVolley: 10
-  backnforthInterval: 30
+  backnforthInterval: 20
   backnforthAngleIncrement: 5
   backnforthTotal: 1
   patternInterval: 1.2

@@ -213,7 +213,7 @@ MonoBehaviour:
   SnipePattern: {fileID: 6393722774112567112}
   snipeVolley: 10
   snipeMoveSpeed: 30
-  snipeSignalFrame: 500
+  snipeSignalFrame: 180
   snipeInterval: 40
   RandomFallPattern: {fileID: 1964572400880994776}
   randomfallMoveSpeedRangeLow: 2

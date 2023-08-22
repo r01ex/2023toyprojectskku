@@ -93,11 +93,11 @@ public class Stage4Enemy : MonoBehaviour
                     yield return new WaitForSeconds(patternInterval * 0.25f);
                 }
 
-                yield return new WaitForSeconds(patternInterval * 0.5f);
+                yield return new WaitForSeconds(patternInterval * 0.75f);
 
                 StartCoroutine(WallPattern.ShootLines(wallMoveSpeed, wallWidth, wallBulletNum, wallLineNum, wallInterval));
 
-                yield return new WaitForSeconds(patternInterval);
+                yield return new WaitForSeconds(patternInterval + wallLineNum * wallInterval / 120f);
             }
             else
             {
@@ -108,11 +108,11 @@ public class Stage4Enemy : MonoBehaviour
                     yield return new WaitForSeconds(patternInterval * 0.25f);
                 }
 
-                yield return new WaitForSeconds(patternInterval * 0.5f);
+                yield return new WaitForSeconds(patternInterval * 0.75f);
 
                 StartCoroutine(WallPattern.ShootLines(wallMoveSpeed * 1.5f, wallWidth, wallBulletNum, wallLineNum, (int)(wallInterval / 1.5f)));
 
-                yield return new WaitForSeconds(patternInterval);
+                yield return new WaitForSeconds(patternInterval + wallLineNum * (int)(wallInterval / 1.5f) / 120f);
             }
         }
     }

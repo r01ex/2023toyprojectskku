@@ -359,15 +359,15 @@ MonoBehaviour:
   damage: 1
   TrailShotsPattern: {fileID: 7916087543071322014}
   snipeShootSingleMoveSpeed: 5
-  snipeShootSingleTrailInterval: 20
+  snipeShootSingleTrailInterval: 15
   snipeShootSingleTrailDuration: 400
   randomVolleyMoveSpeedRangeLow: 5
   randomVolleyMoveSpeedRangeHigh: 7
   randomVolleyIntervalRangeLow: 10
   randomVolleyIntervalRangeHigh: 20
   randomVolleyVolley: 5
-  randomVolleyTrailInterval: 40
-  randomVolleyTrailDuration: 800
+  randomVolleyTrailInterval: 25
+  randomVolleyTrailDuration: 400
   shootSingleFollowMoveSpeed: 5
   shootSingleFollowTrailInterval: 20
   shootSingleFollowTrailDuration: 400

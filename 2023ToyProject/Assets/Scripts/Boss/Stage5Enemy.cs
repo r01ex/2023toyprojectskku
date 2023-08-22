@@ -108,20 +108,20 @@ public class Stage5Enemy : MonoBehaviour
             {
                 StartCoroutine(RandomFallPattern.Shoot(randomfallMoveSpeedRangeLow, randomfallMoveSpeedRangeHigh, randomfallIntervalRangeLow, randomfallIntervalRangeHigh, randomfallVolley));
 
-                yield return new WaitForSeconds(patternInterval * 0.25f);
+                yield return new WaitForSeconds(patternInterval * 0f + randomfallIntervalRangeLow * randomfallVolley / 120f);
             }
 
-            yield return new WaitForSeconds(patternInterval * 0.5f);
+            yield return new WaitForSeconds(patternInterval);
 
             StartCoroutine(SnipePattern.RandomvolleyWithSignal(snipeVolley, snipeMoveSpeed, snipeSignalFrame, snipeInterval));
 
-            yield return new WaitForSeconds(patternInterval * 2f);
+            yield return new WaitForSeconds(patternInterval * 0.5f + (snipeSignalFrame + snipeVolley * snipeInterval * 2) / 120f);
 
             for (int i = 0; i < 4; i++)
             {
                 ATGCGimmick.Shoot(ATGCMoveSpeed, Random.Range(-2.1f, 2.1f), Random.Range(-25f, 25f), Random.Range(0, 2));
 
-                yield return new WaitForSeconds(patternInterval * 0.6f);
+                yield return new WaitForSeconds(patternInterval * 0.5f);
             }
 
             yield return new WaitForSeconds(patternInterval * 0.5f);

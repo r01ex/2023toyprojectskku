@@ -111,13 +111,13 @@ public class Stage6Enemy : MonoBehaviour
 
             StartCoroutine(TrailShotsPattern.RandomVolley(randomVolleyMoveSpeedRangeLow, randomVolleyMoveSpeedRangeHigh, randomVolleyIntervalRangeLow, randomVolleyIntervalRangeHigh, randomVolleyVolley, randomVolleyTrailInterval, randomVolleyTrailDuration));
 
-            yield return new WaitForSeconds(patternInterval * 1.5f);
+            yield return new WaitForSeconds(patternInterval + randomVolleyIntervalRangeHigh * randomVolleyVolley / 120f);
 
             for (int i = 0; i < 3; i++)
             {
                 StartCoroutine(FollowXPattern.Shoot(followXFollowSpeed, followXVolley, followXInterval, followXFallSpeed));
 
-                yield return new WaitForSeconds(patternInterval);
+                yield return new WaitForSeconds(patternInterval * 0.5f + followXVolley * followXInterval / 120f);
             }
 
             for (int i = 0; i < 2; i++)
@@ -126,6 +126,8 @@ public class Stage6Enemy : MonoBehaviour
 
                 yield return new WaitForSeconds(patternInterval);
             }
+
+            yield return new WaitForSeconds(patternInterval * 0.5f);
         }    
     }
 

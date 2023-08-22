@@ -342,22 +342,22 @@ MonoBehaviour:
   HelixPattern: {fileID: 5376705507306680981}
   helixMoveSpeed: 5
   helixTotalBullet: 20
-  helixInterval: 50
+  helixInterval: 20
   helixWidthNumber: 10
   helixWidthSeparation: 1
   helixDiminisherMult: 2
   PinchPattern: {fileID: 598590190919036126}
   pinchMoveSpeed: 5
-  pinchVolley: 10
-  pinchInterval: 50
+  pinchVolley: 20
+  pinchInterval: 20
   SpiralPattern: {fileID: 7800889486903641087}
   spiralMoveSpeed: 5
   spiralTotalBullet: 20
-  spiralInterval: 50
+  spiralInterval: 20
   spiralAngleIncrement: 18
   NH3Gimmick: {fileID: 5385952745098917037}
   NH3Volley: 10
-  NH3Inverval: 50
+  NH3Inverval: 20
   patternInterval: 1.2
   healthbar: {fileID: 9169657120160502953}
 --- !u!50 &5669142811492700413
