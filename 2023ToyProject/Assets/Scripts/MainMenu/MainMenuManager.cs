@@ -15,10 +15,16 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     private GameObject panel2;
 
+    [SerializeField]
+    private AudioClip audioMainMenuBgm;
+    AudioSource audioSource;
 
     [SerializeField]
     private string nextSceneName;
 
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+    }
     // Start is called before the first frame update
     private void Start()
     {
@@ -27,6 +33,14 @@ public class MainMenuManager : MonoBehaviour
         panel2.SetActive(false);
 
         StartCoroutine(SceneTransitionCoroutine());
+        if (audioMainMenuBgm != null)
+        {
+            // AudioSource에 배경 음악 할당
+            audioSource.clip = audioMainMenuBgm;
+            
+            // 재생
+            audioSource.Play();
+        }
     }
 
     private IEnumerator TextAnimationCoroutine()
@@ -61,5 +75,19 @@ public class MainMenuManager : MonoBehaviour
             SceneManager.LoadScene(nextSceneName);
         }
         
+    }
+    public void StopBGM()
+    {
+        audioSource.Stop();
+    }
+
+    // 일시 정지
+    public void PauseBGM()
+    {
+        audioSource.Pause();
+    }
+    public void ResumeBGM()
+    {
+        audioSource.UnPause();
     }
 }
