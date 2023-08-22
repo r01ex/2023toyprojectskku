@@ -68,6 +68,7 @@ public class GameplayManager : MonoBehaviour
             Destroy(g);
         }
         Invoke("ShowGameOverPanel", 0.3f);
+        PlayerManager.Instance.currentBullet = 0;
     }
 
     void ShowGameOverPanel(){
