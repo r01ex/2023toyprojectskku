@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public float speed = 600;
 
     [SerializeField] float shieldtime;
+    Coroutine bulletShootCoroutine;
     private void Awake()
     {
         if (Instance == null)
@@ -47,14 +48,27 @@ public class PlayerManager : MonoBehaviour
             onbulletfull();
         }
     }
+    public void setBulletZero()
+    {
+        currentBullet = 0;
+        bulletcircle.fillAmount = 0;
+        if (bulletShootCoroutine != null)
+        {
+            StopCoroutine(bulletShootCoroutine);
+            bulletShootCoroutine = null;
+        }
+    }
     public void onbulletfull()
     {
         //TODO
     }
     public void Shoot()
     {
-        StartCoroutine(shootNbulletHorizontal(currentBullet));
-        addbullet(-currentBullet);
+        if (bulletShootCoroutine == null)
+        {
+            bulletShootCoroutine = StartCoroutine(shootNbulletHorizontal(currentBullet));
+            addbullet(-currentBullet);
+        }
     }
     IEnumerator shootNbulletHorizontal(int n)
     {
@@ -72,6 +86,7 @@ public class PlayerManager : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
             n--;
         }
+        bulletShootCoroutine = null;
     }
     public void Shield()
     {

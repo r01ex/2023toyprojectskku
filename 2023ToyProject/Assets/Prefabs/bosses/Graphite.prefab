@@ -273,7 +273,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 0220c96b6c706de45819cb36e930b889, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cabaf356b08b3b54996e5942f0d7af93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -301,7 +301,6 @@ MonoBehaviour:
   Shoot5RowPattern: {fileID: 0}
   patternInterval: 1.2
   healthbar: {fileID: 8442690673370145635}
-  nextMoveTime: 1.2
 --- !u!50 &955115034370399629
 Rigidbody2D:
   serializedVersion: 4

@@ -84,7 +84,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3738566979317740375}
-  - component: {fileID: 1073140721779256969}
+  - component: {fileID: 7800889486903641087}
+  - component: {fileID: 5376705507306680981}
+  - component: {fileID: 598590190919036126}
+  - component: {fileID: 5385952745098917037}
   m_Layer: 0
   m_Name: PatternHolder
   m_TagString: Untagged
@@ -107,7 +110,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6800822652391220111}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1073140721779256969
+--- !u!114 &7800889486903641087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +119,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 1473509486896272064}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe11c7b3daae64409ce441e207b17a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 5adb6f418f3a21544b5bb3cea5bf1ee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5376705507306680981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473509486896272064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5371a01492cbcfc439ddf4632d9decbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &598590190919036126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473509486896272064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8dbf7cd3cda8f42a19cc20107919df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lowEndRight: {x: 4, y: -5.3, z: 0}
+  lowEndLeft: {x: -4, y: -5.3, z: 0}
+--- !u!114 &5385952745098917037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473509486896272064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 304254c4be1d8e241b124f193e808fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5275772480676422906
@@ -296,12 +337,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c71fdfea6331c4cbeb58c47c992d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 40
+  hp: 1
   damage: 1
-  Shoot5RowPattern: {fileID: 1073140721779256969}
-  patternInterval: 0.6
+  HelixPattern: {fileID: 5376705507306680981}
+  helixMoveSpeed: 5
+  helixTotalBullet: 20
+  helixInterval: 20
+  helixWidthNumber: 10
+  helixWidthSeparation: 1
+  helixDiminisherMult: 2
+  PinchPattern: {fileID: 598590190919036126}
+  pinchMoveSpeed: 5
+  pinchVolley: 20
+  pinchInterval: 20
+  SpiralPattern: {fileID: 7800889486903641087}
+  spiralMoveSpeed: 5
+  spiralTotalBullet: 20
+  spiralInterval: 20
+  spiralAngleIncrement: 18
+  NH3Gimmick: {fileID: 5385952745098917037}
+  NH3Volley: 10
+  NH3Inverval: 20
+  patternInterval: 1.2
   healthbar: {fileID: 9169657120160502953}
-  nextMoveTime: 1.2
 --- !u!50 &5669142811492700413
 Rigidbody2D:
   serializedVersion: 4

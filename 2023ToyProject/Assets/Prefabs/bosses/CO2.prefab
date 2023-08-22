@@ -253,7 +253,6 @@ MonoBehaviour:
   damage: 1
   Shoot5RowPattern: {fileID: 7062540716376074993}
   patternInterval: 0.6
-  nextMoveTime: 1.2
   healthbar: {fileID: 2454620860907727005}
 --- !u!50 &4979548355517824594
 Rigidbody2D:

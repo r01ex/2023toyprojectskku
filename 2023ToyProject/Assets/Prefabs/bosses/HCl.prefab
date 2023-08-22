@@ -355,12 +355,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2730c3bf3c6fd1844b8f90ceb9775e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 160
+  hp: 1
   damage: 1
-  Shoot5RowPattern: {fileID: 5753689183402359778}
-  patternInterval: 0.6
+  TrailShotsPattern: {fileID: 7916087543071322014}
+  snipeShootSingleMoveSpeed: 5
+  snipeShootSingleTrailInterval: 15
+  snipeShootSingleTrailDuration: 400
+  randomVolleyMoveSpeedRangeLow: 5
+  randomVolleyMoveSpeedRangeHigh: 7
+  randomVolleyIntervalRangeLow: 10
+  randomVolleyIntervalRangeHigh: 20
+  randomVolleyVolley: 5
+  randomVolleyTrailInterval: 25
+  randomVolleyTrailDuration: 400
+  shootSingleFollowMoveSpeed: 5
+  shootSingleFollowTrailInterval: 20
+  shootSingleFollowTrailDuration: 400
+  FollowXPattern: {fileID: 7772052344369749466}
+  followXFollowSpeed: 8
+  followXVolley: 8
+  followXInterval: 20
+  followXFallSpeed: 5
+  patternInterval: 1.2
   healthbar: {fileID: 6805249141689152647}
-  nextMoveTime: 1.2
 --- !u!50 &3278319448768568166
 Rigidbody2D:
   serializedVersion: 4
@@ -463,7 +480,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5548076065634991526}
-  - component: {fileID: 5753689183402359778}
+  - component: {fileID: 7916087543071322014}
+  - component: {fileID: 7772052344369749466}
   m_Layer: 0
   m_Name: PatternHolder
   m_TagString: Untagged
@@ -486,7 +504,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4186961549422915717}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5753689183402359778
+--- !u!114 &7916087543071322014
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -495,6 +513,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 8789119727448715214}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe11c7b3daae64409ce441e207b17a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7559ddfe9fa723041a4f20004c1dff0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7772052344369749466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789119727448715214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02cba44cc38eca14495fde0ce7989fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

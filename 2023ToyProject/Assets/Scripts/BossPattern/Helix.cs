@@ -40,7 +40,6 @@ public class Helix : MonoBehaviour
             float diminisher = 0;
             for (int j = 0; j < widthNumber / 2; j++)
             {
-                spawnPos += new Vector3(width_separation - diminisher, 0, 0);
                 GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
                 if (enemyObject != null)
                 {
@@ -49,6 +48,7 @@ public class Helix : MonoBehaviour
                     EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
                     enemy.move1Init(moveSpeed);
                 }
+                spawnPos += new Vector3(width_separation - diminisher, 0, 0);
                 diminisher += diminisher_mult * width_separation / widthNumber;
                 for (int k = 0; k < interval; k++)
                 {
@@ -57,7 +57,6 @@ public class Helix : MonoBehaviour
             }
             for (int j = 0; j < widthNumber / 2; j++)
             {
-                spawnPos -= new Vector3(width_separation - diminisher, 0, 0);
                 GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
                 if (enemyObject != null)
                 {
@@ -66,6 +65,7 @@ public class Helix : MonoBehaviour
                     EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
                     enemy.move1Init(moveSpeed);
                 }
+                spawnPos -= new Vector3(width_separation - diminisher, 0, 0);
                 diminisher -= diminisher_mult * width_separation / widthNumber;
                 for (int k = 0; k < interval; k++)
                 {
@@ -74,7 +74,6 @@ public class Helix : MonoBehaviour
             }
             for (int j = 0; j < widthNumber / 2; j++)
             {
-                spawnPos -= new Vector3(width_separation - diminisher, 0, 0);
                 GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
                 if (enemyObject != null)
                 {
@@ -83,6 +82,7 @@ public class Helix : MonoBehaviour
                     EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
                     enemy.move1Init(moveSpeed);
                 }
+                spawnPos -= new Vector3(width_separation - diminisher, 0, 0);
                 diminisher += diminisher_mult * width_separation / widthNumber;
                 for (int k = 0; k < interval; k++)
                 {
@@ -91,7 +91,6 @@ public class Helix : MonoBehaviour
             }
             for (int j = 0; j < widthNumber / 2; j++)
             {
-                spawnPos += new Vector3(width_separation - diminisher, 0, 0);
                 GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
                 if (enemyObject != null)
                 {
@@ -100,6 +99,7 @@ public class Helix : MonoBehaviour
                     EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
                     enemy.move1Init(moveSpeed);
                 }
+                spawnPos += new Vector3(width_separation - diminisher, 0, 0);
                 diminisher -= diminisher_mult * width_separation / widthNumber;
                 for (int k = 0; k < interval; k++)
                 {

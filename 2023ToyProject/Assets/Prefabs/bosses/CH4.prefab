@@ -123,13 +123,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d400e8e8943b204ab60e186613c794c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 20
+  hp: 1
   damage: 1
-  Shoot5RowPattern: {fileID: 7513800083990622495}
-  shoot5Speed: 5
   ShotGun5Pattern: {fileID: 7643280095941802414}
   shotgunSpeed: 8
   shotgunVolleys: 3
+  SpiralPattern: {fileID: 8212478616843285044}
+  allAroundShotgunSpeed: 5
+  allAroundShotgunTotalbullet: 30
+  backnforthSpeed: 5
+  backnforthBulletInOneVolley: 10
+  backnforthInterval: 20
+  backnforthAngleIncrement: 5
+  backnforthTotal: 1
   patternInterval: 1.2
   healthbar: {fileID: 3295552681098574336}
   nextMoveTime: 0
@@ -364,8 +370,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2450454203630426281}
-  - component: {fileID: 7513800083990622495}
   - component: {fileID: 7643280095941802414}
+  - component: {fileID: 8212478616843285044}
   m_Layer: 0
   m_Name: PatternHolder
   m_TagString: Untagged
@@ -388,18 +394,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 811256887726087217}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7513800083990622495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739842689777500838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe11c7b3daae64409ce441e207b17a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7643280095941802414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,6 +418,18 @@ MonoBehaviour:
   - {x: 0, y: -5.5, z: 0}
   - {x: 1.5, y: -5.5, z: 0}
   - {x: 3, y: -5.5, z: 0}
+--- !u!114 &8212478616843285044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739842689777500838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5adb6f418f3a21544b5bb3cea5bf1ee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6334886281710616101
 GameObject:
   m_ObjectHideFlags: 0
