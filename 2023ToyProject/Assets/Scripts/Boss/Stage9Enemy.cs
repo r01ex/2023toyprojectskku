@@ -50,12 +50,18 @@ public class Stage9Enemy : MonoBehaviour
     private Color originalColor;
     private Renderer enemyRenderer;
 
+    Canvas c;
+    private void OnDisable()
+    {
+        PlayerControl.Instance.resetSpeed();
+    }
     private void Awake() {
         anim = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
     {
+        c = GameObject.FindGameObjectWithTag("backgroundCanvas").GetComponent<Canvas>();
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine(); 
@@ -78,12 +84,29 @@ public class Stage9Enemy : MonoBehaviour
     {
         StopCoroutine("EnemyRoutine");
     }
+    IEnumerator shake()
+    {
+        c.renderMode = RenderMode.WorldSpace;
+        Camera cam = Camera.main;
+        for(int i=0;i<15;i++)
+        {
+            Vector3 rv = new Vector3(Random.Range(0.3f, 0.3f), Random.Range(0.1f, 0.1f));
+            cam.transform.position += rv;
+            yield return new WaitForSeconds(0.1f);
+            cam.transform.position -= rv;
+            yield return new WaitForSeconds(0.1f);
+        }
+        PlayerControl.Instance.flipMovement();
+        c.renderMode = RenderMode.ScreenSpaceCamera;
+    }
     IEnumerator EnemyRoutine()
     {
         yield return new WaitForSeconds(1.8f);
 
         while (true)
         {
+            StartCoroutine(shake());
+            yield return new WaitForSeconds(3);
             for (int i = 0; i < 4; i++)
             {
                 ClusterPattern.Shoot(clusterBullets, clusterMoveSpeed, clusterMaxTargetPosOffset);
