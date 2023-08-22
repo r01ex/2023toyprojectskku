@@ -78,7 +78,8 @@ public class Snipe : MonoBehaviour
     }
     public IEnumerator spawnLine(Vector3 pos1, Vector3 pos2, int signalFrame, float moveSpeed)
     {
-        LineRenderer lr = Instantiate(lrPrefab,this.transform).GetComponent<LineRenderer>();
+        LineRenderer lr = Instantiate(lrPrefab).GetComponent<LineRenderer>();
+        lr.transform.parent = this.transform;
         lr.positionCount = 2;
         lr.SetPosition(0, pos1);
         lr.SetPosition(1, pos2);
