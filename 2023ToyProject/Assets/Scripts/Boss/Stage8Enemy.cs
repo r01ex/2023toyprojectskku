@@ -30,6 +30,8 @@ public class Stage8Enemy : MonoBehaviour
     [SerializeField]
     int spiralInterval;
     [SerializeField]
+    float spiralAngleOffset;
+    [SerializeField]
     float spiralAngleIncrement;
     [SerializeField]
     ShotGun5 ShotGun5Pattern;
@@ -100,7 +102,7 @@ public class Stage8Enemy : MonoBehaviour
 
             for (int i = 0; i < 6; i++)
             {
-                StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleIncrement));
+                StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleOffset, spiralAngleIncrement));
 
                 yield return new WaitForSeconds(patternInterval * 0f + spiralTotalBullet * spiralInterval / 120f / 6f);
             }

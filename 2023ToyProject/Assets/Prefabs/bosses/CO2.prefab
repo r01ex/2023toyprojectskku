@@ -289,13 +289,13 @@ MonoBehaviour:
   backnforthBulletInOneVolley: 7
   backnforthInterval: 10
   backnforthAngleIncrement: 5
-  backnforthTotal: 5
+  backnforthTotal: 4
   RandomFallPattern: {fileID: 2784741618582153374}
-  randomfallMoveSpeedRangeLow: 4
-  randomfallMoveSpeedRangeHigh: 8
+  randomfallMoveSpeedRangeLow: 2
+  randomfallMoveSpeedRangeHigh: 4
   randomfallIntervalRangeLow: 10
   randomfallIntervalRangeHigh: 20
-  randomfallVolley: 15
+  randomfallVolley: 10
   patternInterval: 1.2
   healthbar: {fileID: 2454620860907727005}
 --- !u!50 &4979548355517824594

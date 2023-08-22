@@ -364,6 +364,7 @@ MonoBehaviour:
   spiralMoveSpeed: 5
   spiralTotalBullet: 36
   spiralInterval: 20
+  spiralAngleOffset: 180
   spiralAngleIncrement: 10
   ShotGun5Pattern: {fileID: 6339354318193484615}
   shotgunSpeed: 8

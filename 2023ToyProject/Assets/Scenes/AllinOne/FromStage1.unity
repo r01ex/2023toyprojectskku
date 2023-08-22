@@ -329,7 +329,7 @@ MonoBehaviour:
   pulledEnemyBullets: []
   playerBulletToPool: {fileID: 820469620680039316, guid: c3eeb2504a049ff499abcd7eb0ced2c5, type: 3}
   enemyBulletToPool: {fileID: 2565808413655926046, guid: 9985598c73f770644a13ee9e0868d964, type: 3}
-  amountToPool: 500
+  amountToPool: 600
 --- !u!1 &310380347
 GameObject:
   m_ObjectHideFlags: 0
@@ -2004,7 +2004,6 @@ MonoBehaviour:
   bulletcircle: {fileID: 1137578306}
   Electricfield: {fileID: 1279888504}
   attack: 1
-  speed: 600
   shieldtime: 0.5
 --- !u!1 &1544567710
 GameObject:
