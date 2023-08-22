@@ -23,7 +23,7 @@ public class Helix : MonoBehaviour
     /// <summary>
     /// interval은 발사속도(쉬는 프레임 길이), widthNumber는 진폭에 있는 탄수*2, width_separation은 탄간 가로 간격, diminisher_mult는 둥글어지는 정도 0-2사이값, ismiddle은 중앙생성할지 
     /// </summary>
-    public IEnumerator ShootSingle(float moveSpeed, int totalbullet, int interval, int widthNumber, float width_separation,float diminisher_mult, bool ismiddle)
+    public IEnumerator ShootSingle(float moveSpeed, int totalbullet, int interval, float offset, int widthNumber, float width_separation,float diminisher_mult, bool ismiddle)
     {
         float startPos;
         if (ismiddle)
@@ -36,7 +36,7 @@ public class Helix : MonoBehaviour
         }
         for (int i = 0; i < (totalbullet / widthNumber) / 2; i++)
         {
-            Vector3 spawnPos = new Vector3(startPos, this.transform.position.y, 0);
+            Vector3 spawnPos = new Vector3(startPos + offset, this.transform.position.y, 0);
             float diminisher = 0;
             for (int j = 0; j < widthNumber / 2; j++)
             {

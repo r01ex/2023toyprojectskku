@@ -6,8 +6,8 @@ public class Stage8Enemy : MonoBehaviour
 {
     // To indicate that the boss hp
     [SerializeField]
-    private float hp = 160f;
-    private float maxHp = 160f;
+    private float hp;
+    private float maxHp = 1f;
 
     
     [SerializeField]
@@ -16,7 +16,27 @@ public class Stage8Enemy : MonoBehaviour
     private Animator anim;
 
     [SerializeField]
-    Shoot5Row Shoot5RowPattern;
+    Diagonal DiagonalPattern;
+    [SerializeField]
+    float diagonalMoveSpeed;
+    [SerializeField]
+    int diagonalBulletNum;
+    [SerializeField]
+    Spiral SpiralPattern;
+    [SerializeField]
+    float spiralMoveSpeed;
+    [SerializeField]
+    int spiralTotalBullet;
+    [SerializeField]
+    int spiralInterval;
+    [SerializeField]
+    float spiralAngleIncrement;
+    [SerializeField]
+    ShotGun5 ShotGun5Pattern;
+    [SerializeField]
+    float shotgunSpeed;
+    [SerializeField]
+    int shotgunVolleys;
 
     [SerializeField]
     float patternInterval;
@@ -61,6 +81,32 @@ public class Stage8Enemy : MonoBehaviour
     IEnumerator EnemyRoutine()
     {
         yield return new WaitForSeconds(1.8f);
+
+        while (true)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                StartCoroutine(ShotGun5Pattern.Shotgun(shotgunVolleys, shotgunSpeed));
+
+                yield return new WaitForSeconds(patternInterval * 0.5f + shotgunVolleys / 12f);
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                DiagonalPattern.ShootDiagonal(diagonalMoveSpeed, Random.Range(1f, 2.6f), diagonalBulletNum, Random.Range(0, 2));
+
+                yield return new WaitForSeconds(patternInterval * 0.25f);
+            }
+
+            for (int i = 0; i < 6; i++)
+            {
+                StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleIncrement));
+
+                yield return new WaitForSeconds(patternInterval * 0f + spiralTotalBullet * spiralInterval / 120f / 6f);
+            }
+
+            yield return new WaitForSeconds(patternInterval * 2.5f);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

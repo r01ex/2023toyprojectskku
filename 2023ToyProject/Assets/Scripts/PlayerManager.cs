@@ -13,7 +13,6 @@ public class PlayerManager : MonoBehaviour
 
     public float attack = 1;
     Vector3 addedBulletSize = new Vector3(0, 0, 0);
-    [SerializeField] public float speed = 600;
 
     [SerializeField] float shieldtime;
     Coroutine bulletShootCoroutine;

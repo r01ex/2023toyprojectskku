@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3864105925813538946}
-  - component: {fileID: 7062540716376074993}
+  - component: {fileID: 6350986166559756001}
+  - component: {fileID: 4724628414571708321}
+  - component: {fileID: 2784741618582153374}
   m_Layer: 0
   m_Name: PatternHolder
   m_TagString: Untagged
@@ -32,7 +34,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2833183965326977256}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7062540716376074993
+--- !u!114 &6350986166559756001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +43,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 590881611600216776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe11c7b3daae64409ce441e207b17a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 5371a01492cbcfc439ddf4632d9decbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4724628414571708321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590881611600216776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5adb6f418f3a21544b5bb3cea5bf1ee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2784741618582153374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590881611600216776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a61ae2eb87161458f4efe2d2e30a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &753841946573576737
@@ -81,7 +107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.94}
+  m_AnchoredPosition: {x: 0, y: 2.2}
   m_SizeDelta: {x: 2, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3398650391854492604
@@ -229,7 +255,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300000, guid: 5df401989f51f44449eb38da1f6940cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 4.096, y: 4.096}
   m_AdaptiveModeThreshold: 0.5
@@ -249,10 +275,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a3f3de14b0dd443bc00b6e7b32300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 80
+  hp: 1
   damage: 1
-  Shoot5RowPattern: {fileID: 7062540716376074993}
-  patternInterval: 0.6
+  HelixPattern: {fileID: 6350986166559756001}
+  helixMoveSpeed: 5
+  helixTotalBullet: 40
+  helixInterval: 20
+  helixWidthNumber: 10
+  helixWidthSeparation: 1
+  helixDiminisherMult: 2
+  SpiralPattern: {fileID: 4724628414571708321}
+  backnforthSpeed: 5
+  backnforthBulletInOneVolley: 7
+  backnforthInterval: 10
+  backnforthAngleIncrement: 5
+  backnforthTotal: 5
+  RandomFallPattern: {fileID: 2784741618582153374}
+  randomfallMoveSpeedRangeLow: 4
+  randomfallMoveSpeedRangeHigh: 8
+  randomfallIntervalRangeLow: 10
+  randomfallIntervalRangeHigh: 20
+  randomfallVolley: 15
+  patternInterval: 1.2
   healthbar: {fileID: 2454620860907727005}
 --- !u!50 &4979548355517824594
 Rigidbody2D:

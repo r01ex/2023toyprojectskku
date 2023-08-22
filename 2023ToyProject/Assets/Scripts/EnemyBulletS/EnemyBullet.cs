@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    int moveNumber = -1;
+    public int moveNumber = -1;
     float Speed;
     Vector3 Pos1;
     Vector3 Target;

@@ -6,8 +6,8 @@ public class Stage7Enemy : MonoBehaviour
 {
     // To indicate that the boss hp
     [SerializeField]
-    private float hp = 80f;
-    private float maxHp = 80f;
+    private float hp;
+    private float maxHp = 1f;
 
     
     [SerializeField]
@@ -16,7 +16,43 @@ public class Stage7Enemy : MonoBehaviour
     private Animator anim;
 
     [SerializeField]
-    Shoot5Row Shoot5RowPattern;
+    Helix HelixPattern;
+    [SerializeField]
+    float helixMoveSpeed;
+    [SerializeField]
+    int helixTotalBullet;
+    [SerializeField]
+    int helixInterval;
+    [SerializeField]
+    int helixWidthNumber;
+    [SerializeField]
+    float helixWidthSeparation;
+    [SerializeField]
+    float helixDiminisherMult;
+    [SerializeField]
+    Spiral SpiralPattern;
+    [SerializeField]
+    float backnforthSpeed;
+    [SerializeField]
+    int backnforthBulletInOneVolley;
+    [SerializeField]
+    int backnforthInterval;
+    [SerializeField]
+    float backnforthAngleIncrement;
+    [SerializeField]
+    int backnforthTotal;
+    [SerializeField]
+    RandomFall RandomFallPattern;
+    [SerializeField]
+    float randomfallMoveSpeedRangeLow;
+    [SerializeField]
+    float randomfallMoveSpeedRangeHigh;
+    [SerializeField]
+    int randomfallIntervalRangeLow;
+    [SerializeField]
+    int randomfallIntervalRangeHigh;
+    [SerializeField]
+    float randomfallVolley;
 
     [SerializeField]
     float patternInterval;
@@ -32,6 +68,12 @@ public class Stage7Enemy : MonoBehaviour
     Image healthbar;
     private void Awake() {
         anim = GetComponent<Animator>();
+        Camera.main.transform.Rotate(new Vector3(0, 0, 180));
+        PlayerControl.Instance.flipMovement();
+    }
+    private void OnDisable()
+    {
+        PlayerControl.Instance.flipMovement();
     }
     // Start is called before the first frame update
     void Start()
@@ -61,6 +103,30 @@ public class Stage7Enemy : MonoBehaviour
     IEnumerator EnemyRoutine()
     {
         yield return new WaitForSeconds(1.8f);
+
+        while (true)
+        {
+            StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 2.5f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
+            StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 0f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
+            StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, -2.5f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
+
+            yield return new WaitForSeconds(patternInterval * (-2f) + helixTotalBullet * helixInterval / 120f);
+
+            for (int i = 0; i < 4; i++)
+            {
+                StartCoroutine(RandomFallPattern.Shoot(randomfallMoveSpeedRangeLow, randomfallMoveSpeedRangeHigh, randomfallIntervalRangeLow, randomfallIntervalRangeHigh, randomfallVolley));
+
+                yield return new WaitForSeconds(patternInterval * 0f + randomfallIntervalRangeLow * randomfallVolley / 120f);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                StartCoroutine(RandomFallPattern.Shoot(randomfallMoveSpeedRangeLow, randomfallMoveSpeedRangeHigh, randomfallIntervalRangeLow, randomfallIntervalRangeHigh, randomfallVolley));
+            }
+
+            StartCoroutine(SpiralPattern.ShootBackAndForth(backnforthSpeed, backnforthBulletInOneVolley, backnforthInterval, backnforthAngleIncrement, backnforthTotal));
+
+            yield return new WaitForSeconds(patternInterval * 1f + backnforthBulletInOneVolley * backnforthInterval * backnforthTotal / 120f);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
