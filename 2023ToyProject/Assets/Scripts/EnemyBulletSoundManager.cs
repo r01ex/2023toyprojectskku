@@ -5,13 +5,10 @@ using UnityEngine;
 public class EnemyBulletSoundManager : MonoBehaviour
 {
     [SerializeField]
-    private AudioClip audioH2OAttack;
+    private AudioClip[] Attack;
     [SerializeField]
-    private AudioClip audioH2OHit;
-    [SerializeField]
-    private AudioClip audioCH4Attack;
-    [SerializeField]
-    private AudioClip audioCH4Hit;
+    private AudioClip[] Hit;
+
     AudioSource audioSource;
     private void Awake() {
         audioSource = GetComponent<AudioSource>();
@@ -26,26 +23,12 @@ public class EnemyBulletSoundManager : MonoBehaviour
 
     public void PlaySound(string action, int index){
         Debug.Log("Sound "+ action+ " "+index );
-        switch(index){
-            case 1:
-                switch(action){
-                    case "ATTACK":
-                        audioSource.clip = audioH2OAttack;
-                        break;
-                    case "Hit":
-                        audioSource.clip = audioH2OHit;
-                        break;  
-                }
+        switch(action){
+            case "ATTACK":
+                audioSource.clip = Attack[index];
                 break;
-            case 2:
-                switch(action){
-                    case "ATTACK":
-                        audioSource.clip = audioCH4Attack;
-                        break;
-                    case "Hit":
-                        audioSource.clip = audioCH4Hit;
-                        break;  
-                }
+            case "Hit":
+                audioSource.clip = Hit[index];
                 break;
         }
 

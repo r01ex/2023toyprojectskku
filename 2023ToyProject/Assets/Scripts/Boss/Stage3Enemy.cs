@@ -101,7 +101,7 @@ public class Stage3Enemy : MonoBehaviour
 
         while (true)
         {
-            StartCoroutine(PinchPattern.MapShoot(pinchMoveSpeed, pinchVolley, pinchInterval));
+            StartCoroutine(PinchPattern.MapShoot(pinchMoveSpeed, pinchVolley, pinchInterval, 3));
 
             yield return new WaitForSeconds(patternInterval * (-1f) + pinchVolley * pinchInterval / 120f);
 
