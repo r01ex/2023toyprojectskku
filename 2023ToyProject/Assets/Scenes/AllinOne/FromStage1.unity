@@ -660,7 +660,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 59e7f899a92c63c46b89e93f5a0ac8bd, type: 3}
   - {fileID: 21300000, guid: 66561976ddf2fb2419d09dad72cb85cf, type: 3}
   - {fileID: 21300000, guid: 605d2846a0e778b4189c63462d9945cc, type: 3}
-  - {fileID: 21300000, guid: 605d2846a0e778b4189c63462d9945cc, type: 3}
   - {fileID: 21300000, guid: 597892f12acee01409961be5f332802f, type: 3}
   - {fileID: 21300000, guid: 36b9b131f30a96a4c919101a3a56e0fb, type: 3}
   - {fileID: 21300000, guid: 5bdb0078f5b82e448857f7ca37598d19, type: 3}
@@ -687,7 +686,7 @@ GameObject:
   - component: {fileID: 496532298}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: backgroundCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1495,7 +1494,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!50 &1279888507
 Rigidbody2D:
@@ -1984,8 +1983,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 600
-  width: 3.2
-  height: 4.5
+  width: 3.5
+  height: 4.8
   iskeyboardControl: 1
 --- !u!114 &1459312271
 MonoBehaviour:

@@ -106,7 +106,7 @@ public class Stage9Enemy : MonoBehaviour
         while (true)
         {
             StartCoroutine(shake());
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(3f + patternInterval * 2f);
             for (int i = 0; i < 4; i++)
             {
                 ClusterPattern.Shoot(clusterBullets, clusterMoveSpeed, clusterMaxTargetPosOffset);
