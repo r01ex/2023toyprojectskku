@@ -75,4 +75,8 @@ public class BulletObjectPool : MonoBehaviour
             pulledPlayerBullets[i].SetActive(false);
         }
     }
+    public void ChangeAllEnemyBullet()
+    {
+
+    }
 }
