@@ -55,6 +55,21 @@ public class BulletObjectPool : MonoBehaviour
         }
         return null;
     }
+
+    public GameObject GetPooledEnemyBullet()
+    {
+        for (int i = 0; i < amountToPool; i++)
+        {
+            if (!pulledEnemyBullets[i].activeInHierarchy)
+            {
+                enemyBulletSoundManager.PlaySound("ATTACK", 1);
+                pulledEnemyBullets[i].transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;
+                return pulledEnemyBullets[i];
+            }
+        } 
+        return null;
+    }
+
     public GameObject GetPooledEnemyBullet(int stageNumber)
     {
         for (int i = 0; i < amountToPool; i++)
@@ -69,19 +84,7 @@ public class BulletObjectPool : MonoBehaviour
         return null;
     }
 
-    public GameObject GetPooledEnemyBullet()
-    {
-        for (int i = 0; i < amountToPool; i++)
-        {
-            if (!pulledEnemyBullets[i].activeInHierarchy)
-            {
-                enemyBulletSoundManager.PlaySound("ATTACK", 1);
-                pulledEnemyBullets[i].transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;
-                return pulledEnemyBullets[i];
-            }
-        }
-        return null;
-    }
+
     public void TurnOffAll()
     {
         for (int i = 0; i < amountToPool; i++)
