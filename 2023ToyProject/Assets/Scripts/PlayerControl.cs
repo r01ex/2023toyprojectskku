@@ -45,10 +45,6 @@ public class PlayerControl : MonoBehaviour
     {
         speed *= -1;
     }
-    public void resetSpeed()
-    {
-        speed = Mathf.Abs(speed);
-    }
     // Update is called once per frame
     void Update()
     {

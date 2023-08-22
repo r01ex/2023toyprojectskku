@@ -30,8 +30,6 @@ public class Stage8Enemy : MonoBehaviour
     [SerializeField]
     int spiralInterval;
     [SerializeField]
-    float spiralAngleOffset;
-    [SerializeField]
     float spiralAngleIncrement;
     [SerializeField]
     ShotGun5 ShotGun5Pattern;
@@ -45,11 +43,6 @@ public class Stage8Enemy : MonoBehaviour
 
     [SerializeField]
     Image healthbar;
-    [SerializeField]
-    Transform particleSystem;
-    [SerializeField]
-    float smokeFallSpeed;
-    bool didresetSmoke = false;
 
     private Color flashColor = Color.red; // Red color when is hit
     private float flashDuration = 0.02f; // To indicate that the time of change color
@@ -65,14 +58,17 @@ public class Stage8Enemy : MonoBehaviour
     {
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
-        anim.SetBool("isLowHp", false);
         StartEnemyRoutine(); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        particleSystem.position = new Vector3(particleSystem.position.x, Mathf.Clamp(particleSystem.position.y - (smokeFallSpeed * Time.deltaTime), 1.5f, 15f));
+        if(hp < maxHp * 0.3){
+            anim.SetBool("isLowHp", true);
+        } else{
+            anim.SetBool("isLowHp", false);
+        }
     }
     void StartEnemyRoutine()
     {
@@ -104,7 +100,7 @@ public class Stage8Enemy : MonoBehaviour
 
             for (int i = 0; i < 6; i++)
             {
-                StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleOffset, spiralAngleIncrement));
+                StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleIncrement));
 
                 yield return new WaitForSeconds(patternInterval * 0f + spiralTotalBullet * spiralInterval / 120f / 6f);
             }
@@ -128,11 +124,7 @@ public class Stage8Enemy : MonoBehaviour
             {
                 bullet.DestroySelf();
             }
-            if (hp < maxHp * 0.3)
-            {
-                anim.SetBool("isLowHp", true);
-                particleSystem.position = new Vector3(particleSystem.position.x, 15);
-            }
+
             if (hp <= 0)
             {
                 //death

@@ -124,6 +124,14 @@ public class Skill : MonoBehaviour
                 break;
             case 6:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[6];
+                Panel.transform.Find("SkillName").GetComponent<Text>().text = "Whatever";
+                Panel.transform.Find("Description").GetComponent<Text>().text = "Loading..." +
+                    " ";
+                Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
+                break;
+            case 7:
+                Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[7];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Big Bullet";
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Bullet size is increased." +
                     " This effect lasts until the end of the game.";
@@ -131,8 +139,8 @@ public class Skill : MonoBehaviour
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseBulletSize(bulletSizeBaseInc); });
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
-            case 7:
-                Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[7];
+            case 8:
+                Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[8];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Heavy Attack";
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Attack power is greatly increased." +
                     " However, this effect is only effective in the next stage.";
@@ -141,8 +149,8 @@ public class Skill : MonoBehaviour
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { lastSuperUpgrade = 0; });
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
-            case 8:
-                Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[8];
+            case 9:
+                Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[9];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Lightning Fast";
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Movement speed is greatly increased." +
                     " However, this effect is only effective in the next stage.";
@@ -151,8 +159,8 @@ public class Skill : MonoBehaviour
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { lastSuperUpgrade = 1; });
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
-            case 9:
-                Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[9];
+            case 10:
+                Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[10];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Unbreakable shield";
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Shield time greatly increased." +
                     " However, this effect is only effective in the next stage.";
@@ -161,8 +169,8 @@ public class Skill : MonoBehaviour
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { lastSuperUpgrade = 2; });
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
                 break;
-            case 10:
-                Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[10];
+            case 11:
+                Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[11];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Magnetic Grab";
                 Panel.transform.Find("Description").GetComponent<Text>().text = "The grab range is greatly increased." +
                     " However, this effect is only effective in the next stage.";

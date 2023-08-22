@@ -262,12 +262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5226468446026233573}
-  - component: {fileID: 1749091813937011471}
-  - component: {fileID: 3527742592879536140}
-  - component: {fileID: 5128641621727806079}
-  - component: {fileID: 7941687901939041417}
-  - component: {fileID: 1435341225707192410}
-  - component: {fileID: 5588034478545373911}
+  - component: {fileID: 1524997930386707753}
   m_Layer: 0
   m_Name: PatternHolder
   m_TagString: Untagged
@@ -290,7 +285,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 591881369837572780}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1749091813937011471
+--- !u!114 &1524997930386707753
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,71 +294,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8074494955378159715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5adb6f418f3a21544b5bb3cea5bf1ee4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3527742592879536140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8074494955378159715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 819d207b192982745944662185fb7f15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  letterPrefabs:
-  - {fileID: 7641451529398660330, guid: 0c4f736e6b81a61438be9a3681424b31, type: 3}
-  - {fileID: 5841372511824322911, guid: dce0f2103d15df048ad3cae39cb9e5be, type: 3}
---- !u!114 &5128641621727806079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8074494955378159715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5371a01492cbcfc439ddf4632d9decbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7941687901939041417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8074494955378159715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8de915b94eaae824e8f6eb1a74e969f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1435341225707192410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8074494955378159715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4782873865067946821a33487863628, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lrPrefab: {fileID: 4183104112311564776, guid: 4bc173cc2258dba4b952bad7e5064368, type: 3}
---- !u!114 &5588034478545373911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8074494955378159715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc5d68368c53f340aa04593d3920207, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fe11c7b3daae64409ce441e207b17a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8701643625816132095
@@ -489,37 +420,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a77124299d81884c829381451013c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 20
   damage: 1
-  SpiralPattern: {fileID: 1749091813937011471}
-  spiralMoveSpeed: 5
-  spiralTotalBullet: 36
-  spiralInterval: 20
-  spiralAngleOffset: 180
-  spiralAngleIncrement: 10
-  BubblePattern: {fileID: 3527742592879536140}
-  ATGCMoveSpeed: 5
-  HelixPattern: {fileID: 5128641621727806079}
-  helixMoveSpeed: 5
-  helixTotalBullet: 40
-  helixInterval: 20
-  helixWidthNumber: 10
-  helixWidthSeparation: 1
-  helixDiminisherMult: 2
-  DiagonalPattern: {fileID: 7941687901939041417}
-  diagonalMoveSpeed: 4
-  diagonalBulletNum: 15
-  SnipePattern: {fileID: 1435341225707192410}
-  snipeVolley: 20
-  snipeMoveSpeed: 50
-  snipeSignalFrame: 240
-  snipeInterval: 30
-  WallPattern: {fileID: 5588034478545373911}
-  wallMoveSpeed: 5
-  wallWidth: 4
-  wallBulletNum: 10
-  wallLineNum: 20
-  wallInterval: 60
+  Shoot5RowPattern: {fileID: 1524997930386707753}
   patternInterval: 1.2
   healthbar: {fileID: 6755613170452558804}
 --- !u!50 &8489026771331907365

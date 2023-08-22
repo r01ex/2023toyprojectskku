@@ -46,8 +46,6 @@ public class Stage3Enemy : MonoBehaviour
     [SerializeField]
     int spiralInterval;
     [SerializeField]
-    float spiralAngleOffset;
-    [SerializeField]
     float spiralAngleIncrement;
 
     [SerializeField]
@@ -107,7 +105,7 @@ public class Stage3Enemy : MonoBehaviour
 
             yield return new WaitForSeconds(patternInterval * (-1f) + pinchVolley * pinchInterval / 120f);
 
-            StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleOffset, spiralAngleIncrement));
+            StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleIncrement));
 
             yield return new WaitForSeconds(patternInterval * (-1.5f) + spiralTotalBullet * spiralInterval / 120f);
 

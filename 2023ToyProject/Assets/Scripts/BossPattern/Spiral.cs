@@ -21,9 +21,9 @@ public class Spiral : MonoBehaviour
         //StartCoroutine(ShootBackAndForth(3.5f, 8, 10, 15, 4));
         allAroundShotgunSingle(6, 40);
     }
-    public IEnumerator Shoot(float moveSpeed, int totalbullet, int interval, float angleOffset, float angle_increment)
+    public IEnumerator Shoot(float moveSpeed, int totalbullet, int interval, float angle_increment)
     {
-        float angle = 0f + angleOffset;
+        float angle = 0f;
         for (int i = 0; i < totalbullet; i++)
         {
             float dirx = this.transform.position.x + Mathf.Cos((angle * Mathf.PI) / 180f);
@@ -183,7 +183,7 @@ public class Spiral : MonoBehaviour
                 EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
                 enemy.move3Init(moveSpeed, movedir);
             }
-            angle += 360f/totalbullet;
+            angle += 360/totalbullet;
         }
     }
     public void allAroundShotgunSingle(float moveSpeed, int totalbullet, int stageIndex)

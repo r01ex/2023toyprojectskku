@@ -10,7 +10,6 @@ TagManager:
   - Bullet
   - BulletDestroyWall
   - patternset
-  - backgroundCanvas
   layers:
   - Default
   - TransparentFX
@@ -47,7 +46,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: smoke
-    uniqueID: 819815197
     locked: 0
