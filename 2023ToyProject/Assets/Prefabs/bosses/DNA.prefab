@@ -275,7 +275,6 @@ MonoBehaviour:
   Shoot5RowPattern: {fileID: 0}
   patternInterval: 1.2
   healthbar: {fileID: 4437637402076307370}
-  nextMoveTime: 1.2
 --- !u!50 &6102759906603967882
 Rigidbody2D:
   serializedVersion: 4

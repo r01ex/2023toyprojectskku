@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: a5519acb134544f48b82eae94cbab4e4, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1887,6 +1887,7 @@ MonoBehaviour:
   timer: {fileID: 2001673152}
   stageMaxTime: 20
   bossClearPanel: {fileID: 2305874107447643514}
+  background: {fileID: 1158764698}
   isGameOver: 0
   bossPrefabs:
   - {fileID: 97927450717603361, guid: 2d690bf53a20f2b458f36e759d5ced1d, type: 3}
@@ -1899,9 +1900,27 @@ MonoBehaviour:
   - {fileID: 8360577541194923777, guid: ce2c6955befc06d4eacef9ca2a718b6f, type: 3}
   - {fileID: 3626134391243661990, guid: 2615255066affc545bfcd17c4052578b, type: 3}
   - {fileID: 8701643625816132095, guid: 3c9c3e7297d99854999eccc0159b92b2, type: 3}
+  - {fileID: 6752108951645414489, guid: 095938b8827865b44b8b56ff361ebd2c, type: 3}
   - {fileID: 6120235792946863194, guid: 9da71af803d206745a376b2323bbdf54, type: 3}
   - {fileID: 5778496138861686178, guid: 75c45f13ddab83a44a6f23a76d794ee8, type: 3}
-  - {fileID: 8701643625816132095, guid: 3c9c3e7297d99854999eccc0159b92b2, type: 3}
+  - {fileID: 1093072899443650999, guid: 389c4d0c007c83f4ca6772f75c1decd2, type: 3}
+  - {fileID: 2626415772810904445, guid: d7f9bf3e9f6d2ae4db719710351314ea, type: 3}
+  backGroundSprites:
+  - {fileID: 21300000, guid: a5519acb134544f48b82eae94cbab4e4, type: 3}
+  - {fileID: 21300000, guid: 9e83bab65706f0a439013647d29ca800, type: 3}
+  - {fileID: 21300000, guid: ef9d1c4905c7e1a41be753e8cf6d3c27, type: 3}
+  - {fileID: 21300000, guid: f5e92c684761e614c959ce31a04ad03e, type: 3}
+  - {fileID: 21300000, guid: 7eb8595f63396484d9bccdd4a92e955f, type: 3}
+  - {fileID: 21300000, guid: 0aa4a95c58aa8f44498eae0753138e56, type: 3}
+  - {fileID: 21300000, guid: 3b2c654144f970b4687b77a51a8cf30f, type: 3}
+  - {fileID: 21300000, guid: 04d7ce354c115734a98343731e40bd49, type: 3}
+  - {fileID: 21300000, guid: aa4c212d96b58514d90ff0e425e4acd1, type: 3}
+  - {fileID: 21300000, guid: 70cbb51614013a649b0fbf13f6189a3a, type: 3}
+  - {fileID: 21300000, guid: d11c6b4b4b7bd4d418cb998382e27f76, type: 3}
+  - {fileID: 21300000, guid: ce9c4efa3f4ec044db9b7c75394efcf1, type: 3}
+  - {fileID: 21300000, guid: 61002fdb00273104b89ee4f70212783d, type: 3}
+  - {fileID: 21300000, guid: a574fee440fe5694caf058400935e77e, type: 3}
+  - {fileID: 21300000, guid: 2a612b158f43cb84bb358ebf49d88b56, type: 3}
 --- !u!4 &1414689359
 Transform:
   m_ObjectHideFlags: 0

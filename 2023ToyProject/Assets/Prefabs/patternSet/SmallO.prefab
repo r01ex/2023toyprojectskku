@@ -1311,7 +1311,7 @@ GameObject:
   - component: {fileID: -8694603227190412846}
   m_Layer: 0
   m_Name: SmallO
-  m_TagString: Untagged
+  m_TagString: patternset
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

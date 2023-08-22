@@ -281,7 +281,7 @@ SpriteRenderer:
   m_Size: {x: 4.096, y: 4.096}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &4988169971635989962
@@ -301,7 +301,6 @@ MonoBehaviour:
   Shoot5RowPattern: {fileID: 0}
   patternInterval: 1.2
   healthbar: {fileID: 8442690673370145635}
-  nextMoveTime: 1.2
 --- !u!50 &955115034370399629
 Rigidbody2D:
   serializedVersion: 4

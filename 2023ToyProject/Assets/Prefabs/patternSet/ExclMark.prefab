@@ -2775,7 +2775,7 @@ GameObject:
   - component: {fileID: 8955827741527270841}
   m_Layer: 0
   m_Name: ExclMark
-  m_TagString: Untagged
+  m_TagString: patternset
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

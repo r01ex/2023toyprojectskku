@@ -12,12 +12,16 @@ public class GameplayManager : MonoBehaviour
     [SerializeField]
     private GameObject bossClearPanel;
 
+    [SerializeField]
+    RawImage background;
     [HideInInspector]
     public bool isGameOver = false;
 
     int currentBoss=0;
     [SerializeField]
     GameObject[] bossPrefabs;
+    [SerializeField]
+    Sprite[] backGroundSprites;
 
     // Start is called before the first frame update
 
@@ -58,6 +62,11 @@ public class GameplayManager : MonoBehaviour
     public void SetGameOver(){
         isGameOver = true;
         BulletObjectPool.Instance.TurnOffAll();
+        GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
+        foreach(GameObject g in pattern)
+        {
+            Destroy(g);
+        }
         Invoke("ShowGameOverPanel", 0.3f);
     }
 
@@ -70,5 +79,6 @@ public class GameplayManager : MonoBehaviour
     public void spawnNextBoss(){
         currentBoss++;
         Instantiate(bossPrefabs[currentBoss]);
+        background.texture = backGroundSprites[currentBoss].texture;
     } 
 }
