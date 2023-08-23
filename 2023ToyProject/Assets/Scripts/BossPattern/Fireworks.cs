@@ -19,12 +19,12 @@ public class Fireworks : MonoBehaviour
     {
         StartCoroutine(Shoot(100, 200, 5, 12, 4, 3, 4, 30));
     }
-    public IEnumerator Shoot(int dropframelow, int dropframehigh, float dropSpeed, int splitNumber, float splitSpeed, float volley, float splitvolley,float splitvolleyinterval)
+    public IEnumerator Shoot(int dropframelow, int dropframehigh, float dropSpeed, int splitNumber, float splitSpeed, float volley, float splitvolley,float splitvolleyinterval, int stageNumber = 0)
     {
         for (int i = 0; i < volley; i++)
         {
             Vector3 spawnPos = new Vector3(Random.Range(-3f, 3f), transform.position.y, transform.position.z);
-            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageNumber);
             if (enemyObject != null)
             {
                 enemyObject.transform.position = spawnPos;
@@ -48,7 +48,7 @@ public class Fireworks : MonoBehaviour
                         float dirx = Mathf.Cos((angle * Mathf.PI) / 180f);
                         float diry =  Mathf.Sin((angle * Mathf.PI) / 180f);
                         Vector3 movedir = new Vector3(dirx, diry, 0).normalized;
-                        GameObject splinter = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                        GameObject splinter = BulletObjectPool.Instance.GetPooledEnemyBullet(stageNumber);
                         if (splinter != null)
                         {
                             splinter.transform.position = explodePos;

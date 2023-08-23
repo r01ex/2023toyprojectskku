@@ -16,7 +16,7 @@ public class NH3Gimmick : MonoBehaviour
         
     }
     /// <summary>
-    /// offsetY´Â 3.5~1»çÀÌ
+    /// offsetYï¿½ï¿½ 3.5~1ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     void spawn(float speed, float spawnY, float accel)
     {
@@ -37,7 +37,7 @@ public class NH3Gimmick : MonoBehaviour
             enemyObject.GetComponent<EnemyBullet>().move4Init(speed, Vector2.right, Vector2.down, accel);
         }
     }
-    public IEnumerator Shoot(float volley, float interval)
+    public IEnumerator Shoot(float volley, float interval, int stageIndex = 0)
     {
         float xspeed = Random.Range(2f, 4f);
         float yoffset = Random.Range(1f, 3.5f);

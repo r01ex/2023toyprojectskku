@@ -21,9 +21,9 @@ public class Helix : MonoBehaviour
     }
 
     /// <summary>
-    /// intervalÀº ¹ß»ç¼Óµµ(½¬´Â ÇÁ·¹ÀÓ ±æÀÌ), widthNumber´Â ÁøÆø¿¡ ÀÖ´Â Åº¼ö*2, width_separationÀº Åº°£ °¡·Î °£°Ý, diminisher_mult´Â µÕ±Û¾îÁö´Â Á¤µµ 0-2»çÀÌ°ª, ismiddleÀº Áß¾Ó»ý¼ºÇÒÁö 
+    /// intervalï¿½ï¿½ ï¿½ß»ï¿½Óµï¿½(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½), widthNumberï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ Åºï¿½ï¿½*2, width_separationï¿½ï¿½ Åºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, diminisher_multï¿½ï¿½ ï¿½Õ±Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 0-2ï¿½ï¿½ï¿½Ì°ï¿½, ismiddleï¿½ï¿½ ï¿½ß¾Ó»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
     /// </summary>
-    public IEnumerator ShootSingle(float moveSpeed, int totalbullet, int interval, float offset, int widthNumber, float width_separation,float diminisher_mult, bool ismiddle)
+    public IEnumerator ShootSingle(float moveSpeed, int totalbullet, int interval, float offset, int widthNumber, float width_separation,float diminisher_mult, bool ismiddle, int stageIndex = 0)
     {
         float startPos;
         if (ismiddle)
@@ -40,7 +40,7 @@ public class Helix : MonoBehaviour
             float diminisher = 0;
             for (int j = 0; j < widthNumber / 2; j++)
             {
-                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos;
@@ -57,7 +57,7 @@ public class Helix : MonoBehaviour
             }
             for (int j = 0; j < widthNumber / 2; j++)
             {
-                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos;
@@ -74,7 +74,7 @@ public class Helix : MonoBehaviour
             }
             for (int j = 0; j < widthNumber / 2; j++)
             {
-                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos;
@@ -91,7 +91,7 @@ public class Helix : MonoBehaviour
             }
             for (int j = 0; j < widthNumber / 2; j++)
             {
-                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos;
@@ -109,9 +109,9 @@ public class Helix : MonoBehaviour
         }
     }
     /// <summary>
-    /// intervalÀº ¹ß»ç¼Óµµ(½¬´Â ÇÁ·¹ÀÓ ±æÀÌ), widthNumber´Â ÁøÆø¿¡ ÀÖ´Â Åº¼ö*2, width_separationÀº Åº°£ °¡·Î °£°Ý, diminisher_mult´Â µÕ±Û¾îÁö´Â Á¤µµ 0-2»çÀÌ°ª, ismiddleÀº Áß¾Ó»ý¼ºÇÒÁö 
+    /// intervalï¿½ï¿½ ï¿½ß»ï¿½Óµï¿½(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½), widthNumberï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ Åºï¿½ï¿½*2, width_separationï¿½ï¿½ Åºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, diminisher_multï¿½ï¿½ ï¿½Õ±Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 0-2ï¿½ï¿½ï¿½Ì°ï¿½, ismiddleï¿½ï¿½ ï¿½ß¾Ó»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
     /// </summary>
-    public IEnumerator ShootDouble(float moveSpeed, int totalbullet, int interval, int widthNumber, float width_separation,float diminisher_mult, bool ismiddle)
+    public IEnumerator ShootDouble(float moveSpeed, int totalbullet, int interval, int widthNumber, float width_separation,float diminisher_mult, bool ismiddle, int stageNumber = 0)
     {
         float startPos;
         if (ismiddle)
@@ -131,7 +131,7 @@ public class Helix : MonoBehaviour
             {
                 spawnPos1 += new Vector3(width_separation - diminisher, 0, 0);
                 spawnPos2 -= new Vector3(width_separation - diminisher, 0, 0);
-                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageNumber);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos1;
@@ -139,7 +139,7 @@ public class Helix : MonoBehaviour
                     EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
                     enemy.move1Init(moveSpeed);
                 }
-                enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageNumber);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos2;
@@ -158,7 +158,7 @@ public class Helix : MonoBehaviour
             {
                 spawnPos1 -= new Vector3(width_separation - diminisher, 0, 0);
                 spawnPos2 += new Vector3(width_separation - diminisher, 0, 0);
-                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageNumber);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos1;
@@ -166,7 +166,7 @@ public class Helix : MonoBehaviour
                     EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
                     enemy.move1Init(moveSpeed);
                 }
-                enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageNumber);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos2;
@@ -185,7 +185,7 @@ public class Helix : MonoBehaviour
             {
                 spawnPos1 -= new Vector3(width_separation - diminisher, 0, 0);
                 spawnPos2 += new Vector3(width_separation - diminisher, 0, 0);
-                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageNumber);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos1;
@@ -193,7 +193,7 @@ public class Helix : MonoBehaviour
                     EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
                     enemy.move1Init(moveSpeed);
                 }
-                enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageNumber);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos2;
@@ -212,7 +212,7 @@ public class Helix : MonoBehaviour
             {
                 spawnPos1 += new Vector3(width_separation - diminisher, 0, 0);
                 spawnPos2 -= new Vector3(width_separation - diminisher, 0, 0);
-                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageNumber);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos1;
@@ -220,7 +220,7 @@ public class Helix : MonoBehaviour
                     EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
                     enemy.move1Init(moveSpeed);
                 }
-                enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageNumber);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos2;

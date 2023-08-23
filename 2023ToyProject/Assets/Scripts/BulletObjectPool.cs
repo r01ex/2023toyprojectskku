@@ -13,6 +13,9 @@ public class BulletObjectPool : MonoBehaviour
     [SerializeField] List<Sprite> enemyBulletSprites;
     #region singleton
     public static BulletObjectPool Instance;
+    //Sound
+    [SerializeField]
+    private EnemyBulletSoundManager enemyBulletSoundManager;
     private void Awake()
     {
         if (Instance == null)
@@ -54,10 +57,13 @@ public class BulletObjectPool : MonoBehaviour
         }
         return null;
     }
-    public GameObject GetPooledEnemyBullet()
+    public GameObject GetPooledEnemyBullet(int stageIndex = 0)
     {
+        enemyBulletSoundManager.PlayAttackSound(stageIndex);
         for (int i = 0; i < amountToPool; i++)
         {
+            //Sound
+            //enemyBulletSoundManager.PlayAttackSound(stageIndex);
             if (!pulledEnemyBullets[i].activeInHierarchy)
             {
                 pulledEnemyBullets[i].transform.GetChild(0).gameObject.GetComponent<EnemybulletInner>().isHit = false;

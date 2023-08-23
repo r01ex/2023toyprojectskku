@@ -26,7 +26,7 @@ public class TrailShots : MonoBehaviour
         //StartCoroutine(RandomVolley(5f, 7f, 10, 20, 5, 40, 800));
         ShootSingleFollow(4, 20, 800);
     }
-    IEnumerator LeaveTrail(GameObject bullet, int interval, int duration)
+    IEnumerator LeaveTrail(GameObject bullet, int interval, int duration, int stageIndex = 0)
     {
         while (bullet.activeInHierarchy)
         {
@@ -38,7 +38,7 @@ public class TrailShots : MonoBehaviour
                 }
                 yield return new WaitForEndOfFrame();
             }
-            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
             if (enemyObject != null)
             {
                 enemyObject.transform.position = bullet.transform.position;
@@ -92,25 +92,25 @@ public class TrailShots : MonoBehaviour
             StartCoroutine(LeaveTrailDisappearAtOnce(enemyObject, trailInterval, trailDuration));
         }
     }
-    public void SnipeShootSingle(float moveSpeed, int trailInterval, int trailDuration)
+    public void SnipeShootSingle(float moveSpeed, int trailInterval, int trailDuration, int stageIndex = 0)
     {
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+        GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
         if (enemyObject != null)
         {
             enemyObject.transform.position = spawnPos;
             enemyObject.SetActive(true);
             EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
             enemy.move3Init(moveSpeed, (PlayerManager.Instance.transform.position - this.transform.position).normalized);
-            StartCoroutine(LeaveTrail(enemyObject, trailInterval, trailDuration));
+            StartCoroutine(LeaveTrail(enemyObject, trailInterval, trailDuration, stageIndex));
         }
     }
-    public IEnumerator RandomVolley(float moveSpeedRangelow, float moveSpeedRangehigh, int intervalRangelow, int intervalRangehigh, float volley, int trailInterval, int trailDuration)
+    public IEnumerator RandomVolley(float moveSpeedRangelow, float moveSpeedRangehigh, int intervalRangelow, int intervalRangehigh, float volley, int trailInterval, int trailDuration, int stageIndex = 0)
     {
         for (int i = 0; i < volley; i++)
         {
             Vector3 spawnPos = new Vector3(Random.Range(-3.2f, 3.2f), transform.position.y, transform.position.z);
-            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
             if (enemyObject != null)
             {
                 enemyObject.transform.position = spawnPos;
@@ -145,17 +145,17 @@ public class TrailShots : MonoBehaviour
             }
         }
     }
-    public void ShootSingleFollow(float moveSpeed, int trailInterval, int trailDuration)
+    public void ShootSingleFollow(float moveSpeed, int trailInterval, int trailDuration, int stageIndex = 0)
     {
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+        GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
         if (enemyObject != null)
         {
             enemyObject.transform.position = spawnPos;
             enemyObject.SetActive(true);
             EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
             enemy.move5Init(moveSpeed);
-            StartCoroutine(LeaveTrail(enemyObject, trailInterval, trailDuration));
+            StartCoroutine(LeaveTrail(enemyObject, trailInterval, trailDuration, stageIndex));
         }
     }
 }

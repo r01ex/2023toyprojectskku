@@ -18,12 +18,12 @@ public class ShotGun5 : MonoBehaviour
     {
         
     }
-    public void Shoot(float moveSpeed, Vector3 offset)
+    public void Shoot(float moveSpeed, Vector3 offset, int stageIndex = 0)
     {
         for (int i = 0; i < 5; i++)
         {
             Vector3 spawnPos = top5[i] + offset;
-            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
             if (enemyObject != null)
             {
                 enemyObject.transform.position = spawnPos;
@@ -33,12 +33,12 @@ public class ShotGun5 : MonoBehaviour
             }
         }
     }
-    public IEnumerator Shotgun(float volley, float speed)
+    public IEnumerator Shotgun(float volley, float speed, int stageIndex = 0)
     {
         float offset = Random.Range(-1f, 1f);
         for (int i = 0; i < volley; i++)
         {
-            Shoot(speed, new Vector3(offset, 0, 0));
+            Shoot(speed, new Vector3(offset, 0, 0), stageIndex);
             for (int j = 0; j < 10; j++)
             {
                 yield return new WaitForEndOfFrame();

@@ -21,7 +21,7 @@ public class Spiral : MonoBehaviour
         //StartCoroutine(ShootBackAndForth(3.5f, 8, 10, 15, 4));
         allAroundShotgunSingle(6, 40);
     }
-    public IEnumerator Shoot(float moveSpeed, int totalbullet, int interval, float angleOffset, float angle_increment)
+    public IEnumerator Shoot(float moveSpeed, int totalbullet, int interval, float angleOffset, float angle_increment, int stageIndex = 0)
     {
         float angle = 0f + angleOffset;
         for (int i = 0; i < totalbullet; i++)
@@ -30,7 +30,7 @@ public class Spiral : MonoBehaviour
             float diry = this.transform.position.y + Mathf.Sin((angle * Mathf.PI) / 180f);
             Vector3 movedir = (new Vector3(dirx, diry, 0) - this.transform.position);
             Vector3 spawnPos = this.transform.position;
-            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
             if (enemyObject != null)
             {
                 enemyObject.transform.position = spawnPos;
@@ -45,7 +45,7 @@ public class Spiral : MonoBehaviour
             }
         }
     }
-    public IEnumerator Shoot4(float moveSpeed, int totalbullet, int interval, float angle_increment)
+    public IEnumerator Shoot4(float moveSpeed, int totalbullet, int interval, float angle_increment, int stageIndex = 0)
     {
         float angle = 0f;
         for (int i = 0; i < totalbullet; i++)
@@ -56,7 +56,7 @@ public class Spiral : MonoBehaviour
                 float diry = this.transform.position.y + Mathf.Sin(((angle + 90 * wing) * Mathf.PI) / 180f);
                 Vector3 movedir = (new Vector3(dirx, diry, 0) - this.transform.position);
                 Vector3 spawnPos = this.transform.position;
-                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos;
@@ -72,7 +72,7 @@ public class Spiral : MonoBehaviour
             }
         }
     }
-    public IEnumerator ShootBackAndForth(float moveSpeed, int bulletsInOneVolley, int interval, float angle_increment,int totalBackandForth)
+    public IEnumerator ShootBackAndForth(float moveSpeed, int bulletsInOneVolley, int interval, float angle_increment,int totalBackandForth, int stageIndex = 0)
     {
         float angle = -90f - (bulletsInOneVolley * angle_increment / 2);
         for (int k = 0; k < totalBackandForth; k++)
@@ -83,7 +83,7 @@ public class Spiral : MonoBehaviour
                 float diry = this.transform.position.y + Mathf.Sin((angle * Mathf.PI) / 180f);
                 Vector3 movedir = (new Vector3(dirx, diry, 0) - this.transform.position);
                 Vector3 spawnPos = this.transform.position;
-                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos;
@@ -103,7 +103,7 @@ public class Spiral : MonoBehaviour
                 float diry = this.transform.position.y + Mathf.Sin((angle * Mathf.PI) / 180f);
                 Vector3 movedir = (new Vector3(dirx, diry, 0) - this.transform.position);
                 Vector3 spawnPos = this.transform.position;
-                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
                 if (enemyObject != null)
                 {
                     enemyObject.transform.position = spawnPos;
@@ -119,7 +119,7 @@ public class Spiral : MonoBehaviour
             }
         }
     }
-    public void allAroundShotgunSingle(float moveSpeed, int totalbullet)
+    public void allAroundShotgunSingle(float moveSpeed, int totalbullet, int stageIndex = 0)
     {
         float angle = 0f;
         for (int i = 0; i < totalbullet; i++)
@@ -128,7 +128,7 @@ public class Spiral : MonoBehaviour
             float diry = this.transform.position.y + Mathf.Sin((angle * Mathf.PI) / 180f);
             Vector3 movedir = (new Vector3(dirx, diry, 0) - this.transform.position);
             Vector3 spawnPos = this.transform.position;
-            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
             if (enemyObject != null)
             {
                 enemyObject.transform.position = spawnPos;

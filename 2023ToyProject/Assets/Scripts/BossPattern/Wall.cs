@@ -22,7 +22,7 @@ public class Wall : MonoBehaviour
         StartCoroutine(ShootLines(5f, 4f, 10, 10, 200));
     }
 
-    public IEnumerator ShootLines(float moveSpeed, float width, int bulletNum, int lineNum, int interval)
+    public IEnumerator ShootLines(float moveSpeed, float width, int bulletNum, int lineNum, int interval, int stageIndex = 0)
     {
         float startPos;
 
@@ -33,7 +33,7 @@ public class Wall : MonoBehaviour
 
             for (int j = 0; j < bulletNum; j++)
             {
-                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+                GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
 
                 if (enemyObject != null )
                 {

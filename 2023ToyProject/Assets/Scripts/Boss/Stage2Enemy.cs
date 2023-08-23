@@ -83,12 +83,12 @@ public class Stage2Enemy : MonoBehaviour
         while (true)
         {
             anim.SetTrigger("doAttack");
-            StartCoroutine(ShotGun5Pattern.Shotgun(shotgunVolleys, shotgunSpeed));
+            StartCoroutine(ShotGun5Pattern.Shotgun(shotgunVolleys, shotgunSpeed, 2));
 
             yield return new WaitForSeconds(patternInterval * 0.5f + shotgunVolleys / 12f);
 
             anim.SetTrigger("doAttack");
-            StartCoroutine(SpiralPattern.ShootBackAndForth(backnforthSpeed, backnforthBulletInOneVolley, backnforthInterval, backnforthAngleIncrement, backnforthTotal));
+            StartCoroutine(SpiralPattern.ShootBackAndForth(backnforthSpeed, backnforthBulletInOneVolley, backnforthInterval, backnforthAngleIncrement, backnforthTotal, 2));
 
             yield return new WaitForSeconds(patternInterval * 0.5f + backnforthBulletInOneVolley * backnforthInterval * backnforthTotal / 120f);
 
@@ -96,7 +96,7 @@ public class Stage2Enemy : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 anim.SetTrigger("doAttack");
-                SpiralPattern.allAroundShotgunSingle(allAroundShotgunSpeed, allAroundShotgunTotalbullet + i * 5);
+                SpiralPattern.allAroundShotgunSingle(allAroundShotgunSpeed, allAroundShotgunTotalbullet + i * 5, 2);
 
                 yield return new WaitForSeconds(patternInterval);
             }

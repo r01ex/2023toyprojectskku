@@ -23,12 +23,12 @@ public class Pinch : MonoBehaviour
     {
         StartCoroutine(MapShoot(6, 20,30));
     }
-    public IEnumerator MapShoot(float moveSpeed, int volley, int interval) //6,20
+    public IEnumerator MapShoot(float moveSpeed, int volley, int interval, int stageIndex = 0) //6,20
     {
         for (int i = 0; i < volley; i++)
         {
             Vector3 spawnPos = this.transform.position;
-            GameObject enemyObjectRight = BulletObjectPool.Instance.GetPooledEnemyBullet();
+            GameObject enemyObjectRight = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
             if (enemyObjectRight != null)
             {
                 enemyObjectRight.transform.position = spawnPos + new Vector3(0.3f, 0, 0);
@@ -36,7 +36,7 @@ public class Pinch : MonoBehaviour
                 EnemyBullet enemy = enemyObjectRight.GetComponent<EnemyBullet>();
                 enemy.move2Init(moveSpeed, lowEndRight + new Vector3((-i-1) * (5f / volley), 0, 0));
             }
-            GameObject enemyObjectLeft = BulletObjectPool.Instance.GetPooledEnemyBullet();
+            GameObject enemyObjectLeft = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
             if (enemyObjectLeft != null)
             {
                 enemyObjectLeft.transform.position = spawnPos + new Vector3(-0.3f, 0, 0);

@@ -81,14 +81,14 @@ public class Stage4Enemy : MonoBehaviour
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    BubblePattern.Shoot(ATGCMoveSpeed, Random.Range(-2.5f, 2.5f), 0, Random.Range(0, 2));
+                    BubblePattern.Shoot(ATGCMoveSpeed, Random.Range(-2.5f, 2.5f), 0, Random.Range(0, 2), 4);
 
                     yield return new WaitForSeconds(patternInterval * 0.25f);
                 }
 
                 yield return new WaitForSeconds(patternInterval * 0.75f);
 
-                StartCoroutine(WallPattern.ShootLines(wallMoveSpeed, wallWidth, wallBulletNum, wallLineNum, wallInterval));
+                StartCoroutine(WallPattern.ShootLines(wallMoveSpeed, wallWidth, wallBulletNum, wallLineNum, wallInterval, 4));
 
                 yield return new WaitForSeconds(patternInterval + wallLineNum * wallInterval / 120f);
             }
@@ -96,14 +96,14 @@ public class Stage4Enemy : MonoBehaviour
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    BubblePattern.Shoot(ATGCMoveSpeed * 1.5f, Random.Range(-2.5f, 2.5f), 0, Random.Range(0, 2));
+                    BubblePattern.Shoot(ATGCMoveSpeed * 1.5f, Random.Range(-2.5f, 2.5f), 0, Random.Range(0, 2), 4);
 
                     yield return new WaitForSeconds(patternInterval * 0.25f);
                 }
 
                 yield return new WaitForSeconds(patternInterval * 0.75f);
 
-                StartCoroutine(WallPattern.ShootLines(wallMoveSpeed * 1.5f, wallWidth, wallBulletNum, wallLineNum, (int)(wallInterval / 1.5f)));
+                StartCoroutine(WallPattern.ShootLines(wallMoveSpeed * 1.5f, wallWidth, wallBulletNum, wallLineNum, (int)(wallInterval / 1.5f), 4));
 
                 yield return new WaitForSeconds(patternInterval + wallLineNum * (int)(wallInterval / 1.5f) / 120f);
             }

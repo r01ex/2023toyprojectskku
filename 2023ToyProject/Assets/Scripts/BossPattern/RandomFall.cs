@@ -15,12 +15,12 @@ public class RandomFall : MonoBehaviour
     {
         
     }
-    public IEnumerator Shoot(float moveSpeedRangelow, float moveSpeedRangehigh, int intervalRangelow, int intervalRangehigh, float volley)
+    public IEnumerator Shoot(float moveSpeedRangelow, float moveSpeedRangehigh, int intervalRangelow, int intervalRangehigh, float volley, int stageIndex = 0)
     {
         for(int i=0;i<volley;i++)
         {
             Vector3 spawnPos = new Vector3(Random.Range(-3.2f,3.2f), transform.position.y, transform.position.z);
-            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
             if (enemyObject != null)
             {
                 enemyObject.transform.position = spawnPos;

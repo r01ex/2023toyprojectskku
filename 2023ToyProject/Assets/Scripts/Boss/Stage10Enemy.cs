@@ -123,22 +123,22 @@ public class Stage10Enemy : MonoBehaviour
                 anim.SetTrigger("doAttack");
                 for (int i = 0; i < 5; i++)
                 {
-                    BubblePattern.Shoot(ATGCMoveSpeed, Random.Range(-2.5f, 2.5f), 0, Random.Range(0, 2));
+                    BubblePattern.Shoot(ATGCMoveSpeed, Random.Range(-2.5f, 2.5f), 0, Random.Range(0, 2), 10);
 
                     yield return new WaitForSeconds(patternInterval * 0.25f);
                 }
 
                 yield return new WaitForSeconds(patternInterval * 0.5f);
                 anim.SetTrigger("doAttack");
-                StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 2.5f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));                
-                StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 0f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
-                StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, -2.5f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
+                StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 2.5f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true, 10));                
+                StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 0f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true, 10));
+                StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, -2.5f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true, 10));
 
                 yield return new WaitForSeconds(patternInterval * (-3.5f) + helixTotalBullet * helixInterval / 120f);
                 anim.SetTrigger("doAttack");
                 for (int i = 0; i < 5; i++)
                 {
-                    StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleOffset, spiralAngleIncrement));
+                    StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleOffset, spiralAngleIncrement, 10));
 
                     yield return new WaitForSeconds(patternInterval * 0f + spiralTotalBullet * spiralInterval / 120f / 5f);
                 }
@@ -150,16 +150,16 @@ public class Stage10Enemy : MonoBehaviour
                 anim.SetTrigger("doAttack");
                 for (int i = 0; i < 6; i++)
                 {
-                    DiagonalPattern.ShootDiagonal(diagonalMoveSpeed, Random.Range(1f, 2.6f), diagonalBulletNum, Random.Range(0, 2));
+                    DiagonalPattern.ShootDiagonal(diagonalMoveSpeed, Random.Range(1f, 2.6f), diagonalBulletNum, Random.Range(0, 2), 10);
 
                     yield return new WaitForSeconds(patternInterval * 0.25f);
                 }
 
                 yield return new WaitForSeconds(patternInterval * 1.5f);
                 anim.SetTrigger("doAttack");
-                StartCoroutine(WallPattern.ShootLines(wallMoveSpeed, wallWidth, wallBulletNum, wallLineNum, wallInterval));
+                StartCoroutine(WallPattern.ShootLines(wallMoveSpeed, wallWidth, wallBulletNum, wallLineNum, wallInterval, 10));
 
-                StartCoroutine(SnipePattern.RandomvolleyWithSignal(snipeVolley, snipeMoveSpeed, snipeSignalFrame, snipeInterval));
+                StartCoroutine(SnipePattern.RandomvolleyWithSignal(snipeVolley, snipeMoveSpeed, snipeSignalFrame, snipeInterval, 10));
 
                 yield return new WaitForSeconds(patternInterval * 2f + (snipeSignalFrame + snipeVolley * snipeInterval * 2) / 120f);
             }

@@ -17,12 +17,12 @@ public class Snipe : MonoBehaviour
     {
         
     }
-    public IEnumerator ShootVolley(int volley, float moveSpeed, float interval)
+    public IEnumerator ShootVolley(int volley, float moveSpeed, float interval , int stageIndex = 0)
     {
         for (int i = 0; i < volley; i++)
         {
             Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
             if (enemyObject != null)
             {
                 enemyObject.transform.position = spawnPos;
@@ -36,10 +36,10 @@ public class Snipe : MonoBehaviour
             }
         }
     }
-    public void ShootSingle(float moveSpeed)
+    public void ShootSingle(float moveSpeed, int stageIndex = 0)
     {
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+        GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
         if (enemyObject != null)
         {
             enemyObject.transform.position = spawnPos;
@@ -48,35 +48,35 @@ public class Snipe : MonoBehaviour
             enemy.move3Init(moveSpeed, (PlayerManager.Instance.transform.position - this.transform.position).normalized);
         }
     }
-    public IEnumerator ShootWithSignaling(int volley, float moveSpeed, int signalFrame, int interval)
+    public IEnumerator ShootWithSignaling(int volley, float moveSpeed, int signalFrame, int interval, int stageIndex = 0)
     {
         for (int i = 0; i < volley; i++)
         {
             Vector3 playerSnapshot = PlayerManager.Instance.transform.position;
-            StartCoroutine(spawnLine(this.transform.position, this.transform.position + (playerSnapshot - this.transform.position).normalized * 30, signalFrame, moveSpeed));
+            StartCoroutine(spawnLine(this.transform.position, this.transform.position + (playerSnapshot - this.transform.position).normalized * 30, signalFrame, moveSpeed, stageIndex));
             for (int j = 0; j < interval; j++)
             {
                 yield return new WaitForEndOfFrame();
             }
         }
     }
-    public IEnumerator RandomvolleyWithSignal(int volley, float moveSpeed, int signalFrame, int interval)
+    public IEnumerator RandomvolleyWithSignal(int volley, float moveSpeed, int signalFrame, int interval, int stageIndex = 0)
     {
         for (int i = 0; i < volley; i++)
         {            
-            StartCoroutine(spawnLine(new Vector3(-4.5f,Random.Range(-4f,4f),0), new Vector3(4.5f, Random.Range(-4f, 4f), 0), signalFrame, moveSpeed));   
+            StartCoroutine(spawnLine(new Vector3(-4.5f,Random.Range(-4f,4f),0), new Vector3(4.5f, Random.Range(-4f, 4f), 0), signalFrame, moveSpeed, stageIndex));   
             for (int j = 0; j < interval; j++)
             {
                 yield return new WaitForEndOfFrame();
             }
-            StartCoroutine(spawnLine(new Vector3(Random.Range(-3f, 3f), 5.5f, 0), new Vector3(Random.Range(-3f, 3f), -5.5f, 0), signalFrame, moveSpeed));
+            StartCoroutine(spawnLine(new Vector3(Random.Range(-3f, 3f), 5.5f, 0), new Vector3(Random.Range(-3f, 3f), -5.5f, 0), signalFrame, moveSpeed, stageIndex));
             for (int j = 0; j < interval; j++)
             {
                 yield return new WaitForEndOfFrame();
             }
         }
     }
-    public IEnumerator spawnLine(Vector3 pos1, Vector3 pos2, int signalFrame, float moveSpeed)
+    public IEnumerator spawnLine(Vector3 pos1, Vector3 pos2, int signalFrame, float moveSpeed, int stageIndex = 0)
     {
         LineRenderer lr = Instantiate(lrPrefab).GetComponent<LineRenderer>();
         lr.transform.parent = this.transform;
@@ -96,7 +96,7 @@ public class Snipe : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         Destroy(lr.gameObject);
-        GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+        GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
         if (enemyObject != null)
         {
             enemyObject.transform.position = pos1;

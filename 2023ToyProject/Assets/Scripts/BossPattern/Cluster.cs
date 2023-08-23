@@ -18,13 +18,13 @@ public class Cluster : MonoBehaviour
     /// <summary>
     /// moveSpeed > 1
     /// </summary>
-    public void Shoot(int bullets, float moveSpeed, float maxTargetPosOffset)
+    public void Shoot(int bullets, float moveSpeed, float maxTargetPosOffset, int stageIndex = 0)
     {
         Vector3 playerPos = PlayerManager.Instance.transform.position;
         for (int i = 0; i < bullets; i++)
         {
             Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
             if (enemyObject != null)
             {
                 enemyObject.transform.position = spawnPos;

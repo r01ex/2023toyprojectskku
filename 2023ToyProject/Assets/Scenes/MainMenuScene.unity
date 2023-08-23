@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 200673276}
   - component: {fileID: 200673277}
+  - component: {fileID: 200673278}
   m_Layer: 0
   m_Name: CO2
   m_TagString: Untagged
@@ -207,6 +208,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &200673278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200673275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c36ab78d34fa1344b9a60368a861af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxYOffset: 0.1
+  movementSpeed: 1
 --- !u!1 &288785376
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +234,7 @@ GameObject:
   - component: {fileID: 288785378}
   - component: {fileID: 288785379}
   m_Layer: 0
-  m_Name: IMG_1511
+  m_Name: CPropane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,8 +319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c36ab78d34fa1344b9a60368a861af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxYOffset: 0.4
-  movementSpeed: 6
+  maxYOffset: 0.1
+  movementSpeed: 3
 --- !u!1 &382074809
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +333,7 @@ GameObject:
   - component: {fileID: 382074811}
   - component: {fileID: 382074812}
   m_Layer: 0
-  m_Name: IMG_1505
+  m_Name: H2CO3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -403,8 +418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c36ab78d34fa1344b9a60368a861af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxYOffset: 0.6
-  movementSpeed: 4
+  maxYOffset: 0.13
+  movementSpeed: 3
 --- !u!1 &408966080
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,8 +517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c36ab78d34fa1344b9a60368a861af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxYOffset: 0.5
-  movementSpeed: 2
+  maxYOffset: 0.15
+  movementSpeed: 1
 --- !u!1 &424235359
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +531,7 @@ GameObject:
   - component: {fileID: 424235361}
   - component: {fileID: 424235362}
   m_Layer: 0
-  m_Name: IMG_1507
+  m_Name: Propane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -601,8 +616,150 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c36ab78d34fa1344b9a60368a861af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxYOffset: 0.2
-  movementSpeed: 3
+  maxYOffset: 0.07
+  movementSpeed: 1.2
+--- !u!1 &471126400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 471126403}
+  - component: {fileID: 471126402}
+  - component: {fileID: 471126401}
+  m_Layer: 0
+  m_Name: MainMenuSoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &471126401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471126400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b49253615af3440458c4c695865c5cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMainMenuBGM: {fileID: 8300000, guid: 466fd76a61f36c9428ce7100e1277ca3, type: 3}
+--- !u!82 &471126402
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471126400}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &471126403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471126400}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &551405078
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +772,7 @@ GameObject:
   - component: {fileID: 551405080}
   - component: {fileID: 551405081}
   m_Layer: 0
-  m_Name: IMG_1509
+  m_Name: Gas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -700,7 +857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c36ab78d34fa1344b9a60368a861af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxYOffset: 0.3
+  maxYOffset: 0.08
   movementSpeed: 3
 --- !u!1 &629967325
 GameObject:
@@ -761,7 +918,7 @@ GameObject:
   - component: {fileID: 720459841}
   - component: {fileID: 720459842}
   m_Layer: 0
-  m_Name: IMG_1512
+  m_Name: Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -942,8 +1099,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1019607062}
   - component: {fileID: 1019607063}
+  - component: {fileID: 1019607064}
   m_Layer: 0
-  m_Name: IMG_1506
+  m_Name: Heavy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1016,6 +1174,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1019607064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019607061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c36ab78d34fa1344b9a60368a861af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxYOffset: 0.12
+  movementSpeed: 1.5
 --- !u!1 &1205231878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,7 +1355,7 @@ GameObject:
   - component: {fileID: 1483105795}
   - component: {fileID: 1483105796}
   m_Layer: 0
-  m_Name: IMG_1504
+  m_Name: MainCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1282,7 +1454,7 @@ GameObject:
   - component: {fileID: 1560201872}
   - component: {fileID: 1560201873}
   m_Layer: 0
-  m_Name: IMG_1510
+  m_Name: N2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1367,8 +1539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c36ab78d34fa1344b9a60368a861af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxYOffset: 0.3
-  movementSpeed: 2
+  maxYOffset: 0.07
+  movementSpeed: 1.5
 --- !u!1 &1586545224
 GameObject:
   m_ObjectHideFlags: 0

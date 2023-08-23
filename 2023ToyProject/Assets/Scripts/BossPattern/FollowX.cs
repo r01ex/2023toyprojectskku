@@ -15,10 +15,10 @@ public class FollowX : MonoBehaviour
     {
         
     }
-    public IEnumerator Shoot(float followSpeed, float volley, int interval, float fallSpeed)
+    public IEnumerator Shoot(float followSpeed, float volley, int interval, float fallSpeed, int stageIndex = 0)
     {
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+        GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
         if (enemyObject != null)
         {
             enemyObject.transform.position = spawnPos;
@@ -32,7 +32,7 @@ public class FollowX : MonoBehaviour
         }
         for (int i = 0; i < volley-1; i++)
         {
-            GameObject newEnemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+            GameObject newEnemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
             if (newEnemyObject != null)
             {
                 newEnemyObject.transform.position = spawnPos;

@@ -65,12 +65,12 @@ public class Stage1Enemy : MonoBehaviour
             for (int i = 0; i < 5; i++)
             {
                 anim.SetTrigger("doAttack");
-                Shoot5RowPattern.Shoot(5, Random.Range(-1.3f, 1.3f));
+                Shoot5RowPattern.Shoot(5, Random.Range(-1.3f, 1.3f), 1);
 
                 yield return new WaitForSeconds(patternInterval);
             }
             anim.SetTrigger("doAttack");
-            StartCoroutine(WallPattern.ShootLines(3.5f, 7.6f, 28, 1, 10));
+            StartCoroutine(WallPattern.ShootLines(3.5f, 7.6f, 28, 1, 10, 1));
 
             yield return new WaitForSeconds(patternInterval);
         }

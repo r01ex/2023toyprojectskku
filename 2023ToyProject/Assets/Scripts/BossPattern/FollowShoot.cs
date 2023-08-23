@@ -15,10 +15,10 @@ public class FollowShoot : MonoBehaviour
     {
         
     }
-    public void Shoot(float moveSpeed)
+    public void Shoot(float moveSpeed, int stageNumber = 0)
     {
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+        GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageNumber);
         if (enemyObject != null)
         {
             enemyObject.transform.position = spawnPos;

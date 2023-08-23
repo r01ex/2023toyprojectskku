@@ -69,6 +69,10 @@ public class Stage3Enemy : MonoBehaviour
     private Color originalColor;
     private Renderer enemyRenderer;
 
+    //Gimmick Sound
+    [SerializeField]
+    private GimmickSoundManager gimmickSoundManager;
+
     private void Awake() {
         anim = GetComponent<Animator>();
     }
@@ -101,19 +105,20 @@ public class Stage3Enemy : MonoBehaviour
         while (true)
         {
             anim.SetTrigger("doAttack");
-            StartCoroutine(PinchPattern.MapShoot(pinchMoveSpeed, pinchVolley, pinchInterval));
+            StartCoroutine(PinchPattern.MapShoot(pinchMoveSpeed, pinchVolley, pinchInterval, 3));
 
             yield return new WaitForSeconds(patternInterval * (-1f) + pinchVolley * pinchInterval / 120f);
             anim.SetTrigger("doAttack");
-            StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleOffset, spiralAngleIncrement));
+            StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleOffset, spiralAngleIncrement, 3));
 
             yield return new WaitForSeconds(patternInterval * (-1.5f) + spiralTotalBullet * spiralInterval / 120f);
             anim.SetTrigger("doAttack");
-            StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 0f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
+            StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 0f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true, 3));
 
             yield return new WaitForSeconds(patternInterval * (-1.5f) + helixTotalBullet * helixInterval / 120f);
             anim.SetTrigger("doAttack");
-            StartCoroutine(NH3Gimmick.Shoot(NH3Volley, NH3Inverval));
+            //gimmickSoundManager.PlayGimmickSound(0);
+            StartCoroutine(NH3Gimmick.Shoot(NH3Volley, NH3Inverval, 3));
 
             yield return new WaitForSeconds(patternInterval * (-1f) + NH3Volley * NH3Inverval / 120f);
         }

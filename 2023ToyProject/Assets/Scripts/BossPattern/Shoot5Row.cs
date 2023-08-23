@@ -10,12 +10,12 @@ public class Shoot5Row : MonoBehaviour
     {
         
     }
-    public void Shoot(float moveSpeed,float offset)
+    public void Shoot(float moveSpeed,float offset, int stageIndex = 0)
     {
         foreach (float posX in arrPosX)
         {
             Vector3 spawnPos = new Vector3(posX+offset, transform.position.y, transform.position.z);
-            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+            GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet(stageIndex);
             if (enemyObject != null)
             {
                 enemyObject.transform.position = spawnPos;

@@ -106,7 +106,7 @@ public class Stage9Enemy : MonoBehaviour
             yield return new WaitForSeconds(3f + patternInterval * 2f);
             for (int i = 0; i < 4; i++)
             {
-                ClusterPattern.Shoot(clusterBullets, clusterMoveSpeed, clusterMaxTargetPosOffset);
+                ClusterPattern.Shoot(clusterBullets, clusterMoveSpeed, clusterMaxTargetPosOffset, 9);
 
                 yield return new WaitForSeconds(patternInterval * 0.5f);
             }
@@ -115,14 +115,14 @@ public class Stage9Enemy : MonoBehaviour
                 
             for (int i = 0; i < 5; i++)
             {
-                SpiralPattern.allAroundShotgunSingle(spiralMoveSpeed, spiralTotalbullet + i * 8);
+                SpiralPattern.allAroundShotgunSingle(spiralMoveSpeed, spiralTotalbullet + i * 8, 9);
 
                 yield return new WaitForSeconds(patternInterval);
             }
 
             yield return new WaitForSeconds(patternInterval * 0.5f);
 
-            StartCoroutine(PinchPattern.MapShoot(pinchMoveSpeed, pinchVolley, pinchInterval));
+            StartCoroutine(PinchPattern.MapShoot(pinchMoveSpeed, pinchVolley, pinchInterval, 9));
 
             yield return new WaitForSeconds(patternInterval * 1.5f + pinchVolley * pinchInterval / 120f);
         }

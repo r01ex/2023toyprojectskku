@@ -100,27 +100,27 @@ public class Stage6Enemy : MonoBehaviour
             anim.SetTrigger("doAttack");
             for (int i = 0; i < 3; i++)
             {
-                TrailShotsPattern.SnipeShootSingle(snipeShootSingleMoveSpeed, snipeShootSingleTrailInterval, snipeShootSingleTrailDuration);
+                TrailShotsPattern.SnipeShootSingle(snipeShootSingleMoveSpeed, snipeShootSingleTrailInterval, snipeShootSingleTrailDuration, 6);
 
                 yield return new WaitForSeconds(patternInterval * 0.5f);
             }
 
             yield return new WaitForSeconds(patternInterval * 0.5f);
             anim.SetTrigger("doAttack");
-            StartCoroutine(TrailShotsPattern.RandomVolley(randomVolleyMoveSpeedRangeLow, randomVolleyMoveSpeedRangeHigh, randomVolleyIntervalRangeLow, randomVolleyIntervalRangeHigh, randomVolleyVolley, randomVolleyTrailInterval, randomVolleyTrailDuration));
+            StartCoroutine(TrailShotsPattern.RandomVolley(randomVolleyMoveSpeedRangeLow, randomVolleyMoveSpeedRangeHigh, randomVolleyIntervalRangeLow, randomVolleyIntervalRangeHigh, randomVolleyVolley, randomVolleyTrailInterval, randomVolleyTrailDuration, 6));
 
             yield return new WaitForSeconds(patternInterval + randomVolleyIntervalRangeHigh * randomVolleyVolley / 120f);
             anim.SetTrigger("doAttack");
             for (int i = 0; i < 3; i++)
             {
-                StartCoroutine(FollowXPattern.Shoot(followXFollowSpeed, followXVolley, followXInterval, followXFallSpeed));
+                StartCoroutine(FollowXPattern.Shoot(followXFollowSpeed, followXVolley, followXInterval, followXFallSpeed, 6));
 
                 yield return new WaitForSeconds(patternInterval * 0.5f + followXVolley * followXInterval / 120f);
             }
             anim.SetTrigger("doAttack");
             for (int i = 0; i < 2; i++)
             {
-                TrailShotsPattern.ShootSingleFollow(shootSingleFollowMoveSpeed, shootSingleFollowTrailInterval, shootSingleFollowTrailDuration);
+                TrailShotsPattern.ShootSingleFollow(shootSingleFollowMoveSpeed, shootSingleFollowTrailInterval, shootSingleFollowTrailDuration, 6);
 
                 yield return new WaitForSeconds(patternInterval);
             }
