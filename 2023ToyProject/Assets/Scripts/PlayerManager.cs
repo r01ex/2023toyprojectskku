@@ -130,7 +130,11 @@ public class PlayerManager : MonoBehaviour
             Electricfield.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
         }
     }
-
+    public void instantShieldoff()
+    {
+        Electricfield.tag = "ElectricField";
+        Electricfield.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+    }
     #region player skill
     public void addMaxBullet(int n)
     {

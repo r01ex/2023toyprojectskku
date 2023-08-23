@@ -9,6 +9,7 @@ public class SoundEffectManager : MonoBehaviour
     [SerializeField] AudioSource playershield;
     [SerializeField] AudioSource playerhit;
     [SerializeField] AudioSource enemyhit;
+    [SerializeField] AudioSource victory;
     public static SoundEffectManager Instance;
     private void Awake()
     {
@@ -51,5 +52,9 @@ public class SoundEffectManager : MonoBehaviour
     public void PlayEnemyHit()
     {
         enemyhit.Play();
+    }
+    public void PlayVictory()
+    {
+        victory.Play();
     }
 }

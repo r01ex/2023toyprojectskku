@@ -81,12 +81,13 @@ public class GameplayManager : MonoBehaviour
         {
             if (isGameOver == false)
             {
-                timer.fillAmount = (stageMaxTime - (currenttime/2)) / stageMaxTime;
+                timer.fillAmount = (float)(stageMaxTime - (float)(currenttime/2)) / stageMaxTime;
                 currenttime += 1;
                 if ((currenttime / 2) >= stageMaxTime)
                 {
                     //end by time
                     Debug.Log("Game Over by Time");
+                    showDefeat();
                     break;
                 }
                 totaltimer += 1;
@@ -141,6 +142,8 @@ public class GameplayManager : MonoBehaviour
     } 
     public void showDefeat()
     {
+        isGameOver = true;
+        PlayerManager.Instance.instantShieldoff();
         BulletObjectPool.Instance.TurnOffAll();
         GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
         BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss);
@@ -148,7 +151,6 @@ public class GameplayManager : MonoBehaviour
         {
             Destroy(g);
         }
-        isGameOver = false;
         Time.timeScale = 0;
         bgm.volume = 0.25f;
         defeatCanvas.SetActive(true);
@@ -179,6 +181,7 @@ public class GameplayManager : MonoBehaviour
     }
     public void retryBoss()
     {
+        PlayerManager.Instance.instantShieldoff();
         isGameOver = false;
         BulletObjectPool.Instance.TurnOffAll();
         GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
