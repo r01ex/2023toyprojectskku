@@ -77,17 +77,14 @@ public class Stage3Enemy : MonoBehaviour
     {
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
-        StartEnemyRoutine(); 
+        StartEnemyRoutine();
+        anim.SetBool("isLowHp", false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(hp < maxHp * 0.3){
-            anim.SetBool("isLowHp", true);
-        } else{
-            anim.SetBool("isLowHp", false);
-        }
+
     }
     void StartEnemyRoutine()
     {
@@ -103,18 +100,19 @@ public class Stage3Enemy : MonoBehaviour
 
         while (true)
         {
+            anim.SetTrigger("doAttack");
             StartCoroutine(PinchPattern.MapShoot(pinchMoveSpeed, pinchVolley, pinchInterval));
 
             yield return new WaitForSeconds(patternInterval * (-1f) + pinchVolley * pinchInterval / 120f);
-
+            anim.SetTrigger("doAttack");
             StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleOffset, spiralAngleIncrement));
 
             yield return new WaitForSeconds(patternInterval * (-1.5f) + spiralTotalBullet * spiralInterval / 120f);
-
+            anim.SetTrigger("doAttack");
             StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 0f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
 
             yield return new WaitForSeconds(patternInterval * (-1.5f) + helixTotalBullet * helixInterval / 120f);
-
+            anim.SetTrigger("doAttack");
             StartCoroutine(NH3Gimmick.Shoot(NH3Volley, NH3Inverval));
 
             yield return new WaitForSeconds(patternInterval * (-1f) + NH3Volley * NH3Inverval / 120f);
@@ -136,7 +134,10 @@ public class Stage3Enemy : MonoBehaviour
             {
                 bullet.DestroySelf();
             }
-
+            if (hp < maxHp * 0.3)
+            {
+                anim.SetBool("isLowHp", true);
+            }
             if (hp <= 0)
             {
                 //death

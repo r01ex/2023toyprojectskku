@@ -74,17 +74,14 @@ public class Stage6Enemy : MonoBehaviour
     {
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
-        StartEnemyRoutine(); 
+        StartEnemyRoutine();
+        anim.SetBool("isLowHp", false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(hp < maxHp * 0.3){
-            anim.SetBool("isLowHp", true);
-        } else{
-            anim.SetBool("isLowHp", false);
-        }
+
     }
     void StartEnemyRoutine()
     {
@@ -100,6 +97,7 @@ public class Stage6Enemy : MonoBehaviour
 
         while (true)
         {
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 3; i++)
             {
                 TrailShotsPattern.SnipeShootSingle(snipeShootSingleMoveSpeed, snipeShootSingleTrailInterval, snipeShootSingleTrailDuration);
@@ -108,18 +106,18 @@ public class Stage6Enemy : MonoBehaviour
             }
 
             yield return new WaitForSeconds(patternInterval * 0.5f);
-
+            anim.SetTrigger("doAttack");
             StartCoroutine(TrailShotsPattern.RandomVolley(randomVolleyMoveSpeedRangeLow, randomVolleyMoveSpeedRangeHigh, randomVolleyIntervalRangeLow, randomVolleyIntervalRangeHigh, randomVolleyVolley, randomVolleyTrailInterval, randomVolleyTrailDuration));
 
             yield return new WaitForSeconds(patternInterval + randomVolleyIntervalRangeHigh * randomVolleyVolley / 120f);
-
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 3; i++)
             {
                 StartCoroutine(FollowXPattern.Shoot(followXFollowSpeed, followXVolley, followXInterval, followXFallSpeed));
 
                 yield return new WaitForSeconds(patternInterval * 0.5f + followXVolley * followXInterval / 120f);
             }
-
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 2; i++)
             {
                 TrailShotsPattern.ShootSingleFollow(shootSingleFollowMoveSpeed, shootSingleFollowTrailInterval, shootSingleFollowTrailDuration);
@@ -146,7 +144,10 @@ public class Stage6Enemy : MonoBehaviour
             {
                 bullet.DestroySelf();
             }
-
+            if (hp < maxHp * 0.3)
+            {
+                anim.SetBool("isLowHp", true);
+            }
             if (hp <= 0)
             {
                 //death

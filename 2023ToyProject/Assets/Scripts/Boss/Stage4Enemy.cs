@@ -57,21 +57,14 @@ public class Stage4Enemy : MonoBehaviour
     {
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
-        StartEnemyRoutine(); 
+        StartEnemyRoutine();
+        anim.SetBool("isLowHp", false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hp < maxHp * 0.3)
-        {
-            anim.SetBool("isLowHp", true);
-            isLow = true;
-        }
-        else
-        {
-            anim.SetBool("isLowHp", false);
-        }
+
     }
     void StartEnemyRoutine()
     {
@@ -143,10 +136,6 @@ public class Stage4Enemy : MonoBehaviour
             if (hp < maxHp * 0.3)
             {
                 anim.SetBool("isLowHp", true);
-            }
-            else
-            {
-                anim.SetBool("isLowHp", false);
             }
             healthbar.fillAmount = hp / maxHp;
             Bullet bullet = other.gameObject.GetComponent<Bullet>();

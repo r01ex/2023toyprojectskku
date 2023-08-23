@@ -88,20 +88,21 @@ public class Stage8Enemy : MonoBehaviour
 
         while (true)
         {
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 3; i++)
             {
                 StartCoroutine(ShotGun5Pattern.Shotgun(shotgunVolleys, shotgunSpeed));
 
                 yield return new WaitForSeconds(patternInterval * 0.5f + shotgunVolleys / 12f);
             }
-
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 5; i++)
             {
                 DiagonalPattern.ShootDiagonal(diagonalMoveSpeed, Random.Range(1f, 2.6f), diagonalBulletNum, Random.Range(0, 2));
 
                 yield return new WaitForSeconds(patternInterval * 0.25f);
             }
-
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 6; i++)
             {
                 StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleOffset, spiralAngleIncrement));

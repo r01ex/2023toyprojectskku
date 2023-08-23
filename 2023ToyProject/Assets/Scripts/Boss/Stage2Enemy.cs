@@ -60,16 +60,12 @@ public class Stage2Enemy : MonoBehaviour
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine();
+        anim.SetBool("isLowHp", false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(hp < maxHp * 0.3){
-            anim.SetBool("isLowHp", true);
-        } else{
-            anim.SetBool("isLowHp", false);
-        }
 
     }
     void StartEnemyRoutine()
@@ -86,16 +82,20 @@ public class Stage2Enemy : MonoBehaviour
 
         while (true)
         {
+            anim.SetTrigger("doAttack");
             StartCoroutine(ShotGun5Pattern.Shotgun(shotgunVolleys, shotgunSpeed));
 
             yield return new WaitForSeconds(patternInterval * 0.5f + shotgunVolleys / 12f);
 
+            anim.SetTrigger("doAttack");
             StartCoroutine(SpiralPattern.ShootBackAndForth(backnforthSpeed, backnforthBulletInOneVolley, backnforthInterval, backnforthAngleIncrement, backnforthTotal));
 
             yield return new WaitForSeconds(patternInterval * 0.5f + backnforthBulletInOneVolley * backnforthInterval * backnforthTotal / 120f);
 
+
             for (int i = 0; i < 3; i++)
             {
+                anim.SetTrigger("doAttack");
                 SpiralPattern.allAroundShotgunSingle(allAroundShotgunSpeed, allAroundShotgunTotalbullet + i * 5);
 
                 yield return new WaitForSeconds(patternInterval);
@@ -118,7 +118,10 @@ public class Stage2Enemy : MonoBehaviour
             {
                 bullet.DestroySelf();
             }
-
+            if (hp < maxHp * 0.3)
+            {
+                anim.SetBool("isLowHp", true);
+            }
             if (hp <= 0)
             {
                 //death

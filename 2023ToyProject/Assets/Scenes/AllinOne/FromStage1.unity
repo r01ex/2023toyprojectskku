@@ -689,7 +689,7 @@ MonoBehaviour:
   speedBaseInc: 30
   shieldTimeBaseInc: 0.1
   grabRangeBaseInc: 0.1
-  bulletSizeBaseInc: 0.3
+  bulletSizeBaseInc: 0.05
 --- !u!1 &496532297
 GameObject:
   m_ObjectHideFlags: 0
