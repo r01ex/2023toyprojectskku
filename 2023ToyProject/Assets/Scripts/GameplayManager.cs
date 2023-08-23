@@ -116,8 +116,8 @@ public class GameplayManager : MonoBehaviour
         else
         {
             Invoke("ShowGameOverPanel", 0.3f);
+            BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss + 1);
         }
-        BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss + 1);
     }
 
     void ShowGameOverPanel(){
@@ -164,6 +164,7 @@ public class GameplayManager : MonoBehaviour
     }
     public void showClear()
     {
+        SoundEffectManager.Instance.PlayVictory();
         BulletObjectPool.Instance.TurnOffAll();
         GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
         BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss);

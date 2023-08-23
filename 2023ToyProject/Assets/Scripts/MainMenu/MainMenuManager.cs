@@ -58,7 +58,8 @@ public class MainMenuManager : MonoBehaviour
     void Update()
     {
         if (Input.anyKeyDown){
-            SceneManager.LoadScene(nextSceneName);
+            textBox.text = "Loading...";
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(2);
         }
         
     }

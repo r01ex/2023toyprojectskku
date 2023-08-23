@@ -20,19 +20,22 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(intervalCnt<=0)
+        if (GameplayManager.Instance.isGameOver == false)
         {
-            anim.SetTrigger("doShot");
-            Debug.Log("shoot");
-            atgcPattern.ShootToPlayer(MoveSpeed, Random.Range(-30f, 30f), letterCnt);
-            letterCnt++;
-            intervalCnt = Interval;
+            if (intervalCnt <= 0)
+            {
+                anim.SetTrigger("doShot");
+                Debug.Log("shoot");
+                atgcPattern.ShootToPlayer(MoveSpeed, Random.Range(-30f, 30f), letterCnt);
+                letterCnt++;
+                intervalCnt = Interval;
+            }
+            if (letterCnt == Volley)
+            {
+                Destroy(this.gameObject);
+            }
+            intervalCnt--;
         }
-        if(letterCnt==Volley)
-        {
-            Destroy(this.gameObject);
-        }
-        intervalCnt--;
     }
     public void Init(int volley, float moveSpeed, int interval)
     {
