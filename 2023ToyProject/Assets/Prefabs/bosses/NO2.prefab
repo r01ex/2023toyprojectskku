@@ -5097,7 +5097,7 @@ GameObject:
   - component: {fileID: 2556844031891642966}
   m_Layer: 0
   m_Name: NO2
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5184,7 +5184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66fe54928998644b8607ec9b0df4d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  maxHp: 1
   damage: 1
   DiagonalPattern: {fileID: 7076408444142562581}
   diagonalMoveSpeed: 5

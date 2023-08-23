@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 7044636294457505349}
   m_Layer: 0
   m_Name: NaCl
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3f1acab5e221b4b872541ca3002835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  maxHp: 1
   damage: 1
   ClusterPattern: {fileID: 8234265855673247621}
   clusterBullets: 10
@@ -479,6 +479,7 @@ MonoBehaviour:
   spiralMoveSpeed: 5
   spiralTotalBullet: 120
   spiralInterval: 10
+  spiralAngleOffset: 0
   spiralAngleIncrement: 12
   patternInterval: 1.2
   healthbar: {fileID: 8248746463651475928}

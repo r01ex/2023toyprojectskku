@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 4816168362536326541}
   m_Layer: 0
   m_Name: HCl
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2730c3bf3c6fd1844b8f90ceb9775e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  maxHp: 1
   damage: 1
   TrailShotsPattern: {fileID: 7916087543071322014}
   snipeShootSingleMoveSpeed: 5

@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 8530211066466311751}
   m_Layer: 0
   m_Name: Ethanol
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bda313634eafd247b0a79e52c22a9e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  maxHp: 1
   damage: 1
   SpiralPattern: {fileID: 4793355091521688441}
   spiralMoveSpeed: 5

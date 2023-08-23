@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1329866714514795197}
   m_Layer: 0
   m_Name: CH4
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d400e8e8943b204ab60e186613c794c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  maxHp: 0
   damage: 1
   ShotGun5Pattern: {fileID: 7643280095941802414}
   shotgunSpeed: 8

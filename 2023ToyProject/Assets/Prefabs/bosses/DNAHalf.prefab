@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 8021154377314482626}
   m_Layer: 0
   m_Name: DNAHalf
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -420,9 +420,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a77124299d81884c829381451013c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 20
+  maxHp: 10
   damage: 1
-  Shoot5RowPattern: {fileID: 0}
+  SpiralPattern: {fileID: 0}
+  spiralMoveSpeed: 0
+  spiralTotalBullet: 0
+  spiralInterval: 0
+  spiralAngleOffset: 0
+  spiralAngleIncrement: 0
+  BubblePattern: {fileID: 0}
+  ATGCMoveSpeed: 0
+  HelixPattern: {fileID: 0}
+  helixMoveSpeed: 0
+  helixTotalBullet: 0
+  helixInterval: 0
+  helixWidthNumber: 0
+  helixWidthSeparation: 0
+  helixDiminisherMult: 0
+  DiagonalPattern: {fileID: 0}
+  diagonalMoveSpeed: 0
+  diagonalBulletNum: 0
+  SnipePattern: {fileID: 0}
+  snipeVolley: 0
+  snipeMoveSpeed: 0
+  snipeSignalFrame: 0
+  snipeInterval: 0
+  WallPattern: {fileID: 0}
+  wallMoveSpeed: 0
+  wallWidth: 0
+  wallBulletNum: 0
+  wallLineNum: 0
+  wallInterval: 0
   patternInterval: 1.2
   healthbar: {fileID: 3948988798294490947}
 --- !u!50 &2921727253564106935

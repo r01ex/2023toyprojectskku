@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 public class GameplayManager : MonoBehaviour
 {
     public static GameplayManager Instance = null;
@@ -142,6 +143,7 @@ public class GameplayManager : MonoBehaviour
     public void showDefeat()
     {
         Time.timeScale = 0;
+        bgm.volume = 0.25f;
         defeatCanvas.SetActive(true);
         bossname_defeat_text.text = bossnamelist[currentBoss];
         TimeSpan result = TimeSpan.FromSeconds(currenttime);
@@ -154,6 +156,7 @@ public class GameplayManager : MonoBehaviour
     public void showClear()
     {
         clearCanvas.SetActive(true);
+        bgm.volume = 0.25f;
         totalAbsBullet_text.text = totalAbsBullet.ToString();
         totalShieldBullet_text.text = totalShieldBullet.ToString();
         TimeSpan result2 = TimeSpan.FromSeconds(totaltimer / 2);
@@ -162,17 +165,15 @@ public class GameplayManager : MonoBehaviour
     }
     public void retryBoss()
     {
-        isGameOver = true;
-        bgm.volume = 0.25f;
+        isGameOver = false;
         BulletObjectPool.Instance.TurnOffAll();
         GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
-        BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss + 1);
+        BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss);
         foreach (GameObject g in pattern)
         {
             Destroy(g);
         }
-        currentBoss++;
-        bossClearPanel.GetComponent<Skill>().updateUI();
+        Destroy(GameObject.FindGameObjectWithTag("Boss"));
         timer.fillAmount = 1;
         currenttime = 0;
         bgm.volume = 0.5f;
@@ -184,6 +185,15 @@ public class GameplayManager : MonoBehaviour
         stagenum.text = "Stage " + (int)(currentBoss + 1);
         defeatCanvas.SetActive(false);
         Time.timeScale = 1;
-        Invoke("ShowGameOverPanel", 0.3f);
+    }
+    public void toMainScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
+    public void retryScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(2);
     }
 }

@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 8363964093407493679}
   m_Layer: 0
   m_Name: Propane
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a77124299d81884c829381451013c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  maxHp: 10
   damage: 1
   SpiralPattern: {fileID: 1749091813937011471}
   spiralMoveSpeed: 5

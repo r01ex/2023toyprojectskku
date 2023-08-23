@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 9080550056669330289}
   m_Layer: 0
   m_Name: N2
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38117753e931c748a42f1aa1f6561fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  maxHp: 1
   damage: 1
   BubblePattern: {fileID: 5310090051610931950}
   ATGCMoveSpeed: 5

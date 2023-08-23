@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 5798183461551815640}
   m_Layer: 0
   m_Name: DNA
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2e8ecc6504cde44abf032f4c1c19f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  maxHp: 1
   damage: 1
   HelixPattern: {fileID: 2212272966185288243}
   helixMoveSpeed: 5

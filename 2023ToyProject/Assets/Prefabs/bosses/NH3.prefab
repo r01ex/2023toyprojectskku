@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 4421192048490557945}
   m_Layer: 0
   m_Name: NH3
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c71fdfea6331c4cbeb58c47c992d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  maxHp: 0
   damage: 1
   HelixPattern: {fileID: 5376705507306680981}
   helixMoveSpeed: 5
@@ -354,6 +354,7 @@ MonoBehaviour:
   spiralMoveSpeed: 5
   spiralTotalBullet: 20
   spiralInterval: 20
+  spiralAngleOffset: 0
   spiralAngleIncrement: 18
   NH3Gimmick: {fileID: 5385952745098917037}
   NH3Volley: 10

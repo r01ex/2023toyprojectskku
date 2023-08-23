@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 7484937826124328368}
   m_Layer: 0
   m_Name: Graphite
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d7b827dc931b4e46a013c1f7b1f3c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  maxHp: 1
   damage: 1
   DiagonalPattern: {fileID: 5922802789958149205}
   diagonalMoveSpeed: 4
