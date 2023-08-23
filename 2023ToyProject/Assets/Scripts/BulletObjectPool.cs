@@ -8,7 +8,9 @@ public class BulletObjectPool : MonoBehaviour
     public List<GameObject> pulledEnemyBullets;
     [SerializeField] GameObject playerBulletToPool;
     [SerializeField] GameObject enemyBulletToPool;
-    public int amountToPool=100;
+    public int amountToPool;
+    public int playerAmountToPool;
+    [SerializeField] List<Sprite> enemyBulletSprites;
     #region singleton
     public static BulletObjectPool Instance;
     private void Awake()
@@ -27,7 +29,7 @@ public class BulletObjectPool : MonoBehaviour
     {
         pulledPlayerBullets = new List<GameObject>();
         GameObject tmp;
-        for (int i = 0; i < amountToPool; i++)
+        for (int i = 0; i < playerAmountToPool; i++)
         {
             tmp = Instantiate(playerBulletToPool);
             tmp.SetActive(false);
@@ -43,7 +45,7 @@ public class BulletObjectPool : MonoBehaviour
     }
     public GameObject GetPooledPlayerBullet()
     {
-        for (int i = 0; i < amountToPool; i++)
+        for (int i = 0; i < playerAmountToPool; i++)
         {
             if (!pulledPlayerBullets[i].activeInHierarchy)
             {
@@ -70,13 +72,16 @@ public class BulletObjectPool : MonoBehaviour
         {
             pulledEnemyBullets[i].SetActive(false);           
         }
-        for (int i = 0; i < amountToPool; i++)
+        for (int i = 0; i < playerAmountToPool; i++)
         {
             pulledPlayerBullets[i].SetActive(false);
         }
     }
-    public void ChangeAllEnemyBullet()
+    public void ChangeAllEnemyBullet(int index)
     {
-
+        for (int i = 0; i < amountToPool; i++)
+        {
+            pulledEnemyBullets[i].GetComponent<SpriteRenderer>().sprite = enemyBulletSprites[index];
+        }
     }
 }

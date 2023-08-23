@@ -330,6 +330,24 @@ MonoBehaviour:
   playerBulletToPool: {fileID: 820469620680039316, guid: c3eeb2504a049ff499abcd7eb0ced2c5, type: 3}
   enemyBulletToPool: {fileID: 2565808413655926046, guid: 9985598c73f770644a13ee9e0868d964, type: 3}
   amountToPool: 600
+  playerAmountToPool: 100
+  enemyBulletSprites:
+  - {fileID: 21300000, guid: 4742fa3cbd30c384a92eeaf75658b921, type: 3}
+  - {fileID: 21300000, guid: 7c7d90f17d07d61459540a546b74785f, type: 3}
+  - {fileID: 21300000, guid: dcc867beedc240c468d6071167d50be8, type: 3}
+  - {fileID: 21300000, guid: 76306c718daefb9449209082f69217b7, type: 3}
+  - {fileID: 21300000, guid: a2c28bf27a286304eb6ae4230fcd42c9, type: 3}
+  - {fileID: 21300000, guid: 3e7ece96a5d5c914cb700a349090ff1c, type: 3}
+  - {fileID: 21300000, guid: 5955820b6ed94b64987226e24bbfecbf, type: 3}
+  - {fileID: 21300000, guid: 57a82a7d7049d6346a316f865d361d34, type: 3}
+  - {fileID: 21300000, guid: 1b66a8bd086cb4b439e99414d8336a75, type: 3}
+  - {fileID: 21300000, guid: 02113dc522b63e54f86534225b6bd1ff, type: 3}
+  - {fileID: 21300000, guid: 02113dc522b63e54f86534225b6bd1ff, type: 3}
+  - {fileID: 21300000, guid: fd4775dca6946b24783dc196c1019e00, type: 3}
+  - {fileID: 21300000, guid: cb9a839ea83c36441820fa1dfbd7fc29, type: 3}
+  - {fileID: 21300000, guid: 18d1eddbd532374489211b0c05d12100, type: 3}
+  - {fileID: 21300000, guid: 46efbfa496143d641a00e3dd8bcde17a, type: 3}
+  - {fileID: 21300000, guid: ca1ef359aa5811a4ba7aa999ee217835, type: 3}
 --- !u!1 &310380347
 GameObject:
   m_ObjectHideFlags: 0

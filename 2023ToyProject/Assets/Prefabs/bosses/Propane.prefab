@@ -315,8 +315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   letterPrefabs:
-  - {fileID: 7641451529398660330, guid: 0c4f736e6b81a61438be9a3681424b31, type: 3}
-  - {fileID: 5841372511824322911, guid: dce0f2103d15df048ad3cae39cb9e5be, type: 3}
+  - {fileID: 7641451529398660330, guid: 0c48d60ba34d27642a1083d920933576, type: 3}
+  - {fileID: 5841372511824322911, guid: 1c3e8f2d8e949fe418b72349356f0100, type: 3}
 --- !u!114 &5128641621727806079
 MonoBehaviour:
   m_ObjectHideFlags: 0
