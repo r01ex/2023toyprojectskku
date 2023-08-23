@@ -141,7 +141,7 @@ public class Stage11Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            hp -= damage;
+            hp = Mathf.Clamp(hp - damage, 0, int.MaxValue);
             healthbar.fillAmount = hp / maxHp;
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
             SoundEffectManager.Instance.PlayEnemyHit();

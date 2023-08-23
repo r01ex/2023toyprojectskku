@@ -129,7 +129,7 @@ public class Stage3Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            hp -= damage;
+            hp = Mathf.Clamp(hp - damage, 0, int.MaxValue);
             healthbar.fillAmount = hp / maxHp;
             healthText.text = hp + "/" + maxHp;
             Bullet bullet = other.gameObject.GetComponent<Bullet>();

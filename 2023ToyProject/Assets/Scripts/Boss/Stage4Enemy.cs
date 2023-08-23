@@ -138,7 +138,7 @@ public class Stage4Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            hp -= damage;
+            hp = Mathf.Clamp(hp - damage, 0, int.MaxValue);
             if (hp < maxHp * 0.3)
             {
                 anim.SetBool("isLowHp", true);
