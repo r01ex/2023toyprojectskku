@@ -141,6 +141,7 @@ public class EnemyBullet : MonoBehaviour
             this.transform.GetChild(0).GetComponent<EnemybulletInner>().isHit = true;
             this.gameObject.SetActive(false);
             SoundEffectManager.Instance.PlayHit();
+            GameplayManager.Instance.showDefeat();
             moveNumber = -1;
         }
         else if(collision.tag == "Shield")
@@ -148,6 +149,7 @@ public class EnemyBullet : MonoBehaviour
             Debug.Log("shield");
             this.gameObject.SetActive(false);
             SoundEffectManager.Instance.PlayShield();
+            GameplayManager.Instance.totalShieldBullet++;
             moveNumber = -1;
         }
         else if(collision.tag == "BulletDestroyWall")

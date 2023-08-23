@@ -23,6 +23,7 @@ public class EnemybulletInner : MonoBehaviour
             if (collision.tag == "ElectricField")
             {
                 Debug.Log("absorb");
+                GameplayManager.Instance.totalAbsBullet++;
                 PlayerManager.Instance.addbullet(1);
                 SoundEffectManager.Instance.PlayAbsorb();
                 this.transform.parent.gameObject.GetComponent<EnemyBullet>().moveNumber = -1;

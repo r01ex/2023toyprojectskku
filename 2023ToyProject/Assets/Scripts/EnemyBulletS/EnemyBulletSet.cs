@@ -96,11 +96,13 @@ public class EnemyBulletSet : MonoBehaviour
             SoundEffectManager.Instance.PlayHit();
             this.transform.GetChild(0).GetComponent<EnemyBulletSetInner>().isHit = true;
             Destroy(this.gameObject);
+            GameplayManager.Instance.showDefeat();
         }
         else if (collision.tag == "Shield")
         {
             Debug.Log("shield");
             SoundEffectManager.Instance.PlayShield();
+            GameplayManager.Instance.totalShieldBullet++;
             Destroy(this.gameObject);
         }
         else if (collision.tag == "BulletDestroyWall")

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System;
 public class GameplayManager : MonoBehaviour
 {
     public static GameplayManager Instance = null;
@@ -29,11 +31,32 @@ public class GameplayManager : MonoBehaviour
     AudioSource bgm;
 
     [SerializeField]
-    TMPro.TextMeshProUGUI bossname;
+    TextMeshProUGUI bossname;
     [SerializeField]
-    TMPro.TextMeshProUGUI stagenum;
+    TextMeshProUGUI stagenum;
     [SerializeField]
     string[] bossnamelist;
+
+    [SerializeField]
+    GameObject defeatCanvas;
+    [SerializeField]
+    TextMeshProUGUI bossname_defeat_text;
+    [SerializeField]
+    TextMeshProUGUI remaintime_defeat_text;
+    [SerializeField]
+    TextMeshProUGUI totaltime_defeat_text;
+    [SerializeField]
+    GameObject clearCanvas;
+    [SerializeField]
+    TextMeshProUGUI totalAbsBullet_text;
+    [SerializeField]
+    TextMeshProUGUI totalShieldBullet_text;
+    [SerializeField]
+    TextMeshProUGUI totaltime_clear_text;
+    int totaltimer = 0;
+    public int totalAbsBullet = 0;
+    public int totalShieldBullet = 0;
+
     // Start is called before the first frame update
 
     private void Awake() {
@@ -65,6 +88,7 @@ public class GameplayManager : MonoBehaviour
                     Debug.Log("Game Over by Time");
                     break;
                 }
+                totaltimer += 1;
             }
             yield return new WaitForSecondsRealtime(0.5f);
         }
@@ -84,7 +108,14 @@ public class GameplayManager : MonoBehaviour
         {
             Destroy(g);
         }
-        Invoke("ShowGameOverPanel", 0.3f);
+        if (NofBosses <= currentBoss)
+        {
+            showClear();
+        }
+        else
+        {
+            Invoke("ShowGameOverPanel", 0.3f);
+        }
     }
 
     void ShowGameOverPanel(){
@@ -97,10 +128,6 @@ public class GameplayManager : MonoBehaviour
     public void spawnNextBoss(){
         currentBoss++;
         bossClearPanel.GetComponent<Skill>().updateUI();
-        if (NofBosses<=currentBoss)
-        {
-
-        }
         timer.fillAmount = 1;
         currenttime = 0;
         bgm.volume = 0.5f;
@@ -111,4 +138,24 @@ public class GameplayManager : MonoBehaviour
         bossname.text = bossnamelist[currentBoss];
         stagenum.text = "Stage " + (int)(currentBoss + 1);
     } 
+    public void showDefeat()
+    {
+        defeatCanvas.SetActive(true);
+        bossname_defeat_text.text = bossnamelist[currentBoss];
+        TimeSpan result = TimeSpan.FromSeconds(currenttime);
+        string fromTimeString = result.ToString("mm':'ss");
+        remaintime_defeat_text.text = fromTimeString;
+        TimeSpan result2 = TimeSpan.FromSeconds(totaltimer/2);
+        string fromTimeString2 = result2.ToString("mm':'ss");
+        totaltime_defeat_text.text = fromTimeString2;
+    }
+    public void showClear()
+    {
+        clearCanvas.SetActive(true);
+        totalAbsBullet_text.text = totalAbsBullet.ToString();
+        totalShieldBullet_text.text = totalShieldBullet.ToString();
+        TimeSpan result2 = TimeSpan.FromSeconds(totaltimer / 2);
+        string fromTimeString2 = result2.ToString("mm':'ss");
+        totaltime_clear_text.text = fromTimeString2;
+    }
 }
