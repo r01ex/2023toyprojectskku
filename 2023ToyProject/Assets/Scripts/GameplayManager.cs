@@ -109,7 +109,7 @@ public class GameplayManager : MonoBehaviour
         {
             Destroy(g);
         }
-        if (NofBosses <= currentBoss)
+        if (NofBosses <= currentBoss+1)
         {
             showClear();
         }
