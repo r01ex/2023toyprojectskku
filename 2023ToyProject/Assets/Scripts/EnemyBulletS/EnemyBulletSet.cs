@@ -110,4 +110,14 @@ public class EnemyBulletSet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Shield")
+        {
+            Debug.Log("shield");
+            SoundEffectManager.Instance.PlayShield();
+            GameplayManager.Instance.totalShieldBullet++;
+            Destroy(this.gameObject);
+        }
+    }
 }

@@ -1675,7 +1675,7 @@ GameObject:
   - component: {fileID: 415067659}
   - component: {fileID: 415067658}
   m_Layer: 0
-  m_Name: totalClearStagePanel
+  m_Name: absbullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1866,7 +1866,7 @@ GameObject:
   - component: {fileID: 483379065}
   - component: {fileID: 483379064}
   m_Layer: 0
-  m_Name: Text(TOTAL CLEAR STAGE)
+  m_Name: absbullettext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2151,7 +2151,7 @@ GameObject:
   - component: {fileID: 562707420}
   - component: {fileID: 562707419}
   m_Layer: 0
-  m_Name: Text(PLAY TIME)
+  m_Name: playtimetext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3235,7 +3235,7 @@ GameObject:
   - component: {fileID: 910943266}
   - component: {fileID: 910943265}
   m_Layer: 0
-  m_Name: Text(TOTAL CLEAR STAGE)
+  m_Name: bossnametext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3314,7 +3314,7 @@ GameObject:
   - component: {fileID: 919237655}
   - component: {fileID: 919237654}
   m_Layer: 0
-  m_Name: Text(CURRENT STAGE)
+  m_Name: remainingtimetext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3623,7 +3623,7 @@ GameObject:
   - component: {fileID: 1012335678}
   - component: {fileID: 1012335677}
   m_Layer: 0
-  m_Name: Text(CURRENT STAGE)
+  m_Name: sbullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4338,7 +4338,7 @@ GameObject:
   - component: {fileID: 1181664746}
   - component: {fileID: 1181664745}
   m_Layer: 0
-  m_Name: currentStagePanel
+  m_Name: remainingtime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5515,7 +5515,7 @@ GameObject:
   - component: {fileID: 1405377561}
   - component: {fileID: 1405377560}
   m_Layer: 0
-  m_Name: totalClearStagePanel
+  m_Name: bossname
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5693,7 +5693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e468e0e61c7cc4cb989d8433133b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NofBosses: 0
+  NofBosses: 15
   timer: {fileID: 1505370467}
   stageMaxTime: 180
   bossClearPanel: {fileID: 2305874107447643514}
@@ -5750,6 +5750,16 @@ MonoBehaviour:
   - C6
   - DNA
   - U
+  defeatCanvas: {fileID: 526220669}
+  bossname_defeat_text: {fileID: 2121066393}
+  remaintime_defeat_text: {fileID: 2062963496}
+  totaltime_defeat_text: {fileID: 1194420262}
+  clearCanvas: {fileID: 339830984}
+  totalAbsBullet_text: {fileID: 351170151}
+  totalShieldBullet_text: {fileID: 1732113054}
+  totaltime_clear_text: {fileID: 321458957}
+  totalAbsBullet: 0
+  totalShieldBullet: 0
 --- !u!4 &1414689359
 Transform:
   m_ObjectHideFlags: 0
@@ -7576,7 +7586,7 @@ GameObject:
   - component: {fileID: 1763537528}
   - component: {fileID: 1763537527}
   m_Layer: 0
-  m_Name: currentStagePanel
+  m_Name: sbullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
