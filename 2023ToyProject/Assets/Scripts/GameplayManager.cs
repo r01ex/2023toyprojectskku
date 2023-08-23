@@ -141,6 +141,14 @@ public class GameplayManager : MonoBehaviour
     } 
     public void showDefeat()
     {
+        isGameOver = true;
+        BulletObjectPool.Instance.TurnOffAll();
+        GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
+        BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss);
+        foreach (GameObject g in pattern)
+        {
+            Destroy(g);
+        }
         Time.timeScale = 0;
         bgm.volume = 0.25f;
         defeatCanvas.SetActive(true);
@@ -154,7 +162,16 @@ public class GameplayManager : MonoBehaviour
     }
     public void showClear()
     {
+        isGameOver = true;
+        BulletObjectPool.Instance.TurnOffAll();
+        GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
+        BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss);
+        foreach (GameObject g in pattern)
+        {
+            Destroy(g);
+        }
         clearCanvas.SetActive(true);
+        Time.timeScale = 0;
         bgm.volume = 0.25f;
         totalAbsBullet_text.text = totalAbsBullet.ToString();
         totalShieldBullet_text.text = totalShieldBullet.ToString();
@@ -164,14 +181,7 @@ public class GameplayManager : MonoBehaviour
     }
     public void retryBoss()
     {
-        isGameOver = false;
-        BulletObjectPool.Instance.TurnOffAll();
-        GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
-        BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss);
-        foreach (GameObject g in pattern)
-        {
-            Destroy(g);
-        }
+        isGameOver = false;        
         Destroy(GameObject.FindGameObjectWithTag("Boss"));
         timer.fillAmount = 1;
         currenttime = 0;
