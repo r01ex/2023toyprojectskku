@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class GameplayManager : MonoBehaviour
 {
     public static GameplayManager Instance = null;
+    [SerializeField] int NofBosses;
+
     [SerializeField] Image timer;
     [SerializeField] int stageMaxTime;
     float currenttime = 0;
@@ -94,6 +96,10 @@ public class GameplayManager : MonoBehaviour
 
     public void spawnNextBoss(){
         currentBoss++;
+        if(NofBosses<=currentBoss)
+        {
+
+        }
         timer.fillAmount = 1;
         currenttime = 0;
         bgm.volume = 0.5f;

@@ -3472,6 +3472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e468e0e61c7cc4cb989d8433133b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NofBosses: 0
   timer: {fileID: 1505370467}
   stageMaxTime: 180
   bossClearPanel: {fileID: 2305874107447643514}
@@ -3612,6 +3613,7 @@ MonoBehaviour:
   Electricfield: {fileID: 1279888504}
   attack: 1
   shieldtime: 0.5
+  Nuclear: {fileID: 1841077942}
 --- !u!1 &1505370465
 GameObject:
   m_ObjectHideFlags: 0

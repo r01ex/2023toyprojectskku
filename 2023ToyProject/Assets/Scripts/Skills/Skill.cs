@@ -74,6 +74,7 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Description").GetComponent<Text>().text = "The size of the atomic" +
                     " nucleus decreases. This will be useful for avoiding patterns.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
+                Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.decreaseNuclearSize(0.7f); });
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
 
                 break;

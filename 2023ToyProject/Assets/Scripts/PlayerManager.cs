@@ -16,6 +16,8 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] float shieldtime;
     Coroutine bulletShootCoroutine;
+
+    [SerializeField] GameObject Nuclear;
     private void Awake()
     {
         if (Instance == null)
@@ -158,6 +160,9 @@ public class PlayerManager : MonoBehaviour
     {
         addedBulletSize += new Vector3(increaseAmount, increaseAmount, 0);
     }
-
+    public void decreaseNuclearSize(float mult)
+    {
+        Nuclear.transform.localScale = new Vector3(Nuclear.transform.localScale.x * mult, Nuclear.transform.localScale.y * mult, Nuclear.transform.localScale.z);
+    }
     #endregion
 }
