@@ -104,7 +104,6 @@ public class GameplayManager : MonoBehaviour
         bgm.volume = 0.25f;
         BulletObjectPool.Instance.TurnOffAll();
         GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
-        BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss + 1);
         foreach(GameObject g in pattern)
         {
             Destroy(g);
