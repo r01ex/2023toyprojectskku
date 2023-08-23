@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 6389420646804662739}
   - component: {fileID: 8512243950575969226}
   - component: {fileID: 3780224454998722004}
-  - component: {fileID: 4702978776750883742}
+  - component: {fileID: 6979200572843824950}
   - component: {fileID: 3600612689634716856}
   - component: {fileID: 7044636294457505349}
   m_Layer: 0
@@ -447,7 +447,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4702978776750883742
+--- !u!114 &6979200572843824950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -456,40 +456,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 6752108951645414489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a77124299d81884c829381451013c8d, type: 3}
+  m_Script: {fileID: 11500000, guid: bb3f1acab5e221b4b872541ca3002835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 20
+  hp: 1
   damage: 1
-  SpiralPattern: {fileID: 0}
-  spiralMoveSpeed: 0
-  spiralTotalBullet: 0
-  spiralInterval: 0
-  spiralAngleOffset: 0
-  spiralAngleIncrement: 0
-  BubblePattern: {fileID: 0}
-  ATGCMoveSpeed: 0
-  HelixPattern: {fileID: 0}
-  helixMoveSpeed: 0
-  helixTotalBullet: 0
-  helixInterval: 0
-  helixWidthNumber: 0
-  helixWidthSeparation: 0
-  helixDiminisherMult: 0
-  DiagonalPattern: {fileID: 0}
-  diagonalMoveSpeed: 0
-  diagonalBulletNum: 0
-  SnipePattern: {fileID: 0}
-  snipeVolley: 0
-  snipeMoveSpeed: 0
-  snipeSignalFrame: 0
-  snipeInterval: 0
-  WallPattern: {fileID: 0}
-  wallMoveSpeed: 0
-  wallWidth: 0
-  wallBulletNum: 0
-  wallLineNum: 0
-  wallInterval: 0
+  ClusterPattern: {fileID: 8234265855673247621}
+  clusterBullets: 10
+  clusterMoveSpeed: 5
+  clusterMaxTargetPosOffset: 1
+  RandomFallPattern: {fileID: 2962059808394908871}
+  randomfallMoveSpeedRangeLow: 4
+  randomfallMoveSpeedRangeHigh: 8
+  randomfallIntervalRangeLow: 10
+  randomfallIntervalRangeHigh: 20
+  randomfallVolley: 10
+  TrailShotsPattern: {fileID: 3201965379101436602}
+  trailShotsMoveSpeed: 5
+  trailShotsTrailInterval: 15
+  trailShotsTrailDuration: 400
+  SpiralPattern: {fileID: 3104452965651070305}
+  spiralMoveSpeed: 5
+  spiralTotalBullet: 120
+  spiralInterval: 10
+  spiralAngleIncrement: 12
   patternInterval: 1.2
   healthbar: {fileID: 8248746463651475928}
 --- !u!50 &3600612689634716856

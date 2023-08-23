@@ -44,7 +44,7 @@ public class Stage15Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hp < maxHp * 0.5)
+        if (hp < maxHp * 0.3)
         {
             anim.SetBool("isLowHp", true);
         }
@@ -68,6 +68,8 @@ public class Stage15Enemy : MonoBehaviour
         while (true)
         {
 
+
+            yield return new WaitForSeconds(patternInterval);
         }
     }
 

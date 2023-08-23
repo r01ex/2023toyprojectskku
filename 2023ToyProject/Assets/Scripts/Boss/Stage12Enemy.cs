@@ -16,6 +16,47 @@ public class Stage12Enemy : MonoBehaviour
 
     [SerializeField]
     Spiral SpiralPattern;
+    [SerializeField]
+    float spiralMoveSpeed;
+    [SerializeField]
+    int spiralTotalbullet;
+    [SerializeField]
+    Pinch PinchPattern;
+    [SerializeField]
+    float pinchMoveSpeed;
+    [SerializeField]
+    int pinchVolley;
+    [SerializeField]
+    int pinchInterval;
+    [SerializeField]
+    Fireworks FireworksPattern;
+    [SerializeField]
+    int fireworksDropFrameLow;
+    [SerializeField]
+    int fireworksDropFrameHigh;
+    [SerializeField]
+    float fireworksDropSpeed;
+    [SerializeField]
+    int fireworksSplitNumber;
+    [SerializeField]
+    float fireworksSplitSpeed;
+    [SerializeField]
+    float fireworksVolley;
+    [SerializeField]
+    float fireworksSplitVolley;
+    [SerializeField]
+    float fireworksSplitVolleyInterval;
+
+    [SerializeField]
+    Bounce BounceGimmick;
+    [SerializeField]
+    int bounceVolley;
+    [SerializeField]
+    int bounceDropSpeed;
+    [SerializeField]
+    float bounceBounceBulletSpeed;
+    [SerializeField]
+    int bounceInterval;
 
     [SerializeField]
     float patternInterval;
@@ -44,7 +85,7 @@ public class Stage12Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hp < maxHp * 0.5)
+        if (hp < maxHp * 0.3)
         {
             anim.SetBool("isLowHp", true);
         }
@@ -67,7 +108,26 @@ public class Stage12Enemy : MonoBehaviour
 
         while (true)
         {
+            StartCoroutine(PinchPattern.MapShoot(pinchMoveSpeed, pinchVolley, pinchInterval));
 
+            yield return new WaitForSeconds(patternInterval * 0.5f + pinchVolley * pinchInterval / 120f);
+
+            StartCoroutine(FireworksPattern.Shoot(fireworksDropFrameLow, fireworksDropFrameHigh, fireworksDropSpeed, fireworksSplitNumber, fireworksSplitSpeed, fireworksVolley, fireworksSplitVolley, fireworksSplitVolleyInterval));
+
+            yield return new WaitForSeconds(patternInterval * 4f);
+
+            StartCoroutine(BounceGimmick.Shoot(bounceVolley, bounceDropSpeed, bounceBounceBulletSpeed, bounceInterval));
+
+            yield return new WaitForSeconds(patternInterval * (-2.5f) + bounceVolley * bounceInterval / 120f);
+
+            for (int i = 0; i < 5; i++)
+            {
+                SpiralPattern.allAroundShotgunSingle(spiralMoveSpeed, spiralTotalbullet + i * 10);
+
+                yield return new WaitForSeconds(patternInterval);
+            }
+
+            yield return new WaitForSeconds(patternInterval * 2f);
         }
     }
 

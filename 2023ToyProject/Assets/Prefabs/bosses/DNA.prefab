@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3553363975814700657}
-  - component: {fileID: 1842264945886751770}
+  - component: {fileID: 2212272966185288243}
+  - component: {fileID: 1815063050453897280}
+  - component: {fileID: 7694070618886433274}
   - component: {fileID: 6307837070191676661}
   m_Layer: 0
   m_Name: PatternHolder
@@ -33,7 +35,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 9120685446191412382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1842264945886751770
+--- !u!114 &2212272966185288243
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,7 +44,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 281293236598581226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe11c7b3daae64409ce441e207b17a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 5371a01492cbcfc439ddf4632d9decbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1815063050453897280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281293236598581226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc74245385b2da5449f6c0771d89fe1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7694070618886433274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281293236598581226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5adb6f418f3a21544b5bb3cea5bf1ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6307837070191676661
@@ -212,7 +238,7 @@ GameObject:
   - component: {fileID: 9120685446191412382}
   - component: {fileID: 1059818270192560789}
   - component: {fileID: 6833236834414030208}
-  - component: {fileID: 7270660305701405540}
+  - component: {fileID: 173681599718407347}
   - component: {fileID: 6102759906603967882}
   - component: {fileID: 5798183461551815640}
   m_Layer: 0
@@ -313,7 +339,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7270660305701405540
+--- !u!114 &173681599718407347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -322,12 +348,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1093072899443650999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a77124299d81884c829381451013c8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e2e8ecc6504cde44abf032f4c1c19f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 20
+  hp: 1
   damage: 1
-  Shoot5RowPattern: {fileID: 0}
+  SpiralPattern: {fileID: 0}
   patternInterval: 1.2
   healthbar: {fileID: 4437637402076307370}
 --- !u!50 &6102759906603967882
