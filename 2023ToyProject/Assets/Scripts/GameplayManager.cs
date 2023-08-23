@@ -116,6 +116,7 @@ public class GameplayManager : MonoBehaviour
         {
             Invoke("ShowGameOverPanel", 0.3f);
         }
+        BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss + 1);
     }
 
     void ShowGameOverPanel(){
@@ -140,6 +141,7 @@ public class GameplayManager : MonoBehaviour
     } 
     public void showDefeat()
     {
+        Time.timeScale = 0;
         defeatCanvas.SetActive(true);
         bossname_defeat_text.text = bossnamelist[currentBoss];
         TimeSpan result = TimeSpan.FromSeconds(currenttime);
@@ -157,5 +159,31 @@ public class GameplayManager : MonoBehaviour
         TimeSpan result2 = TimeSpan.FromSeconds(totaltimer / 2);
         string fromTimeString2 = result2.ToString("mm':'ss");
         totaltime_clear_text.text = fromTimeString2;
+    }
+    public void retryBoss()
+    {
+        isGameOver = true;
+        bgm.volume = 0.25f;
+        BulletObjectPool.Instance.TurnOffAll();
+        GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
+        BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss + 1);
+        foreach (GameObject g in pattern)
+        {
+            Destroy(g);
+        }
+        currentBoss++;
+        bossClearPanel.GetComponent<Skill>().updateUI();
+        timer.fillAmount = 1;
+        currenttime = 0;
+        bgm.volume = 0.5f;
+        Camera.main.transform.rotation = Quaternion.identity;
+        Instantiate(bossPrefabs[currentBoss]);
+        background.texture = backGroundSprites[currentBoss].texture;
+        PlayerManager.Instance.gameObject.transform.position = new Vector3(0, -4, 0);
+        bossname.text = bossnamelist[currentBoss];
+        stagenum.text = "Stage " + (int)(currentBoss + 1);
+        defeatCanvas.SetActive(false);
+        Time.timeScale = 1;
+        Invoke("ShowGameOverPanel", 0.3f);
     }
 }

@@ -163,9 +163,10 @@ public class EnemyBullet : MonoBehaviour
         if (collision.tag == "Shield")
         {
             Debug.Log("shield");
+            this.gameObject.SetActive(false);
             SoundEffectManager.Instance.PlayShield();
             GameplayManager.Instance.totalShieldBullet++;
-            Destroy(this.gameObject);
+            moveNumber = -1;
         }
     }
 }
