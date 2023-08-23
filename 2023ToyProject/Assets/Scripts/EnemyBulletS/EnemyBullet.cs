@@ -140,12 +140,14 @@ public class EnemyBullet : MonoBehaviour
             Debug.Log("hit");
             this.transform.GetChild(0).GetComponent<EnemybulletInner>().isHit = true;
             this.gameObject.SetActive(false);
+            SoundEffectManager.Instance.PlayHit();
             moveNumber = -1;
         }
         else if(collision.tag == "Shield")
         {
             Debug.Log("shield");
             this.gameObject.SetActive(false);
+            SoundEffectManager.Instance.PlayShield();
             moveNumber = -1;
         }
         else if(collision.tag == "BulletDestroyWall")

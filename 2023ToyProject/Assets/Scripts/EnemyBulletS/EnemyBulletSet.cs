@@ -93,12 +93,14 @@ public class EnemyBulletSet : MonoBehaviour
         if (collision.tag == "Nuclear")
         {
             Debug.Log("hit");
+            SoundEffectManager.Instance.PlayHit();
             this.transform.GetChild(0).GetComponent<EnemyBulletSetInner>().isHit = true;
             Destroy(this.gameObject);
         }
         else if (collision.tag == "Shield")
         {
             Debug.Log("shield");
+            SoundEffectManager.Instance.PlayShield();
             Destroy(this.gameObject);
         }
         else if (collision.tag == "BulletDestroyWall")

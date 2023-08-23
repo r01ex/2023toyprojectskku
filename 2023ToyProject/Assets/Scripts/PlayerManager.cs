@@ -82,6 +82,7 @@ public class PlayerManager : MonoBehaviour
                 bullet.SetActive(true);
             }
             bullet.transform.parent = null;
+            SoundEffectManager.Instance.PlayShoot();
             yield return new WaitForSeconds(0.05f);
             n--;
         }
@@ -104,7 +105,7 @@ public class PlayerManager : MonoBehaviour
             else
             {
                 Electricfield.tag = "ElectricField";
-                Electricfield.GetComponent<SpriteRenderer>().color = new Color(0, 0.07f, 1, 0.45f);
+                Electricfield.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
                 Debug.Log("no bullet to shield");
             }
         }
@@ -124,7 +125,7 @@ public class PlayerManager : MonoBehaviour
         else
         {
             Electricfield.tag = "ElectricField";
-            Electricfield.GetComponent<SpriteRenderer>().color = new Color(0, 0.07f, 1, 0.45f);
+            Electricfield.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
         }
     }
 

@@ -24,6 +24,7 @@ public class EnemyBulletSetInner : MonoBehaviour
             {
                 Debug.Log("absorb");
                 PlayerManager.Instance.addbullet(1);
+                SoundEffectManager.Instance.PlayAbsorb();
                 Destroy(this.transform.parent.gameObject);
             }
         }

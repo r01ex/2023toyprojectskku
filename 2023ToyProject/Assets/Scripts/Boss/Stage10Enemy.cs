@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Stage10Enemy : MonoBehaviour
 {
-    [SerializeField]
     private float hp;
+    [SerializeField]
     private float maxHp = 10f;
 
     [SerializeField]
@@ -87,12 +87,17 @@ public class Stage10Enemy : MonoBehaviour
     private Color originalColor;
     private Renderer enemyRenderer;
 
+    TMPro.TextMeshProUGUI healthText;
+
     private void Awake() {
         anim = GetComponent<Animator>();
+        healthText = GameObject.Find("bosshealth").GetComponent<TMPro.TextMeshProUGUI>();
     }
     // Start is called before the first frame update
     void Start()
     {
+        hp = maxHp;
+        healthText.text = hp + "/" + maxHp;
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine();
@@ -172,7 +177,9 @@ public class Stage10Enemy : MonoBehaviour
         {
             hp -= damage;
             healthbar.fillAmount = hp / maxHp;
+            healthText.text = hp + "/" + maxHp;
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
+            SoundEffectManager.Instance.PlayEnemyHit();
             anim.SetTrigger("doHitted");
             enemyRenderer.material.color = flashColor;
         

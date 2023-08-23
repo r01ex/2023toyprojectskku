@@ -5,8 +5,9 @@ using UnityEngine.UI;
 public class Stage5Enemy : MonoBehaviour
 {
     // To indicate that the boss hp
-    [SerializeField]
+
     private float hp;
+    [SerializeField]
     private float maxHp = 10f;
 
     
@@ -61,12 +62,17 @@ public class Stage5Enemy : MonoBehaviour
     private Color originalColor;
     private Renderer enemyRenderer;
 
-    private void Awake() {
+    TMPro.TextMeshProUGUI healthText;
+    private void Awake()
+    {
         anim = GetComponent<Animator>();
+        healthText = GameObject.Find("bosshealth").GetComponent<TMPro.TextMeshProUGUI>();
     }
     // Start is called before the first frame update
     void Start()
     {
+        hp = maxHp;
+        healthText.text = hp + "/" + maxHp;
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine();
@@ -134,6 +140,7 @@ public class Stage5Enemy : MonoBehaviour
             hp -= damage;
             healthbar.fillAmount = hp / maxHp;
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
+            SoundEffectManager.Instance.PlayEnemyHit();
             anim.SetTrigger("doHitted");
             enemyRenderer.material.color = flashColor;
         
