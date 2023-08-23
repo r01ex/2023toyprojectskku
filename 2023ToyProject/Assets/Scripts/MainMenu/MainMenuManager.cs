@@ -19,6 +19,8 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     private string nextSceneName;
 
+    Coroutine flashanykey;
+    bool flag = false;
     // Start is called before the first frame update
     private void Start()
     {
@@ -26,7 +28,7 @@ public class MainMenuManager : MonoBehaviour
         panel1.SetActive(true);
         panel2.SetActive(false);
 
-        StartCoroutine(SceneTransitionCoroutine());
+        flashanykey = StartCoroutine(SceneTransitionCoroutine());
     }
 
     private IEnumerator TextAnimationCoroutine()
@@ -45,6 +47,23 @@ public class MainMenuManager : MonoBehaviour
             isTextVisible = !isTextVisible;
         }
     }
+    private IEnumerator TextAnimationCoroutineLoad()
+    {
+        isTextVisible = false;
+        while (true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            if (isTextVisible)
+            {
+                textBox.text = "";
+            }
+            else
+            {
+                textBox.text = "Loading";
+            }
+            isTextVisible = !isTextVisible;
+        }
+    }
     private IEnumerator SceneTransitionCoroutine()
     {
         yield return new WaitForSeconds(1f);
@@ -57,9 +76,11 @@ public class MainMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown){
-            textBox.text = "Loading...";
+        if (Input.anyKeyDown&&flag==false){
+            StopCoroutine(flashanykey);
+            StartCoroutine(TextAnimationCoroutineLoad());
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(2);
+            flag = true;
         }
         
     }
