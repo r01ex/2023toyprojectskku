@@ -45,9 +45,9 @@ public class Spiral : MonoBehaviour
             }
         }
     }
-    public IEnumerator Shoot4(float moveSpeed, int totalbullet, int interval, float angle_increment)
+    public IEnumerator Shoot4(float moveSpeed, int totalbullet, int interval, float angleOffset, float angle_increment)
     {
-        float angle = 0f;
+        float angle = 0f + angleOffset;
         for (int i = 0; i < totalbullet; i++)
         {
             for (int wing = 0; wing < 4; wing++)

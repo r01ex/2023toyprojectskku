@@ -15,7 +15,49 @@ public class Stage13Enemy : MonoBehaviour
     private Animator anim;
 
     [SerializeField]
-    Spiral SpiralPattern;
+    Diagonal DiagonalPattern;
+    [SerializeField]
+    float diagonalMoveSpeed;
+    [SerializeField]
+    int diagonalBulletNum;
+    [SerializeField]
+    FollowX FollowXPattern;
+    [SerializeField]
+    float followXFollowSpeed;
+    [SerializeField]
+    float followXVolley;
+    [SerializeField]
+    int followXInterval;
+    [SerializeField]
+    float followXFallSpeed;
+    [SerializeField]
+    TrailShots TrailShotsPattern;
+    [SerializeField]
+    float trailShotsMoveSpeedRangeLow;
+    [SerializeField]
+    float trailShotsMoveSpeedRangeHigh;
+    [SerializeField]
+    int trailShotsIntervalRangeLow;
+    [SerializeField]
+    int trailShotsIntervalRangeHigh;
+    [SerializeField]
+    float trailShotsVolley;
+    [SerializeField]
+    int trailShotsTrailInterval;
+    [SerializeField]
+    int trailShotsTrailDuration;
+    [SerializeField]
+    HexagonCycle HexagonCycleGimmick;
+    [SerializeField]
+    float hexagonCycleMoveSpeed;
+    [SerializeField]
+    int hexagonCycleFrameBeforeDirChange;
+    [SerializeField]
+    Vector3 hexagonCycleInitialDir;
+    [SerializeField]
+    Vector3 hexagonCycleSpawnPos;
+    [SerializeField]
+    int hexagonCycleLoop;
 
     [SerializeField]
     float patternInterval;
@@ -56,10 +98,22 @@ public class Stage13Enemy : MonoBehaviour
     void StartEnemyRoutine()
     {
         StartCoroutine("EnemyRoutine");
+        StartCoroutine("HexagonRoutine");
     }
     public void StopEnemyRoutine()
     {
         StopCoroutine("EnemyRoutine");
+    }
+    IEnumerator HexagonRoutine()
+    {
+        yield return new WaitForSeconds(1.8f);
+
+        while (true)
+        {
+            StartCoroutine(HexagonCycleGimmick.shootHexagonCycleSingle(hexagonCycleMoveSpeed, hexagonCycleFrameBeforeDirChange, hexagonCycleInitialDir, hexagonCycleSpawnPos, hexagonCycleLoop));
+
+            yield return new WaitForSeconds(0.5f);
+        }
     }
     IEnumerator EnemyRoutine()
     {
@@ -67,9 +121,27 @@ public class Stage13Enemy : MonoBehaviour
 
         while (true)
         {
+            for (int i = 0; i < 5; i++)
+            {
+                DiagonalPattern.ShootDiagonal(diagonalMoveSpeed, Random.Range(1f, 2.6f), diagonalBulletNum, Random.Range(0, 2));
 
+                yield return new WaitForSeconds(patternInterval * 0.25f);
+            }
+
+            yield return new WaitForSeconds(patternInterval * 1.5f);
+
+            StartCoroutine(TrailShotsPattern.RandomVolley(trailShotsMoveSpeedRangeLow, trailShotsMoveSpeedRangeHigh, trailShotsIntervalRangeLow, trailShotsIntervalRangeHigh, trailShotsVolley, trailShotsTrailInterval, trailShotsTrailDuration));
 
             yield return new WaitForSeconds(patternInterval);
+
+            for (int i = 0; i < 3; i++)
+            {
+                StartCoroutine(FollowXPattern.Shoot(followXFollowSpeed, followXVolley, followXInterval, followXFallSpeed));
+
+                yield return new WaitForSeconds(patternInterval * 0.5f + followXVolley * followXInterval / 120f);
+            }
+
+            yield return new WaitForSeconds(patternInterval * 1f);
         }
     }
 
