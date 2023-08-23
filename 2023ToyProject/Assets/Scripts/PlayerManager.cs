@@ -116,8 +116,9 @@ public class PlayerManager : MonoBehaviour
     IEnumerator ShieldOff()
     {
         yield return new WaitForSeconds(shieldtime);
-        if (Input.GetKey(KeyCode.X) || Input.GetMouseButton(1))
+        if (Input.GetKey(KeyCode.X))
         {
+            Electricfield.GetComponent<SpriteRenderer>().color = new Color(1, 0.75f, 0, 1);
             Electricfield.tag = "ElectricField";
         }
         else

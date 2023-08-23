@@ -77,19 +77,13 @@ public class Stage11Enemy : MonoBehaviour
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine();
+        anim.SetBool("isLowHp", false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hp < maxHp * 0.3)
-        {
-            anim.SetBool("isLowHp", true);
-        }
-        else
-        {
-            anim.SetBool("isLowHp", false);
-        }
+
     }
     void StartEnemyRoutine()
     {
@@ -105,10 +99,11 @@ public class Stage11Enemy : MonoBehaviour
 
         while (true)
         {
+            anim.SetTrigger("doAttack");
             StartCoroutine(SpiralPattern.Shoot4(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleOffset, spiralAngleIncrement));
 
             yield return new WaitForSeconds(patternInterval * 0f + spiralTotalBullet * spiralInterval / 120f / 3f);
-
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 3; i++)
             {
                 ClusterPattern.Shoot(clusterBullets, clusterMoveSpeed, clusterMaxTargetPosOffset);
@@ -117,7 +112,7 @@ public class Stage11Enemy : MonoBehaviour
             }
 
             yield return new WaitForSeconds(patternInterval * 0.5f);
-
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 3; i++)
             {
                 TrailShotsPattern.SnipeShootSingle(trailShotsMoveSpeed, trailShotsTrailInterval, trailShotsTrailDuration);
@@ -126,7 +121,7 @@ public class Stage11Enemy : MonoBehaviour
             }
 
             yield return new WaitForSeconds(patternInterval * 0.5f);
-
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 3; i++)
             {
                 StartCoroutine(RandomFallPattern.Shoot(randomfallMoveSpeedRangeLow, randomfallMoveSpeedRangeHigh, randomfallIntervalRangeLow, randomfallIntervalRangeHigh, randomfallVolley));
@@ -153,7 +148,10 @@ public class Stage11Enemy : MonoBehaviour
             {
                 bullet.DestroySelf();
             }
-
+            if (hp < maxHp * 0.3)
+            {
+                anim.SetBool("isLowHp", true);
+            }
             if (hp <= 0)
             {
                 //death

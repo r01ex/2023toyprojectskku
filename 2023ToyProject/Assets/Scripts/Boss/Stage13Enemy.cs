@@ -81,19 +81,13 @@ public class Stage13Enemy : MonoBehaviour
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine();
+        anim.SetBool("isLowHp", false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hp < maxHp * 0.3)
-        {
-            anim.SetBool("isLowHp", true);
-        }
-        else
-        {
-            anim.SetBool("isLowHp", false);
-        }
+
     }
     void StartEnemyRoutine()
     {
@@ -121,6 +115,7 @@ public class Stage13Enemy : MonoBehaviour
 
         while (true)
         {
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 5; i++)
             {
                 DiagonalPattern.ShootDiagonal(diagonalMoveSpeed, Random.Range(1f, 2.6f), diagonalBulletNum, Random.Range(0, 2));
@@ -129,11 +124,11 @@ public class Stage13Enemy : MonoBehaviour
             }
 
             yield return new WaitForSeconds(patternInterval * 1.5f);
-
+            anim.SetTrigger("doAttack");
             StartCoroutine(TrailShotsPattern.RandomVolley(trailShotsMoveSpeedRangeLow, trailShotsMoveSpeedRangeHigh, trailShotsIntervalRangeLow, trailShotsIntervalRangeHigh, trailShotsVolley, trailShotsTrailInterval, trailShotsTrailDuration));
 
             yield return new WaitForSeconds(patternInterval);
-
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 3; i++)
             {
                 StartCoroutine(FollowXPattern.Shoot(followXFollowSpeed, followXVolley, followXInterval, followXFallSpeed));
@@ -160,7 +155,10 @@ public class Stage13Enemy : MonoBehaviour
             {
                 bullet.DestroySelf();
             }
-
+            if (hp < maxHp * 0.3)
+            {
+                anim.SetBool("isLowHp", true);
+            }
             if (hp <= 0)
             {
                 //death

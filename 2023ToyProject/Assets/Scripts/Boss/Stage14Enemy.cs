@@ -70,19 +70,13 @@ public class Stage14Enemy : MonoBehaviour
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine();
+        anim.SetBool("isLowHp", false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hp < maxHp * 0.3)
-        {
-            anim.SetBool("isLowHp", true);
-        }
-        else
-        {
-            anim.SetBool("isLowHp", false);
-        }
+       
     }
     void StartEnemyRoutine()
     {
@@ -100,6 +94,7 @@ public class Stage14Enemy : MonoBehaviour
 
         while (true)
         {
+
             SpawnTurretGimmick.Spawn();
 
             yield return new WaitForSeconds(3f);
@@ -111,6 +106,7 @@ public class Stage14Enemy : MonoBehaviour
 
         while (true)
         {
+
             StartCoroutine(HelixPattern.ShootDouble(helixMoveSpeed, helixTotalBullet, helixInterval, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
 
             yield return new WaitForSeconds(patternInterval * (-1f) + helixTotalBullet * helixInterval / 120f);
@@ -145,7 +141,10 @@ public class Stage14Enemy : MonoBehaviour
             {
                 bullet.DestroySelf();
             }
-
+            if (hp < maxHp * 0.3)
+            {
+                anim.SetBool("isLowHp", true);
+            }
             if (hp <= 0)
             {
                 //death
