@@ -143,6 +143,7 @@ public class Stage4Enemy : MonoBehaviour
                 anim.SetBool("isLowHp", true);
             }
             healthbar.fillAmount = hp / maxHp;
+            healthText.text = hp + "/" + maxHp;
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
             SoundEffectManager.Instance.PlayEnemyHit();
             anim.SetTrigger("doHitted");

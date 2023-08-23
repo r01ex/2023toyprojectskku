@@ -162,6 +162,7 @@ public class Stage15Enemy : MonoBehaviour
         {
             hp -= damage;
             healthbar.fillAmount = hp / maxHp;
+            healthText.text = hp + "/" + maxHp;
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
             SoundEffectManager.Instance.PlayEnemyHit();
             anim.SetTrigger("doHitted");

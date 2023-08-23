@@ -53,13 +53,16 @@ public class GameplayManager : MonoBehaviour
     {
         while(true)
         {
-            timer.fillAmount = (stageMaxTime - currenttime) / stageMaxTime;
-            currenttime += 0.5f;
-            if(currenttime >= stageMaxTime)
+            if (isGameOver == false)
             {
-                //end by time
-                Debug.Log("Game Over by Time");
-                break;
+                timer.fillAmount = (stageMaxTime - currenttime) / stageMaxTime;
+                currenttime += 0.5f;
+                if (currenttime >= stageMaxTime)
+                {
+                    //end by time
+                    Debug.Log("Game Over by Time");
+                    break;
+                }
             }
             yield return new WaitForSecondsRealtime(0.5f);
         }
@@ -91,6 +94,7 @@ public class GameplayManager : MonoBehaviour
 
     public void spawnNextBoss(){
         currentBoss++;
+        timer.fillAmount = 1;
         bgm.volume = 0.5f;
         Camera.main.transform.rotation = Quaternion.identity;
         Instantiate(bossPrefabs[currentBoss]);
