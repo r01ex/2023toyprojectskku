@@ -160,7 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6839267879443335859}
   - component: {fileID: 5922802789958149205}
-  - component: {fileID: 2921672985595891528}
+  - component: {fileID: 6063594931152503164}
   - component: {fileID: 1522367284142192163}
   - component: {fileID: 3139475739530643110}
   m_Layer: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8de915b94eaae824e8f6eb1a74e969f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2921672985595891528
+--- !u!114 &6063594931152503164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,10 +206,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3966243476037155017}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4782873865067946821a33487863628, type: 3}
+  m_Script: {fileID: 11500000, guid: 02cba44cc38eca14495fde0ce7989fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lrPrefab: {fileID: 4183104112311564776, guid: 4bc173cc2258dba4b952bad7e5064368, type: 3}
 --- !u!114 &1522367284142192163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +358,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  SpiralPattern: {fileID: 0}
+  DiagonalPattern: {fileID: 5922802789958149205}
+  diagonalMoveSpeed: 4
+  diagonalBulletNum: 15
+  FollowXPattern: {fileID: 6063594931152503164}
+  followXFollowSpeed: 5
+  followXVolley: 8
+  followXInterval: 20
+  followXFallSpeed: 5
+  TrailShotsPattern: {fileID: 1522367284142192163}
+  trailShotsMoveSpeedRangeLow: 5
+  trailShotsMoveSpeedRangeHigh: 7
+  trailShotsIntervalRangeLow: 10
+  trailShotsIntervalRangeHigh: 20
+  trailShotsVolley: 3
+  trailShotsTrailInterval: 25
+  trailShotsTrailDuration: 400
+  HexagonCycleGimmick: {fileID: 3139475739530643110}
+  hexagonCycleMoveSpeed: 7.2
+  hexagonCycleFrameBeforeDirChange: 60
+  hexagonCycleInitialDir: {x: 1, y: 0, z: 0}
+  hexagonCycleSpawnPos: {x: -1.8, y: 2, z: 0}
+  hexagonCycleLoop: 1
   patternInterval: 1.2
   healthbar: {fileID: 8442690673370145635}
 --- !u!50 &955115034370399629

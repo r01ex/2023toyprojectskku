@@ -15,7 +15,38 @@ public class Stage14Enemy : MonoBehaviour
     private Animator anim;
 
     [SerializeField]
+    Helix HelixPattern;
+    [SerializeField]
+    float helixMoveSpeed;
+    [SerializeField]
+    int helixTotalBullet;
+    [SerializeField]
+    int helixInterval;
+    [SerializeField]
+    int helixWidthNumber;
+    [SerializeField]
+    float helixWidthSeparation;
+    [SerializeField]
+    float helixDiminisherMult;
+    [SerializeField]
+    FollowShoot FollowShootPattern;
+    [SerializeField]
+    float followShootMoveSpeed;
+    [SerializeField]
     Spiral SpiralPattern;
+    [SerializeField]
+    float spiralMoveSpeed;
+    [SerializeField]
+    int spiralTotalBullet;
+    [SerializeField]
+    int spiralInterval;
+    [SerializeField]
+    float spiralAngleOffset;
+    [SerializeField]
+    float spiralAngleIncrement;
+
+    [SerializeField]
+    SpawnTurret SpawnTurretGimmick;
 
     [SerializeField]
     float patternInterval;
@@ -56,20 +87,46 @@ public class Stage14Enemy : MonoBehaviour
     void StartEnemyRoutine()
     {
         StartCoroutine("EnemyRoutine");
+        StartCoroutine("TurretRoutine");
     }
     public void StopEnemyRoutine()
     {
         StopCoroutine("EnemyRoutine");
     }
-    IEnumerator EnemyRoutine()
+
+    IEnumerator TurretRoutine()
     {
         yield return new WaitForSeconds(1.8f);
 
         while (true)
         {
+            SpawnTurretGimmick.Spawn();
 
+            yield return new WaitForSeconds(3f);
+        }
+    }
+    IEnumerator EnemyRoutine()
+    {
+        yield return new WaitForSeconds(1.8f + patternInterval);
 
-            yield return new WaitForSeconds(patternInterval);
+        while (true)
+        {
+            StartCoroutine(HelixPattern.ShootDouble(helixMoveSpeed, helixTotalBullet, helixInterval, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
+
+            yield return new WaitForSeconds(patternInterval * (-1f) + helixTotalBullet * helixInterval / 120f);
+
+            StartCoroutine(SpiralPattern.Shoot4(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleOffset, spiralAngleIncrement));
+
+            yield return new WaitForSeconds(patternInterval * 3.5f + spiralTotalBullet * spiralInterval / 120f / 3f);
+
+            for (int i = 0; i < 3; i++)
+            {
+                FollowShootPattern.Shoot(followShootMoveSpeed);
+
+                yield return new WaitForSeconds(patternInterval * 0.5f);
+            }
+
+            yield return new WaitForSeconds(patternInterval * 2f);
         }
     }
 

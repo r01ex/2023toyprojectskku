@@ -256,8 +256,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093072899443650999}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.47, y: 3.22, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 3.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -265,7 +265,7 @@ Transform:
   - {fileID: 3947262389607008298}
   - {fileID: 7080724599555548179}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &1059818270192560789
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -353,7 +353,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  SpiralPattern: {fileID: 0}
+  HelixPattern: {fileID: 2212272966185288243}
+  helixMoveSpeed: 5
+  helixTotalBullet: 40
+  helixInterval: 20
+  helixWidthNumber: 10
+  helixWidthSeparation: 1
+  helixDiminisherMult: 2
+  FollowShootPattern: {fileID: 1815063050453897280}
+  followShootMoveSpeed: 4
+  SpiralPattern: {fileID: 7694070618886433274}
+  spiralMoveSpeed: 5
+  spiralTotalBullet: 80
+  spiralInterval: 10
+  spiralAngleOffset: 0
+  spiralAngleIncrement: 12
+  SpawnTurretGimmick: {fileID: 6307837070191676661}
   patternInterval: 1.2
   healthbar: {fileID: 4437637402076307370}
 --- !u!50 &6102759906603967882
