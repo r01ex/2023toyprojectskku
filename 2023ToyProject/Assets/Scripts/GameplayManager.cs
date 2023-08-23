@@ -23,6 +23,8 @@ public class GameplayManager : MonoBehaviour
     [SerializeField]
     Sprite[] backGroundSprites;
 
+    [SerializeField]
+    AudioSource bgm;
     // Start is called before the first frame update
 
     private void Awake() {
@@ -62,6 +64,7 @@ public class GameplayManager : MonoBehaviour
     }
     public void SetGameOver(){
         isGameOver = true;
+        bgm.volume = 0.25f;
         BulletObjectPool.Instance.TurnOffAll();
         GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
         BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss + 1);
@@ -81,6 +84,7 @@ public class GameplayManager : MonoBehaviour
 
     public void spawnNextBoss(){
         currentBoss++;
+        bgm.volume = 0.5f;
         Camera.main.transform.rotation = Quaternion.identity;
         Instantiate(bossPrefabs[currentBoss]);
         background.texture = backGroundSprites[currentBoss].texture;
