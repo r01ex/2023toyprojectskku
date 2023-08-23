@@ -95,7 +95,7 @@ public class GameplayManager : MonoBehaviour
     public void spawnNextBoss(){
         currentBoss++;
         timer.fillAmount = 1;
-        currenttime = stageMaxTime;
+        currenttime = 0;
         bgm.volume = 0.5f;
         Camera.main.transform.rotation = Quaternion.identity;
         Instantiate(bossPrefabs[currentBoss]);
