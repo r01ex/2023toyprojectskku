@@ -96,7 +96,8 @@ public class GameplayManager : MonoBehaviour
 
     public void spawnNextBoss(){
         currentBoss++;
-        if(NofBosses<=currentBoss)
+        bossClearPanel.GetComponent<Skill>().updateUI();
+        if (NofBosses<=currentBoss)
         {
 
         }
