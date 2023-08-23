@@ -187,7 +187,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4577608652935729720}
-  - component: {fileID: 3536431091675170472}
+  - component: {fileID: 4063112482079454552}
+  - component: {fileID: 77069191175105687}
+  - component: {fileID: 3345001610737228165}
+  - component: {fileID: 1312524494639606633}
   m_Layer: 0
   m_Name: PatternHolder
   m_TagString: Untagged
@@ -210,7 +213,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6003329690730947412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3536431091675170472
+--- !u!114 &4063112482079454552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,7 +222,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 5867582968218389167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe11c7b3daae64409ce441e207b17a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 5adb6f418f3a21544b5bb3cea5bf1ee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &77069191175105687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867582968218389167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7714041f20f334e8ea79d7c07ac5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3345001610737228165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867582968218389167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8dbf7cd3cda8f42a19cc20107919df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lowEndRight: {x: 4, y: -5.3, z: 0}
+  lowEndLeft: {x: -4, y: -5.3, z: 0}
+--- !u!114 &1312524494639606633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867582968218389167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 436e8576285fafd4eba55265bcb85ad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6120235792946863194
@@ -233,7 +274,7 @@ GameObject:
   - component: {fileID: 6003329690730947412}
   - component: {fileID: 3113786363878591275}
   - component: {fileID: 8827540450034061717}
-  - component: {fileID: 4945804423379157410}
+  - component: {fileID: 7291331808175948660}
   - component: {fileID: 424824249899937059}
   - component: {fileID: 2586161106407685603}
   m_Layer: 0
@@ -333,7 +374,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4945804423379157410
+--- !u!114 &7291331808175948660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -342,12 +383,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 6120235792946863194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a77124299d81884c829381451013c8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 87091029419b19847833f1ba74ebae43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 20
+  hp: 1
   damage: 1
-  Shoot5RowPattern: {fileID: 0}
+  SpiralPattern: {fileID: 4063112482079454552}
+  spiralMoveSpeed: 8
+  spiralTotalbullet: 10
+  PinchPattern: {fileID: 3345001610737228165}
+  pinchMoveSpeed: 7
+  pinchVolley: 30
+  pinchInterval: 20
+  FireworksPattern: {fileID: 77069191175105687}
+  fireworksDropFrameLow: 60
+  fireworksDropFrameHigh: 120
+  fireworksDropSpeed: 8
+  fireworksSplitNumber: 12
+  fireworksSplitSpeed: 7
+  fireworksVolley: 3
+  fireworksSplitVolley: 4
+  fireworksSplitVolleyInterval: 30
+  BounceGimmick: {fileID: 1312524494639606633}
+  bounceVolley: 10
+  bounceDropSpeed: 10
+  bounceBounceBulletSpeed: 10
+  bounceInterval: 15
   patternInterval: 1.2
   healthbar: {fileID: 510226827617600228}
 --- !u!50 &424824249899937059

@@ -129,7 +129,7 @@ public class Stage8Enemy : MonoBehaviour
             {
                 bullet.DestroySelf();
             }
-            if (hp < maxHp * 0.3)
+            if (hp < maxHp * 0.5)
             {
                 anim.SetBool("isLowHp", true);
                 particleSystem.position = new Vector3(particleSystem.position.x, 15);

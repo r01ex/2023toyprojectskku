@@ -15,7 +15,43 @@ public class Stage11Enemy : MonoBehaviour
     private Animator anim;
 
     [SerializeField]
+    Cluster ClusterPattern;
+    [SerializeField]
+    int clusterBullets;
+    [SerializeField]
+    float clusterMoveSpeed;
+    [SerializeField]
+    float clusterMaxTargetPosOffset;
+    [SerializeField]
+    RandomFall RandomFallPattern;
+    [SerializeField]
+    float randomfallMoveSpeedRangeLow;
+    [SerializeField]
+    float randomfallMoveSpeedRangeHigh;
+    [SerializeField]
+    int randomfallIntervalRangeLow;
+    [SerializeField]
+    int randomfallIntervalRangeHigh;
+    [SerializeField]
+    float randomfallVolley;
+    [SerializeField]
+    TrailShots TrailShotsPattern;
+    [SerializeField]
+    float trailShotsMoveSpeed;
+    [SerializeField]
+    int trailShotsTrailInterval;
+    [SerializeField]
+    int trailShotsTrailDuration;
+    [SerializeField]
     Spiral SpiralPattern;
+    [SerializeField]
+    float spiralMoveSpeed;
+    [SerializeField]
+    int spiralTotalBullet;
+    [SerializeField]
+    int spiralInterval;
+    [SerializeField]
+    float spiralAngleIncrement;
 
     [SerializeField]
     float patternInterval;
@@ -44,7 +80,7 @@ public class Stage11Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hp < maxHp * 0.5)
+        if (hp < maxHp * 0.3)
         {
             anim.SetBool("isLowHp", true);
         }
@@ -67,7 +103,36 @@ public class Stage11Enemy : MonoBehaviour
 
         while (true)
         {
-            
+            StartCoroutine(SpiralPattern.Shoot4(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleIncrement));
+
+            yield return new WaitForSeconds(patternInterval * 0f + spiralTotalBullet * spiralInterval / 120f / 3f);
+
+            for (int i = 0; i < 3; i++)
+            {
+                ClusterPattern.Shoot(clusterBullets, clusterMoveSpeed, clusterMaxTargetPosOffset);
+
+                yield return new WaitForSeconds(patternInterval * 0.5f);
+            }
+
+            yield return new WaitForSeconds(patternInterval * 0.5f);
+
+            for (int i = 0; i < 3; i++)
+            {
+                TrailShotsPattern.SnipeShootSingle(trailShotsMoveSpeed, trailShotsTrailInterval, trailShotsTrailDuration);
+
+                yield return new WaitForSeconds(patternInterval * 0.5f);
+            }
+
+            yield return new WaitForSeconds(patternInterval * 0.5f);
+
+            for (int i = 0; i < 3; i++)
+            {
+                StartCoroutine(RandomFallPattern.Shoot(randomfallMoveSpeedRangeLow, randomfallMoveSpeedRangeHigh, randomfallIntervalRangeLow, randomfallIntervalRangeHigh, randomfallVolley));
+
+                yield return new WaitForSeconds(patternInterval * 0.5f + randomfallIntervalRangeLow * randomfallVolley / 120f);
+            }
+
+            yield return new WaitForSeconds(patternInterval);
         }
     }
 
