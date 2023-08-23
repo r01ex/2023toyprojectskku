@@ -66,6 +66,7 @@ public class Stage9Enemy : MonoBehaviour
     {
         hp = maxHp;
         healthText.text = hp + "/" + maxHp;
+        damage = PlayerManager.Instance.attack;
         c = GameObject.FindGameObjectWithTag("backgroundCanvas").GetComponent<Canvas>();
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;

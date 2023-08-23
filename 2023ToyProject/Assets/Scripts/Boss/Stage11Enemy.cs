@@ -77,6 +77,7 @@ public class Stage11Enemy : MonoBehaviour
     {
         hp = maxHp;
         healthText.text = hp + "/" + maxHp;
+        damage = PlayerManager.Instance.attack;
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine();
