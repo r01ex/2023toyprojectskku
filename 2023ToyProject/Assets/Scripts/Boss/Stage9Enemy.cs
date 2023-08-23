@@ -51,17 +51,21 @@ public class Stage9Enemy : MonoBehaviour
     private Renderer enemyRenderer;
 
     Canvas c;
+    TMPro.TextMeshProUGUI healthText;
     private void OnDisable()
     {
         PlayerControl.Instance.resetSpeed();
     }
     private void Awake() {
         anim = GetComponent<Animator>();
+        healthText = GameObject.Find("bosshealth").GetComponent<TMPro.TextMeshProUGUI>();
+
     }
     // Start is called before the first frame update
     void Start()
     {
         hp = maxHp;
+        healthText.text = hp + "/" + maxHp;
         c = GameObject.FindGameObjectWithTag("backgroundCanvas").GetComponent<Canvas>();
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
