@@ -64,6 +64,7 @@ public class GameplayManager : MonoBehaviour
         isGameOver = true;
         BulletObjectPool.Instance.TurnOffAll();
         GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
+        BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss + 1);
         foreach(GameObject g in pattern)
         {
             Destroy(g);
