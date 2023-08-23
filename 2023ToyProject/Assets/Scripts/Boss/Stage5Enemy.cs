@@ -69,17 +69,14 @@ public class Stage5Enemy : MonoBehaviour
     {
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
-        StartEnemyRoutine(); 
+        StartEnemyRoutine();
+        anim.SetBool("isLowHp", false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(hp < maxHp * 0.3){
-            anim.SetBool("isLowHp", true);
-        } else{
-            anim.SetBool("isLowHp", false);
-        }
+
     }
     void StartEnemyRoutine()
     {
@@ -95,15 +92,17 @@ public class Stage5Enemy : MonoBehaviour
 
         while (true)
         {
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 5; i++)
             {
+
                 DiagonalPattern.ShootDiagonal(diagonalMoveSpeed, Random.Range(1f, 2.6f), diagonalBulletNum, Random.Range(0, 2));
 
                 yield return new WaitForSeconds(patternInterval * 0.25f);
             }
 
             yield return new WaitForSeconds(patternInterval * 0.5f);
-
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 4; i++)
             {
                 StartCoroutine(RandomFallPattern.Shoot(randomfallMoveSpeedRangeLow, randomfallMoveSpeedRangeHigh, randomfallIntervalRangeLow, randomfallIntervalRangeHigh, randomfallVolley));
@@ -112,11 +111,11 @@ public class Stage5Enemy : MonoBehaviour
             }
 
             yield return new WaitForSeconds(patternInterval);
-
+            anim.SetTrigger("doAttack");
             StartCoroutine(SnipePattern.RandomvolleyWithSignal(snipeVolley, snipeMoveSpeed, snipeSignalFrame, snipeInterval));
 
             yield return new WaitForSeconds(patternInterval * 0.5f + (snipeSignalFrame + snipeVolley * snipeInterval * 2) / 120f);
-
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 4; i++)
             {
                 ATGCGimmick.Shoot(ATGCMoveSpeed, Random.Range(-2.1f, 2.1f), Random.Range(-25f, 25f), Random.Range(0, 2));
@@ -143,7 +142,10 @@ public class Stage5Enemy : MonoBehaviour
             {
                 bullet.DestroySelf();
             }
-
+            if (hp < maxHp * 0.3)
+            {
+                anim.SetBool("isLowHp", true);
+            }
             if (hp <= 0)
             {
                 //death

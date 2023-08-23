@@ -96,17 +96,13 @@ public class Stage10Enemy : MonoBehaviour
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine();
+        anim.SetBool("isLowHp", false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(hp < maxHp * 0.5){
-            anim.SetBool("isLowHp", true);
-            isLow = true;
-        } else{
-            anim.SetBool("isLowHp", false);
-        }
+
     }
     void StartEnemyRoutine()
     {
@@ -124,6 +120,7 @@ public class Stage10Enemy : MonoBehaviour
         {
             if (!isLow)
             {
+                anim.SetTrigger("doAttack");
                 for (int i = 0; i < 5; i++)
                 {
                     BubblePattern.Shoot(ATGCMoveSpeed, Random.Range(-2.5f, 2.5f), 0, Random.Range(0, 2));
@@ -132,13 +129,13 @@ public class Stage10Enemy : MonoBehaviour
                 }
 
                 yield return new WaitForSeconds(patternInterval * 0.5f);
-
+                anim.SetTrigger("doAttack");
                 StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 2.5f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));                
                 StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 0f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
                 StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, -2.5f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
 
                 yield return new WaitForSeconds(patternInterval * (-3.5f) + helixTotalBullet * helixInterval / 120f);
-
+                anim.SetTrigger("doAttack");
                 for (int i = 0; i < 5; i++)
                 {
                     StartCoroutine(SpiralPattern.Shoot(spiralMoveSpeed, spiralTotalBullet, spiralInterval, spiralAngleOffset, spiralAngleIncrement));
@@ -150,6 +147,7 @@ public class Stage10Enemy : MonoBehaviour
             }
             else
             {
+                anim.SetTrigger("doAttack");
                 for (int i = 0; i < 6; i++)
                 {
                     DiagonalPattern.ShootDiagonal(diagonalMoveSpeed, Random.Range(1f, 2.6f), diagonalBulletNum, Random.Range(0, 2));
@@ -158,7 +156,7 @@ public class Stage10Enemy : MonoBehaviour
                 }
 
                 yield return new WaitForSeconds(patternInterval * 1.5f);
-
+                anim.SetTrigger("doAttack");
                 StartCoroutine(WallPattern.ShootLines(wallMoveSpeed, wallWidth, wallBulletNum, wallLineNum, wallInterval));
 
                 StartCoroutine(SnipePattern.RandomvolleyWithSignal(snipeVolley, snipeMoveSpeed, snipeSignalFrame, snipeInterval));
@@ -183,7 +181,11 @@ public class Stage10Enemy : MonoBehaviour
             {
                 bullet.DestroySelf();
             }
-
+            if (hp < maxHp * 0.5)
+            {
+                anim.SetBool("isLowHp", true);
+                isLow = true;
+            }
             if (hp <= 0)
             {
                 //death

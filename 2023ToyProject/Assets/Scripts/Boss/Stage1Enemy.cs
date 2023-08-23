@@ -40,16 +40,13 @@ public class Stage1Enemy : MonoBehaviour
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine();
+        anim.SetBool("isLowHp", false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(hp < maxHp * 0.3){
-            anim.SetBool("isLowHp", true);
-        } else{
-            anim.SetBool("isLowHp", false);
-        }
+
     }
     void StartEnemyRoutine()
     {
@@ -67,11 +64,12 @@ public class Stage1Enemy : MonoBehaviour
         {
             for (int i = 0; i < 5; i++)
             {
+                anim.SetTrigger("doAttack");
                 Shoot5RowPattern.Shoot(5, Random.Range(-1.3f, 1.3f));
 
                 yield return new WaitForSeconds(patternInterval);
             }
-
+            anim.SetTrigger("doAttack");
             StartCoroutine(WallPattern.ShootLines(3.5f, 7.6f, 28, 1, 10));
 
             yield return new WaitForSeconds(patternInterval);
@@ -92,7 +90,10 @@ public class Stage1Enemy : MonoBehaviour
             {
                 bullet.DestroySelf();
             }
-
+            if (hp < maxHp * 0.3)
+            {
+                anim.SetBool("isLowHp", true);
+            }
             if (hp <= 0)
             {
                 //death

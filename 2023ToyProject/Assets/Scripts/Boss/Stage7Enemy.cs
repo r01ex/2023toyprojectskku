@@ -80,17 +80,14 @@ public class Stage7Enemy : MonoBehaviour
     {
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
-        StartEnemyRoutine(); 
+        StartEnemyRoutine();
+        anim.SetBool("isLowHp", false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(hp < maxHp * 0.3){
-            anim.SetBool("isLowHp", true);
-        } else{
-            anim.SetBool("isLowHp", false);
-        }
+
     }
     void StartEnemyRoutine()
     {
@@ -106,12 +103,13 @@ public class Stage7Enemy : MonoBehaviour
 
         while (true)
         {
+            anim.SetTrigger("doAttack");
             StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 2.5f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
             StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, 0f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
             StartCoroutine(HelixPattern.ShootSingle(helixMoveSpeed, helixTotalBullet, helixInterval, -2.5f, helixWidthNumber, helixWidthSeparation, helixDiminisherMult, true));
 
             yield return new WaitForSeconds(patternInterval * (-2f) + helixTotalBullet * helixInterval / 120f);
-
+            anim.SetTrigger("doAttack");
             for (int i = 0; i < 4; i++)
             {
                 StartCoroutine(RandomFallPattern.Shoot(randomfallMoveSpeedRangeLow, randomfallMoveSpeedRangeHigh, randomfallIntervalRangeLow, randomfallIntervalRangeHigh, randomfallVolley));
@@ -120,7 +118,7 @@ public class Stage7Enemy : MonoBehaviour
             }
 
             yield return new WaitForSeconds(patternInterval * 1f);
-
+            anim.SetTrigger("doAttack");
             StartCoroutine(SpiralPattern.ShootBackAndForth(backnforthSpeed, backnforthBulletInOneVolley, backnforthInterval, backnforthAngleIncrement, backnforthTotal));
 
             yield return new WaitForSeconds(patternInterval * 1f + backnforthBulletInOneVolley * backnforthInterval * backnforthTotal / 120f);
@@ -142,7 +140,10 @@ public class Stage7Enemy : MonoBehaviour
             {
                 bullet.DestroySelf();
             }
-
+            if (hp < maxHp * 0.3)
+            {
+                anim.SetBool("isLowHp", true);
+            }
             if (hp <= 0)
             {
                 //death
