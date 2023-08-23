@@ -42,24 +42,14 @@ public class MainMenuManager : MonoBehaviour
             }
             else
             {
-                textBox.text = "Press Any Key to Start!";
-            }
-            isTextVisible = !isTextVisible;
-        }
-    }
-    private IEnumerator TextAnimationCoroutineLoad()
-    {
-        isTextVisible = false;
-        while (true)
-        {
-            yield return new WaitForSeconds(0.5f);
-            if (isTextVisible)
-            {
-                textBox.text = "";
-            }
-            else
-            {
-                textBox.text = "Loading";
+                if (flag)
+                {
+                    textBox.text = "Loading";
+                }
+                else
+                {
+                    textBox.text = "Press Any Key to Start!";
+                }
             }
             isTextVisible = !isTextVisible;
         }
@@ -77,10 +67,8 @@ public class MainMenuManager : MonoBehaviour
     void Update()
     {
         if (Input.anyKeyDown&&flag==false){
-            StopCoroutine(flashanykey);
-            StartCoroutine(TextAnimationCoroutineLoad());
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(2);
             flag = true;
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(2);
         }
         
     }
