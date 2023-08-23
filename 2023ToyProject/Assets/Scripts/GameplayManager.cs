@@ -91,7 +91,7 @@ public class GameplayManager : MonoBehaviour
                 }
                 totaltimer += 1;
             }
-            yield return new WaitForSecondsRealtime(0.5f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
     // Update is called once per frame
