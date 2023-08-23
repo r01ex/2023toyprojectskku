@@ -207,7 +207,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  SpiralPattern: {fileID: 0}
+  SpiralPattern: {fileID: 7579533761859356588}
+  spiralSpeed: 5
+  spiralBulletInOneVolley: 10
+  spiralInterval: 5
+  spiralAngleIncrement: 5
+  spiralTotal: 4
+  SnipePattern: {fileID: 8082874266920427843}
+  snipeVolley: 20
+  snipeMoveSpeed: 60
+  snipeSignalFrame: 180
+  snipeInterval: 30
+  TrailShotsPattern: {fileID: 7817090119205125070}
+  trailShotsMoveSpeedRangeLow: 5
+  trailShotsMoveSpeedRangeHigh: 7
+  trailShotsIntervalRangeLow: 10
+  trailShotsIntervalRangeHigh: 20
+  trailShotsVolley: 5
+  trailShotsTrailInterval: 25
+  trailShotsTrailDuration: 400
+  RandomFallPattern: {fileID: 2703532707369183082}
+  randomfallMoveSpeedRangeLow: 5
+  randomfallMoveSpeedRangeHigh: 10
+  randomfallIntervalRangeLow: 10
+  randomfallIntervalRangeHigh: 20
+  randomfallVolley: 15
+  AtomBombGimmick: {fileID: 1420288888513109776}
+  atomBombDropSpeed: 10
+  atomBombSplinterScaleSpeed: 2
   patternInterval: 1.2
   healthbar: {fileID: 7129760185834047240}
 --- !u!50 &594867635247190543
@@ -465,7 +492,7 @@ GameObject:
   - component: {fileID: 7579533761859356588}
   - component: {fileID: 8082874266920427843}
   - component: {fileID: 7817090119205125070}
-  - component: {fileID: 6765097119552385285}
+  - component: {fileID: 2703532707369183082}
   - component: {fileID: 1420288888513109776}
   m_Layer: 0
   m_Name: PatternHolder
@@ -526,7 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7559ddfe9fa723041a4f20004c1dff0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6765097119552385285
+--- !u!114 &2703532707369183082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -535,7 +562,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7668450897738741212}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf36ab0ac1b37144aa90d905c3ad64c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 26a61ae2eb87161458f4efe2d2e30a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1420288888513109776

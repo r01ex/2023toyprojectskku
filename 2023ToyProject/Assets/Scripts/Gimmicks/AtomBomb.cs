@@ -18,7 +18,7 @@ public class AtomBomb : MonoBehaviour
     }
     public IEnumerator Shoot(int dropSpeed, float splinterScaleSpeed)
     {
-        Vector3 spawnPos = new Vector3(Random.Range(-3f, 3f), transform.position.y, transform.position.z);
+        Vector3 spawnPos = new Vector3(Random.Range(-1.5f, 1.5f), transform.position.y, transform.position.z);
         GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
         if (enemyObject != null)
         {
