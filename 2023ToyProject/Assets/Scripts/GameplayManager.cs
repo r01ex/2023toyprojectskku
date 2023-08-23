@@ -57,6 +57,8 @@ public class GameplayManager : MonoBehaviour
     int totaltimer = 0;
     public int totalAbsBullet = 0;
     public int totalShieldBullet = 0;
+    [SerializeField]
+    Button retry;
 
     // Start is called before the first frame update
 
@@ -154,8 +156,9 @@ public class GameplayManager : MonoBehaviour
         Time.timeScale = 0;
         bgm.volume = 0.25f;
         defeatCanvas.SetActive(true);
+        retry.Select();
         bossname_defeat_text.text = bossnamelist[currentBoss];
-        TimeSpan result = TimeSpan.FromSeconds(currenttime/2);
+        TimeSpan result = TimeSpan.FromSeconds((stageMaxTime - (float)(currenttime / 2)));
         string fromTimeString = result.ToString("mm':'ss");
         remaintime_defeat_text.text = fromTimeString;
         TimeSpan result2 = TimeSpan.FromSeconds(totaltimer/2);
@@ -164,6 +167,7 @@ public class GameplayManager : MonoBehaviour
     }
     public void showClear()
     {
+        isGameOver = true;
         SoundEffectManager.Instance.PlayVictory();
         BulletObjectPool.Instance.TurnOffAll();
         GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
@@ -193,7 +197,6 @@ public class GameplayManager : MonoBehaviour
         }
         Destroy(GameObject.FindGameObjectWithTag("Boss"));
         timer.fillAmount = 1;
-        totaltimer -= currenttime * 2;
         currenttime = 0;
         bgm.volume = 0.5f; 
         Camera.main.transform.rotation = Quaternion.identity;

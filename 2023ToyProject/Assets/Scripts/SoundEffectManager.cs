@@ -10,7 +10,9 @@ public class SoundEffectManager : MonoBehaviour
     [SerializeField] AudioSource playerhit;
     [SerializeField] AudioSource enemyhit;
     [SerializeField] AudioSource victory;
+    [SerializeField] AudioSource bgm;
     public static SoundEffectManager Instance;
+    bool ison = true;
     private void Awake()
     {
         if (Instance == null)
@@ -56,5 +58,17 @@ public class SoundEffectManager : MonoBehaviour
     public void PlayVictory()
     {
         victory.Play();
+    }
+    public void bgmonoff()
+    {
+        if(ison)
+        {
+            bgm.enabled = false;
+        }
+        else
+        {
+            bgm.enabled = true;
+        }
+        ison = !ison;
     }
 }
