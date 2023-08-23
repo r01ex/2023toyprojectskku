@@ -28,14 +28,6 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         maincamera = Camera.main;
-        if (!Application.isEditor)
-        {
-            Invoke("setCursor", 0.1f);
-        }
-    }
-    void setCursor()
-    {
-        Cursor.visible = false;
     }
     public void addSpeed(float Speed)
     {
