@@ -8,7 +8,7 @@ public class Stage5Enemy : MonoBehaviour
 
     private float hp;
     [SerializeField]
-    private float maxHp = 10f;
+    private float maxHp;
 
     
     [SerializeField]

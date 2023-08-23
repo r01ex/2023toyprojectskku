@@ -6,7 +6,7 @@ public class Stage1Enemy : MonoBehaviour
 {
     private float hp;
     [SerializeField]
-    private float maxHp = 10f;
+    private float maxHp;
 
     [SerializeField]
     private float damage = 1f;  //To indicate that the damage of each electrons

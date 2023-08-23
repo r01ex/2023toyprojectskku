@@ -195,7 +195,7 @@ public class GameplayManager : MonoBehaviour
         timer.fillAmount = 1;
         totaltimer -= currenttime * 2;
         currenttime = 0;
-        bgm.volume = 0.5f;
+        bgm.volume = 0.5f; 
         Camera.main.transform.rotation = Quaternion.identity;
         Instantiate(bossPrefabs[currentBoss]);
         background.texture = backGroundSprites[currentBoss].texture;

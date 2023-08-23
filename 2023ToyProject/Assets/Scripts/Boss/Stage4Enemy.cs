@@ -7,7 +7,7 @@ public class Stage4Enemy : MonoBehaviour
     // To indicate that the boss hp
     private float hp;
     [SerializeField]
-    private float maxHp = 1f;
+    private float maxHp;
 
     
     [SerializeField]

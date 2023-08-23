@@ -8,11 +8,11 @@ public class Stage7Enemy : MonoBehaviour
 
     private float hp;
     [SerializeField]
-    private float maxHp = 1f;
+    private float maxHp;
 
-    
+
     [SerializeField]
-    private float damage = 1f;  //To indicate that the damage of each electrons
+    private float damage;  //To indicate that the damage of each electrons
 
     private Animator anim;
 
@@ -84,8 +84,8 @@ public class Stage7Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        healthText.text = hp + "/" + maxHp;
         hp = maxHp;
+        healthText.text = hp + "/" + maxHp;
         damage = PlayerManager.Instance.attack;
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
