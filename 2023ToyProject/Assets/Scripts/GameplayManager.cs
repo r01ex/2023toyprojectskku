@@ -184,6 +184,7 @@ public class GameplayManager : MonoBehaviour
         bossname.text = bossnamelist[currentBoss];
         stagenum.text = "Stage " + (int)(currentBoss + 1);
         defeatCanvas.SetActive(false);
+        PlayerManager.Instance.setBulletZero();
         Time.timeScale = 1;
     }
     public void toMainScene()
