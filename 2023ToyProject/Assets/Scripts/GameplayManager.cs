@@ -12,7 +12,7 @@ public class GameplayManager : MonoBehaviour
 
     [SerializeField] Image timer;
     [SerializeField] int stageMaxTime;
-    float currenttime = 0;
+    int currenttime = 0;
 
     [SerializeField]
     private GameObject bossClearPanel;
@@ -81,9 +81,9 @@ public class GameplayManager : MonoBehaviour
         {
             if (isGameOver == false)
             {
-                timer.fillAmount = (stageMaxTime - currenttime) / stageMaxTime;
-                currenttime += 0.5f;
-                if (currenttime >= stageMaxTime)
+                timer.fillAmount = (stageMaxTime - (currenttime/2)) / stageMaxTime;
+                currenttime += 1;
+                if ((currenttime / 2) >= stageMaxTime)
                 {
                     //end by time
                     Debug.Log("Game Over by Time");
@@ -141,7 +141,6 @@ public class GameplayManager : MonoBehaviour
     } 
     public void showDefeat()
     {
-        isGameOver = true;
         BulletObjectPool.Instance.TurnOffAll();
         GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
         BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss);
@@ -149,11 +148,12 @@ public class GameplayManager : MonoBehaviour
         {
             Destroy(g);
         }
+        isGameOver = false;
         Time.timeScale = 0;
         bgm.volume = 0.25f;
         defeatCanvas.SetActive(true);
         bossname_defeat_text.text = bossnamelist[currentBoss];
-        TimeSpan result = TimeSpan.FromSeconds(currenttime);
+        TimeSpan result = TimeSpan.FromSeconds(currenttime/2);
         string fromTimeString = result.ToString("mm':'ss");
         remaintime_defeat_text.text = fromTimeString;
         TimeSpan result2 = TimeSpan.FromSeconds(totaltimer/2);
@@ -162,7 +162,6 @@ public class GameplayManager : MonoBehaviour
     }
     public void showClear()
     {
-        isGameOver = true;
         BulletObjectPool.Instance.TurnOffAll();
         GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
         BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss);
@@ -171,7 +170,6 @@ public class GameplayManager : MonoBehaviour
             Destroy(g);
         }
         clearCanvas.SetActive(true);
-        Time.timeScale = 0;
         bgm.volume = 0.25f;
         totalAbsBullet_text.text = totalAbsBullet.ToString();
         totalShieldBullet_text.text = totalShieldBullet.ToString();
@@ -181,9 +179,17 @@ public class GameplayManager : MonoBehaviour
     }
     public void retryBoss()
     {
-        isGameOver = false;        
+        isGameOver = false;
+        BulletObjectPool.Instance.TurnOffAll();
+        GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
+        BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss);
+        foreach (GameObject g in pattern)
+        {
+            Destroy(g);
+        }
         Destroy(GameObject.FindGameObjectWithTag("Boss"));
         timer.fillAmount = 1;
+        totaltimer -= currenttime * 2;
         currenttime = 0;
         bgm.volume = 0.5f;
         Camera.main.transform.rotation = Quaternion.identity;

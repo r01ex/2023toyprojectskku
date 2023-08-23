@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d400e8e8943b204ab60e186613c794c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 0
+  maxHp: 15
   damage: 1
   ShotGun5Pattern: {fileID: 7643280095941802414}
   shotgunSpeed: 8

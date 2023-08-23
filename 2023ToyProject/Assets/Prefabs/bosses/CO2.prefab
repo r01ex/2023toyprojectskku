@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a3f3de14b0dd443bc00b6e7b32300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 1
+  maxHp: 40
   damage: 1
   HelixPattern: {fileID: 6350986166559756001}
   helixMoveSpeed: 5

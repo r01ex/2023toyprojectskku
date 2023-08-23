@@ -5184,7 +5184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66fe54928998644b8607ec9b0df4d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 1
+  maxHp: 45
   damage: 1
   DiagonalPattern: {fileID: 7076408444142562581}
   diagonalMoveSpeed: 5

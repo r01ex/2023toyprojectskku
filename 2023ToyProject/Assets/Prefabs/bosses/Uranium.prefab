@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e287221fd167714190c4f74fb9971e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 1
+  maxHp: 80
   damage: 1
   SpiralPattern: {fileID: 7579533761859356588}
   spiralSpeed: 5

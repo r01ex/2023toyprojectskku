@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3f1acab5e221b4b872541ca3002835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 1
+  maxHp: 60
   damage: 1
   ClusterPattern: {fileID: 8234265855673247621}
   clusterBullets: 10
