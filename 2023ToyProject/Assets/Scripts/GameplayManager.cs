@@ -100,6 +100,7 @@ public class GameplayManager : MonoBehaviour
         
     }
     public void SetGameOver(){
+        SoundEffectManager.Instance.setBgmVolume(0.25f);
         isGameOver = true;
         BulletObjectPool.Instance.TurnOffAll();
         GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
