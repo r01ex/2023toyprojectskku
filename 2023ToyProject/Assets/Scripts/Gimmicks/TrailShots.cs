@@ -28,6 +28,8 @@ public class TrailShots : MonoBehaviour
     }
     IEnumerator LeaveTrail(GameObject bullet, int interval, int duration)
     {
+        duration = duration * Application.targetFrameRate / 120;
+        interval = interval * Application.targetFrameRate / 120;
         while (bullet.activeInHierarchy)
         {
             for(int i=0;i<interval;i++)
@@ -50,6 +52,7 @@ public class TrailShots : MonoBehaviour
     }
     IEnumerator LeaveTrailDisappearAtOnce(GameObject bullet, int interval, int duration)
     {
+        duration = duration * Application.targetFrameRate / 120;
         List<GameObject> trailList = new List<GameObject>();
         while (bullet.activeInHierarchy)
         {

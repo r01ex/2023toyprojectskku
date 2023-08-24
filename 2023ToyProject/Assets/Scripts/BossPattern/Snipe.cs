@@ -6,10 +6,11 @@ public class Snipe : MonoBehaviour
 {
     [SerializeField]
     GameObject lrPrefab;
+    float targetframe;
     // Start is called before the first frame update
     void Start()
     {
-        
+        targetframe = Application.targetFrameRate;
     }
 
     // Update is called once per frame
@@ -30,10 +31,7 @@ public class Snipe : MonoBehaviour
                 EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
                 enemy.move3Init(moveSpeed, (PlayerManager.Instance.transform.position-this.transform.position).normalized);
             }
-            for (int j = 0; j < interval; j++)
-            {
-                 yield return null;
-            }
+            yield return new WaitForSeconds(interval / targetframe);
         }
     }
     public void ShootSingle(float moveSpeed)
@@ -54,30 +52,22 @@ public class Snipe : MonoBehaviour
         {
             Vector3 playerSnapshot = PlayerManager.Instance.transform.position;
             StartCoroutine(spawnLine(this.transform.position, this.transform.position + (playerSnapshot - this.transform.position).normalized * 30, signalFrame, moveSpeed));
-            for (int j = 0; j < interval; j++)
-            {
-                 yield return null;
-            }
+            yield return new WaitForSeconds(interval / targetframe);
         }
     }
     public IEnumerator RandomvolleyWithSignal(int volley, float moveSpeed, int signalFrame, int interval)
     {
         for (int i = 0; i < volley; i++)
         {            
-            StartCoroutine(spawnLine(new Vector3(-4.5f,Random.Range(-4f,4f),0), new Vector3(4.5f, Random.Range(-4f, 4f), 0), signalFrame, moveSpeed));   
-            for (int j = 0; j < interval; j++)
-            {
-                 yield return null;
-            }
+            StartCoroutine(spawnLine(new Vector3(-4.5f,Random.Range(-4f,4f),0), new Vector3(4.5f, Random.Range(-4f, 4f), 0), signalFrame, moveSpeed));
+            yield return new WaitForSeconds(interval / targetframe);
             StartCoroutine(spawnLine(new Vector3(Random.Range(-3f, 3f), 5.5f, 0), new Vector3(Random.Range(-3f, 3f), -5.5f, 0), signalFrame, moveSpeed));
-            for (int j = 0; j < interval; j++)
-            {
-                 yield return null;
-            }
+            yield return new WaitForSeconds(interval / targetframe);
         }
     }
-    public IEnumerator spawnLine(Vector3 pos1, Vector3 pos2, int signalFrame, float moveSpeed)
+    public IEnumerator spawnLine(Vector3 pos1, Vector3 pos2, float signalFrame, float moveSpeed)
     {
+        signalFrame = signalFrame * targetframe / 120;
         LineRenderer lr = Instantiate(lrPrefab).GetComponent<LineRenderer>();
         lr.transform.parent = this.transform;
         lr.positionCount = 2;

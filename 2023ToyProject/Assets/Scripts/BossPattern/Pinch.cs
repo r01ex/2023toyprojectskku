@@ -9,9 +9,10 @@ public class Pinch : MonoBehaviour
     [SerializeField]
     Vector3 lowEndLeft = new Vector3(-4, -5.3f, 0);
     // Start is called before the first frame update
+    float targetframe;
     void Start()
     {
-
+        targetframe = Application.targetFrameRate;
     }
 
     // Update is called once per frame
@@ -44,10 +45,7 @@ public class Pinch : MonoBehaviour
                 EnemyBullet enemy = enemyObjectLeft.GetComponent<EnemyBullet>();
                 enemy.move2Init(moveSpeed, lowEndLeft + new Vector3((i + 1) * (5f / volley), 0, 0));
             }
-            for (int j = 0; j < interval; j++)
-            {
-                 yield return null;
-            }
+            yield return new WaitForSeconds(interval / targetframe);
         }
     }
 }

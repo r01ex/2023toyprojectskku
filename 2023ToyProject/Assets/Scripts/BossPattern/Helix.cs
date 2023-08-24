@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Helix : MonoBehaviour
 {
+    float targetframe;
     // Start is called before the first frame update
     void Start()
     {
-
+        targetframe = Application.targetFrameRate;
     }
 
     // Update is called once per frame
@@ -50,10 +51,7 @@ public class Helix : MonoBehaviour
                 }
                 spawnPos += new Vector3(width_separation - diminisher, 0, 0);
                 diminisher += diminisher_mult * width_separation / widthNumber;
-                for (int k = 0; k < interval; k++)
-                {
-                     yield return null;
-                }
+                yield return new WaitForSeconds(interval / targetframe);
             }
             for (int j = 0; j < widthNumber / 2; j++)
             {
@@ -67,10 +65,7 @@ public class Helix : MonoBehaviour
                 }
                 spawnPos -= new Vector3(width_separation - diminisher, 0, 0);
                 diminisher -= diminisher_mult * width_separation / widthNumber;
-                for (int k = 0; k < interval; k++)
-                {
-                     yield return null;
-                }
+                yield return new WaitForSeconds(interval / targetframe);
             }
             for (int j = 0; j < widthNumber / 2; j++)
             {
@@ -84,10 +79,7 @@ public class Helix : MonoBehaviour
                 }
                 spawnPos -= new Vector3(width_separation - diminisher, 0, 0);
                 diminisher += diminisher_mult * width_separation / widthNumber;
-                for (int k = 0; k < interval; k++)
-                {
-                     yield return null;
-                }
+                yield return new WaitForSeconds(interval / targetframe);
             }
             for (int j = 0; j < widthNumber / 2; j++)
             {
@@ -101,10 +93,7 @@ public class Helix : MonoBehaviour
                 }
                 spawnPos += new Vector3(width_separation - diminisher, 0, 0);
                 diminisher -= diminisher_mult * width_separation / widthNumber;
-                for (int k = 0; k < interval; k++)
-                {
-                     yield return null;
-                }
+                yield return new WaitForSeconds(interval / targetframe);
             }
         }
     }

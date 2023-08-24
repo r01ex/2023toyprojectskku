@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class NH3Gimmick : MonoBehaviour
 {
+    float targetframe;
     // Start is called before the first frame update
     void Start()
     {
-        
+        targetframe = Application.targetFrameRate;
     }
 
     // Update is called once per frame
@@ -44,10 +45,7 @@ public class NH3Gimmick : MonoBehaviour
         for (int i = 0; i < volley; i++)
         {
             spawn(xspeed, yoffset, 10);
-            for (int j = 0; j < interval; j++)
-            {
-                 yield return null;
-            }
+            yield return new WaitForSeconds(interval / targetframe);
         }
     }
     public void debug()

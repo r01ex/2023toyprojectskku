@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class HexagonCycle : MonoBehaviour
 {
+    float targetframe;
     // Start is called before the first frame update
     void Start()
     {
-        
+        targetframe = Application.targetFrameRate;
     }
 
     // Update is called once per frame
@@ -15,9 +16,10 @@ public class HexagonCycle : MonoBehaviour
     {
         
     }
-    public IEnumerator shootHexagonCycleSingle(float moveSpeed, int frameBeforeDirChange, Vector3 initialDir, Vector3 spawnPos, int loop)
+    public IEnumerator shootHexagonCycleSingle(float moveSpeed, float frameBeforeDirChange, Vector3 initialDir, Vector3 spawnPos, int loop)
     {
         GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
+        frameBeforeDirChange = frameBeforeDirChange * targetframe / 120;
         if (enemyObject != null)
         {
             enemyObject.transform.position = spawnPos;

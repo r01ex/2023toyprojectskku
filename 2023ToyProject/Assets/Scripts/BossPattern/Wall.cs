@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
+    float targetframe;
     // Start is called before the first frame update
     void Start()
     {
-        
+        targetframe = Application.targetFrameRate;
     }
 
     // Update is called once per frame
@@ -44,10 +45,7 @@ public class Wall : MonoBehaviour
                 }
                 spawnPos += new Vector3(width / bulletNum, 0, 0);
             }
-            for (int k = 0; k < interval; k++)
-            {
-                 yield return null;
-            }
+            yield return new WaitForSeconds(interval / targetframe);
         }
     }
 }

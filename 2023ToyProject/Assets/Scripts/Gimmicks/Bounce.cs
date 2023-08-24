@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Bounce : MonoBehaviour
 {
+    float targetframe;
     // Start is called before the first frame update
     void Start()
     {
-        
+        targetframe = Application.targetFrameRate;
     }
 
     // Update is called once per frame
@@ -47,10 +48,7 @@ public class Bounce : MonoBehaviour
                     enemy.move4Init(bounceBulletSpeed, new Vector2(randomX, randomY).normalized, new Vector2(0, -1), 10);
                 }
             }
-            for (int j = 0; j < interval; j++)
-            {
-                 yield return null;
-            }
+            yield return new WaitForSeconds(interval / targetframe);
         }
     }
     public void debug()

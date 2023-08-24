@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Spiral : MonoBehaviour
 {
+    float targetframe;
     // Start is called before the first frame update
     void Start()
     {
-        
+        targetframe = Application.targetFrameRate;
     }
 
     // Update is called once per frame
@@ -39,10 +40,7 @@ public class Spiral : MonoBehaviour
                 enemy.move3Init(moveSpeed, movedir);
             }
             angle += angle_increment;
-            for (int j = 0; j < interval; j++)
-            {
-                 yield return null;
-            }
+            yield return new WaitForSeconds(interval / targetframe);
         }
     }
     public IEnumerator Shoot4(float moveSpeed, int totalbullet, int interval, float angleOffset, float angle_increment)
@@ -66,10 +64,7 @@ public class Spiral : MonoBehaviour
                 }
             }
             angle += angle_increment;
-            for (int j = 0; j < interval; j++)
-            {
-                 yield return null;
-            }
+            yield return new WaitForSeconds(interval / targetframe);
         }
     }
     public IEnumerator ShootBackAndForth(float moveSpeed, int bulletsInOneVolley, int interval, float angle_increment,int totalBackandForth)
@@ -92,10 +87,7 @@ public class Spiral : MonoBehaviour
                     enemy.move3Init(moveSpeed, movedir);
                 }
                 angle += angle_increment;
-                for (int j = 0; j < interval; j++)
-                {
-                     yield return null;
-                }
+                yield return new WaitForSeconds(interval / targetframe);
             }
             for (int i = 0; i < bulletsInOneVolley; i++)
             {
@@ -112,10 +104,7 @@ public class Spiral : MonoBehaviour
                     enemy.move3Init(moveSpeed, movedir);
                 }
                 angle -= angle_increment;
-                for (int j = 0; j < interval; j++)
-                {
-                     yield return null;
-                }
+                yield return new WaitForSeconds(interval / targetframe);
             }
         }
     }

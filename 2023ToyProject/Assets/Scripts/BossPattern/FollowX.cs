@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class FollowX : MonoBehaviour
 {
+    float targetframe;
     // Start is called before the first frame update
     void Start()
     {
-        
+        targetframe = Application.targetFrameRate;
     }
 
     // Update is called once per frame
@@ -26,10 +27,7 @@ public class FollowX : MonoBehaviour
             EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
             enemy.move7Init(PlayerManager.Instance.gameObject, followSpeed, fallSpeed);
         }
-        for (int j = 0; j < interval; j++)
-        {
-             yield return null;
-        }
+        yield return new WaitForSeconds(interval / targetframe);
         for (int i = 0; i < volley-1; i++)
         {
             GameObject newEnemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
@@ -41,10 +39,7 @@ public class FollowX : MonoBehaviour
                 enemy.move7Init(enemyObject, followSpeed, fallSpeed);
                 enemyObject = newEnemyObject;
             }
-            for (int j = 0; j < interval; j++)
-            {
-                 yield return null;
-            }
+            yield return new WaitForSeconds(interval / targetframe);
         }
     }
     public void debug()

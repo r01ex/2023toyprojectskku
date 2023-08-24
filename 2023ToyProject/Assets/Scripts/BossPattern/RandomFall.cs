@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class RandomFall : MonoBehaviour
 {
+    float targetframe;
     // Start is called before the first frame update
     void Start()
     {
-        
+        targetframe = Application.targetFrameRate;
     }
 
     // Update is called once per frame
@@ -28,10 +29,7 @@ public class RandomFall : MonoBehaviour
                 EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
                 enemy.move1Init(Random.Range(moveSpeedRangelow,moveSpeedRangehigh));
             }
-            for (int j = 0; j < Random.Range(intervalRangelow,intervalRangehigh); j++)
-            {
-                 yield return null;
-            }
+            yield return new WaitForSeconds(Random.Range(intervalRangelow, intervalRangehigh) / targetframe);
         }
     }
     public void debug()

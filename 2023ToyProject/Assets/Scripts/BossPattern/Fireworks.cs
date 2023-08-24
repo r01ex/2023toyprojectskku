@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Fireworks : MonoBehaviour
 {
+    float targetframe;
     // Start is called before the first frame update
     void Start()
     {
-        
+        targetframe = Application.targetFrameRate;
     }
 
     // Update is called once per frame
@@ -32,10 +33,7 @@ public class Fireworks : MonoBehaviour
                 EnemyBullet enemy = enemyObject.GetComponent<EnemyBullet>();
                 enemy.move1Init(dropSpeed);
             }
-            for (int j = 0; j < Random.Range(dropframelow, dropframehigh); j++)
-            {
-                 yield return null;
-            }
+            yield return new WaitForSeconds(Random.Range(dropframelow, dropframehigh) / targetframe);
             if (enemyObject.activeInHierarchy == true)
             {
                 Vector3 explodePos = enemyObject.transform.position;
@@ -58,10 +56,7 @@ public class Fireworks : MonoBehaviour
                         }
                         angle += 360/splitNumber;
                     }
-                    for (int j = 0; j < splitvolleyinterval; j++)
-                    {
-                         yield return null;
-                    }
+                    yield return new WaitForSeconds(splitvolleyinterval / targetframe);
                 }
             }
         }
