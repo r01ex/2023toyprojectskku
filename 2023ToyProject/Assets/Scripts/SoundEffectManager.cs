@@ -63,12 +63,16 @@ public class SoundEffectManager : MonoBehaviour
     {
         if(ison)
         {
-            bgm.enabled = false;
+            bgm.mute = true;
         }
         else
         {
-            bgm.enabled = true;
+            bgm.mute = false;
         }
         ison = !ison;
+    }
+    public void setBgmVolume(float setTo)
+    {
+        bgm.volume = setTo;
     }
 }

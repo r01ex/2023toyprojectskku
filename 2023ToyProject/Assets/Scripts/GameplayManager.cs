@@ -29,9 +29,6 @@ public class GameplayManager : MonoBehaviour
     Sprite[] backGroundSprites;
 
     [SerializeField]
-    AudioSource bgm;
-
-    [SerializeField]
     TextMeshProUGUI bossname;
     [SerializeField]
     TextMeshProUGUI stagenum;
@@ -104,7 +101,6 @@ public class GameplayManager : MonoBehaviour
     }
     public void SetGameOver(){
         isGameOver = true;
-        bgm.volume = 0.25f;
         BulletObjectPool.Instance.TurnOffAll();
         GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
         foreach(GameObject g in pattern)
@@ -130,11 +126,11 @@ public class GameplayManager : MonoBehaviour
     }
 
     public void spawnNextBoss(){
+        SoundEffectManager.Instance.setBgmVolume(0.5f);
         currentBoss++;
         bossClearPanel.GetComponent<Skill>().updateUI();
         timer.fillAmount = 1;
         currenttime = 0;
-        bgm.volume = 0.5f;
         Camera.main.transform.rotation = Quaternion.identity;
         Instantiate(bossPrefabs[currentBoss]);
         background.texture = backGroundSprites[currentBoss].texture;
@@ -144,17 +140,17 @@ public class GameplayManager : MonoBehaviour
     } 
     public void showDefeat()
     {
+        SoundEffectManager.Instance.setBgmVolume(0.25f);
         isGameOver = true;
         PlayerManager.Instance.instantShieldoff();
         BulletObjectPool.Instance.TurnOffAll();
         GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
+        Destroy(GameObject.FindGameObjectWithTag("Boss"));
         foreach (GameObject g in pattern)
         {
             Destroy(g);
         }
-        BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss);
         Time.timeScale = 0;
-        bgm.volume = 0.25f;
         defeatCanvas.SetActive(true);
         retry.Select();
         bossname_defeat_text.text = bossnamelist[currentBoss];
@@ -167,6 +163,7 @@ public class GameplayManager : MonoBehaviour
     }
     public void showClear()
     {
+        SoundEffectManager.Instance.setBgmVolume(0.25f);
         isGameOver = true;
         SoundEffectManager.Instance.PlayVictory();
         BulletObjectPool.Instance.TurnOffAll();
@@ -177,7 +174,6 @@ public class GameplayManager : MonoBehaviour
             Destroy(g);
         }
         clearCanvas.SetActive(true);
-        bgm.volume = 0.25f;
         totalAbsBullet_text.text = totalAbsBullet.ToString();
         totalShieldBullet_text.text = totalShieldBullet.ToString();
         TimeSpan result2 = TimeSpan.FromSeconds(totaltimer / 2);
@@ -186,6 +182,7 @@ public class GameplayManager : MonoBehaviour
     }
     public void retryBoss()
     {
+        SoundEffectManager.Instance.setBgmVolume(0.5f);
         PlayerManager.Instance.instantShieldoff();
         isGameOver = false;
         BulletObjectPool.Instance.TurnOffAll();
@@ -195,10 +192,8 @@ public class GameplayManager : MonoBehaviour
         {
             Destroy(g);
         }
-        Destroy(GameObject.FindGameObjectWithTag("Boss"));
         timer.fillAmount = 1;
         currenttime = 0;
-        bgm.volume = 0.5f; 
         Camera.main.transform.rotation = Quaternion.identity;
         Instantiate(bossPrefabs[currentBoss]);
         background.texture = backGroundSprites[currentBoss].texture;
