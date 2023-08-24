@@ -41,7 +41,7 @@ public class Spiral : MonoBehaviour
             angle += angle_increment;
             for (int j = 0; j < interval; j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
         }
     }
@@ -68,7 +68,7 @@ public class Spiral : MonoBehaviour
             angle += angle_increment;
             for (int j = 0; j < interval; j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
         }
     }
@@ -94,7 +94,7 @@ public class Spiral : MonoBehaviour
                 angle += angle_increment;
                 for (int j = 0; j < interval; j++)
                 {
-                    yield return new WaitForEndOfFrame();
+                     yield return null;
                 }
             }
             for (int i = 0; i < bulletsInOneVolley; i++)
@@ -114,7 +114,7 @@ public class Spiral : MonoBehaviour
                 angle -= angle_increment;
                 for (int j = 0; j < interval; j++)
                 {
-                    yield return new WaitForEndOfFrame();
+                     yield return null;
                 }
             }
         }

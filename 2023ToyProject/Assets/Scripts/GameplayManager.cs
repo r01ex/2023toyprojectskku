@@ -148,11 +148,11 @@ public class GameplayManager : MonoBehaviour
         PlayerManager.Instance.instantShieldoff();
         BulletObjectPool.Instance.TurnOffAll();
         GameObject[] pattern = GameObject.FindGameObjectsWithTag("patternset");
-        BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss);
         foreach (GameObject g in pattern)
         {
             Destroy(g);
         }
+        BulletObjectPool.Instance.ChangeAllEnemyBullet(currentBoss);
         Time.timeScale = 0;
         bgm.volume = 0.25f;
         defeatCanvas.SetActive(true);

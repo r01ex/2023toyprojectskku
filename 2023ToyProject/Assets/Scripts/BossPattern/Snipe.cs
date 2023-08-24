@@ -32,7 +32,7 @@ public class Snipe : MonoBehaviour
             }
             for (int j = 0; j < interval; j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
         }
     }
@@ -56,7 +56,7 @@ public class Snipe : MonoBehaviour
             StartCoroutine(spawnLine(this.transform.position, this.transform.position + (playerSnapshot - this.transform.position).normalized * 30, signalFrame, moveSpeed));
             for (int j = 0; j < interval; j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
         }
     }
@@ -67,12 +67,12 @@ public class Snipe : MonoBehaviour
             StartCoroutine(spawnLine(new Vector3(-4.5f,Random.Range(-4f,4f),0), new Vector3(4.5f, Random.Range(-4f, 4f), 0), signalFrame, moveSpeed));   
             for (int j = 0; j < interval; j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
             StartCoroutine(spawnLine(new Vector3(Random.Range(-3f, 3f), 5.5f, 0), new Vector3(Random.Range(-3f, 3f), -5.5f, 0), signalFrame, moveSpeed));
             for (int j = 0; j < interval; j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
         }
     }
@@ -93,7 +93,7 @@ public class Snipe : MonoBehaviour
             Color current = Color.Lerp(startcolor, targetcolor, progress);
             lr.startColor = current;
             lr.endColor = current;
-            yield return new WaitForEndOfFrame();
+             yield return null;
         }
         Destroy(lr.gameObject);
         GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();

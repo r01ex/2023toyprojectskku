@@ -46,7 +46,7 @@ public class Wall : MonoBehaviour
             }
             for (int k = 0; k < interval; k++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
         }
     }

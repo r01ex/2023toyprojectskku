@@ -30,7 +30,7 @@ public class RandomFall : MonoBehaviour
             }
             for (int j = 0; j < Random.Range(intervalRangelow,intervalRangehigh); j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
         }
     }

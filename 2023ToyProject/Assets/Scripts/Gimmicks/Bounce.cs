@@ -32,7 +32,7 @@ public class Bounce : MonoBehaviour
             while (enemyObject.activeInHierarchy)
             {
                 lastBulletPos = enemyObject.transform.position;
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
             if (lastBulletPos.y <= -5)
             {
@@ -49,7 +49,7 @@ public class Bounce : MonoBehaviour
             }
             for (int j = 0; j < interval; j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
         }
     }

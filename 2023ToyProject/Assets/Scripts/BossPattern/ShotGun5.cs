@@ -41,7 +41,7 @@ public class ShotGun5 : MonoBehaviour
             Shoot(speed, new Vector3(offset, 0, 0));
             for (int j = 0; j < 10; j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
         }
     }

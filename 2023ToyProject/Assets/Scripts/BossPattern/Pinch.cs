@@ -46,7 +46,7 @@ public class Pinch : MonoBehaviour
             }
             for (int j = 0; j < interval; j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
         }
     }

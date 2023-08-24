@@ -36,7 +36,7 @@ public class HexagonCycle : MonoBehaviour
                         enemy.moveNumber = -1;
                         yield break;
                     }
-                    yield return new WaitForEndOfFrame();
+                     yield return null;
                 }
                 angle -= 60;
             }

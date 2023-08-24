@@ -36,7 +36,7 @@ public class TrailShots : MonoBehaviour
                 {
                     yield break;
                 }
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
             GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
             if (enemyObject != null)
@@ -59,7 +59,7 @@ public class TrailShots : MonoBehaviour
                 {
                     goto exitCoroutine;
                 }
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
             GameObject enemyObject = BulletObjectPool.Instance.GetPooledEnemyBullet();
             trailList.Add(enemyObject);
@@ -72,7 +72,7 @@ public class TrailShots : MonoBehaviour
     exitCoroutine:
         for (int i = 0; i < duration; i++)
         {
-            yield return new WaitForEndOfFrame();
+             yield return null;
         }
         foreach (GameObject trailbullet in trailList)
         {
@@ -121,7 +121,7 @@ public class TrailShots : MonoBehaviour
             }
             for (int j = 0; j < Random.Range(intervalRangelow, intervalRangehigh); j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
         }
     }
@@ -141,7 +141,7 @@ public class TrailShots : MonoBehaviour
             }
             for (int j = 0; j < Random.Range(intervalRangelow, intervalRangehigh); j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
         }
     }

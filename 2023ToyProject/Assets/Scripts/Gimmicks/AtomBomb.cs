@@ -31,7 +31,7 @@ public class AtomBomb : MonoBehaviour
         while (enemyObject.activeInHierarchy)
         {
             lastBombPos = enemyObject.transform.position;
-            yield return new WaitForEndOfFrame();
+             yield return null;
         }
         if (lastBombPos.y <= -5)
         {

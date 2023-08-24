@@ -52,7 +52,7 @@ public class Helix : MonoBehaviour
                 diminisher += diminisher_mult * width_separation / widthNumber;
                 for (int k = 0; k < interval; k++)
                 {
-                    yield return new WaitForEndOfFrame();
+                     yield return null;
                 }
             }
             for (int j = 0; j < widthNumber / 2; j++)
@@ -69,7 +69,7 @@ public class Helix : MonoBehaviour
                 diminisher -= diminisher_mult * width_separation / widthNumber;
                 for (int k = 0; k < interval; k++)
                 {
-                    yield return new WaitForEndOfFrame();
+                     yield return null;
                 }
             }
             for (int j = 0; j < widthNumber / 2; j++)
@@ -86,7 +86,7 @@ public class Helix : MonoBehaviour
                 diminisher += diminisher_mult * width_separation / widthNumber;
                 for (int k = 0; k < interval; k++)
                 {
-                    yield return new WaitForEndOfFrame();
+                     yield return null;
                 }
             }
             for (int j = 0; j < widthNumber / 2; j++)
@@ -103,7 +103,7 @@ public class Helix : MonoBehaviour
                 diminisher -= diminisher_mult * width_separation / widthNumber;
                 for (int k = 0; k < interval; k++)
                 {
-                    yield return new WaitForEndOfFrame();
+                     yield return null;
                 }
             }
         }
@@ -150,7 +150,7 @@ public class Helix : MonoBehaviour
                 diminisher += diminisher_mult * width_separation / widthNumber;
                 for (int k = 0; k < interval; k++)
                 {
-                    yield return new WaitForEndOfFrame();
+                     yield return null;
                 }
             }
             diminisher -= diminisher_mult * width_separation / widthNumber;
@@ -177,7 +177,7 @@ public class Helix : MonoBehaviour
                 diminisher -= diminisher_mult * width_separation / widthNumber;
                 for (int k = 0; k < interval; k++)
                 {
-                    yield return new WaitForEndOfFrame();
+                     yield return null;
                 }
             }
             diminisher += diminisher_mult * width_separation / widthNumber;
@@ -204,7 +204,7 @@ public class Helix : MonoBehaviour
                 diminisher += diminisher_mult * width_separation / widthNumber;
                 for (int k = 0; k < interval; k++)
                 {
-                    yield return new WaitForEndOfFrame();
+                     yield return null;
                 }
             }
             diminisher -= diminisher_mult * width_separation / widthNumber;
@@ -231,7 +231,7 @@ public class Helix : MonoBehaviour
                 diminisher -= diminisher_mult * width_separation / widthNumber;
                 for (int k = 0; k < interval; k++)
                 {
-                    yield return new WaitForEndOfFrame();
+                     yield return null;
                 }
             }
         }

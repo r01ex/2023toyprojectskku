@@ -28,7 +28,7 @@ public class FollowX : MonoBehaviour
         }
         for (int j = 0; j < interval; j++)
         {
-            yield return new WaitForEndOfFrame();
+             yield return null;
         }
         for (int i = 0; i < volley-1; i++)
         {
@@ -43,7 +43,7 @@ public class FollowX : MonoBehaviour
             }
             for (int j = 0; j < interval; j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
         }
     }

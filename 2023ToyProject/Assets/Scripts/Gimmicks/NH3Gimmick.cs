@@ -46,7 +46,7 @@ public class NH3Gimmick : MonoBehaviour
             spawn(xspeed, yoffset, 10);
             for (int j = 0; j < interval; j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
         }
     }

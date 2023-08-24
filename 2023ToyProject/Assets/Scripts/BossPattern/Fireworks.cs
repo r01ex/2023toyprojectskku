@@ -34,7 +34,7 @@ public class Fireworks : MonoBehaviour
             }
             for (int j = 0; j < Random.Range(dropframelow, dropframehigh); j++)
             {
-                yield return new WaitForEndOfFrame();
+                 yield return null;
             }
             if (enemyObject.activeInHierarchy == true)
             {
@@ -60,7 +60,7 @@ public class Fireworks : MonoBehaviour
                     }
                     for (int j = 0; j < splitvolleyinterval; j++)
                     {
-                        yield return new WaitForEndOfFrame();
+                         yield return null;
                     }
                 }
             }
