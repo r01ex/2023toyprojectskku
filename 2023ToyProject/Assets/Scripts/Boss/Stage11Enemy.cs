@@ -67,6 +67,8 @@ public class Stage11Enemy : MonoBehaviour
     private Color originalColor;
     private Renderer enemyRenderer;
     TMPro.TextMeshProUGUI healthText;
+
+    Coroutine baseroutine;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -80,7 +82,7 @@ public class Stage11Enemy : MonoBehaviour
         damage = PlayerManager.Instance.attack;
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
-        StartEnemyRoutine();
+        baseroutine = StartCoroutine("EnemyRoutine");
         anim.SetBool("isLowHp", false);
     }
 
@@ -88,14 +90,6 @@ public class Stage11Enemy : MonoBehaviour
     void Update()
     {
 
-    }
-    void StartEnemyRoutine()
-    {
-        StartCoroutine("EnemyRoutine");
-    }
-    public void StopEnemyRoutine()
-    {
-        StopCoroutine("EnemyRoutine");
     }
     IEnumerator EnemyRoutine()
     {
@@ -161,8 +155,9 @@ public class Stage11Enemy : MonoBehaviour
             if (hp <= 0)
             {
                 //death
-                Destroy(gameObject);
-                GameplayManager.Instance.SetGameOver();
+                anim.SetTrigger("doDeath");
+                StopCoroutine(baseroutine);
+                StartCoroutine(ondeathRoutine());
             }
             // To change origin color
             Invoke("ResetColor", flashDuration);
@@ -171,5 +166,19 @@ public class Stage11Enemy : MonoBehaviour
     private void ResetColor()
     {
         enemyRenderer.material.color = originalColor;
+    }
+    IEnumerator ondeathRoutine()
+    {
+        for (int k = 0; k < 10; k++)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                SpiralPattern.allAroundShotgunSingle(Random.Range(randomfallMoveSpeedRangeLow, randomfallMoveSpeedRangeHigh), 5+3*k);
+                ClusterPattern.Shoot(clusterBullets + (k * 3) - 5, clusterMoveSpeed, clusterMaxTargetPosOffset);
+                yield return new WaitForSeconds(patternInterval * 0.4f);
+            }
+        }
+        Destroy(gameObject);
+        GameplayManager.Instance.SetGameOver();
     }
 }

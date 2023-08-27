@@ -6,9 +6,10 @@ using TMPro;
 using System;
 using UnityEngine.SceneManagement;
 
-public static class TutorialTracker
+public static class SettingsTracker
 {
     public static bool didskipTutorial = false;
+    public static bool didTurnoffMusic = false;
 }
 
 public class GameplayManager : MonoBehaviour
@@ -77,7 +78,7 @@ public class GameplayManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if(TutorialTracker.didskipTutorial)
+        if(SettingsTracker.didskipTutorial)
         {
             tutorialCanvas.SetActive(false);
             h2oBoss.SetActive(true);
@@ -240,7 +241,7 @@ public class GameplayManager : MonoBehaviour
     {
         Time.timeScale = 1;
         tutorialCanvas.SetActive(false);
-        TutorialTracker.didskipTutorial = true;
+        SettingsTracker.didskipTutorial = true;
         h2oBoss.SetActive(true);
     }
 }

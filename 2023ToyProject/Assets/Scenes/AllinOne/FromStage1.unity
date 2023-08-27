@@ -1254,6 +1254,7 @@ MonoBehaviour:
   enemyhit: {fileID: 1631469216}
   victory: {fileID: 1061547795}
   bgm: {fileID: 248346522}
+  bgmtoggle: {fileID: 1752104684}
 --- !u!1 &310380347
 GameObject:
   m_ObjectHideFlags: 0
@@ -6697,7 +6698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1466200797
 MonoBehaviour:
   m_ObjectHideFlags: 0

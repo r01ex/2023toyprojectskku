@@ -12,8 +12,6 @@ public class Stage14Enemy : MonoBehaviour
     [SerializeField]
     private float damage;  //To indicate that the damage of each electrons
 
-    private Animator anim;
-
     [SerializeField]
     Helix HelixPattern;
     [SerializeField]
@@ -62,7 +60,6 @@ public class Stage14Enemy : MonoBehaviour
     TMPro.TextMeshProUGUI healthText;
     private void Awake()
     {
-        anim = GetComponent<Animator>();
         healthText = GameObject.Find("bosshealth").GetComponent<TMPro.TextMeshProUGUI>();
     }
     // Start is called before the first frame update
@@ -74,7 +71,6 @@ public class Stage14Enemy : MonoBehaviour
         enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
         StartEnemyRoutine();
-        anim.SetBool("isLowHp", false);
     }
 
     // Update is called once per frame
@@ -139,17 +135,12 @@ public class Stage14Enemy : MonoBehaviour
             healthText.text = hp + "/" + maxHp;
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
             SoundEffectManager.Instance.PlayEnemyHit();
-            anim.SetTrigger("doHitted");
             enemyRenderer.material.color = flashColor;
 
 
             if (bullet != null)
             {
                 bullet.DestroySelf();
-            }
-            if (hp < maxHp * 0.3)
-            {
-                anim.SetBool("isLowHp", true);
             }
             if (hp <= 0)
             {

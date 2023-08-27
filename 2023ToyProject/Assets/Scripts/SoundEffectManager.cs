@@ -13,8 +13,14 @@ public class SoundEffectManager : MonoBehaviour
     [SerializeField] AudioSource bgm;
     public static SoundEffectManager Instance;
     bool ison = true;
+    [SerializeField] UnityEngine.UI.Toggle bgmtoggle;
     private void Awake()
     {
+        if (SettingsTracker.didTurnoffMusic)
+        {
+            bgmtoggle.isOn = true;
+            bgmonoff();
+        }
         if (Instance == null)
         {
             Instance = this;
@@ -61,14 +67,8 @@ public class SoundEffectManager : MonoBehaviour
     }
     public void bgmonoff()
     {
-        if(ison)
-        {
-            bgm.mute = true;
-        }
-        else
-        {
-            bgm.mute = false;
-        }
+        bgm.mute = ison;
+        SettingsTracker.didTurnoffMusic = ison;
         ison = !ison;
     }
     public void setBgmVolume(float setTo)
