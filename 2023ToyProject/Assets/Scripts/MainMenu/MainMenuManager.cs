@@ -19,21 +19,15 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     private string nextSceneName;
 
-    Coroutine flashanykey;
     bool flag = false;
     // Start is called before the first frame update
     private void Start()
     {
         StartCoroutine(TextAnimationCoroutine());
-        panel1.SetActive(true);
-        panel2.SetActive(false);
-
-        flashanykey = StartCoroutine(SceneTransitionCoroutine());
     }
 
     private IEnumerator TextAnimationCoroutine()
     {
-        yield return new WaitForSeconds(1f);
         while (true){
             yield return new WaitForSeconds(0.5f);
             if (isTextVisible)
@@ -54,21 +48,13 @@ public class MainMenuManager : MonoBehaviour
             isTextVisible = !isTextVisible;
         }
     }
-    private IEnumerator SceneTransitionCoroutine()
-    {
-        yield return new WaitForSeconds(1f);
-
-
-        panel1.SetActive(false);
-        panel2.SetActive(true);
-    }    
 
     // Update is called once per frame
     void Update()
     {
         if (Input.anyKeyDown&&flag==false){
             flag = true;
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(2);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(1);
         }
         
     }

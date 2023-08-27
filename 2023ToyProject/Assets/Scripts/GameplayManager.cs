@@ -5,6 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.SceneManagement;
+
+public static class TutorialTracker
+{
+    public static bool didskipTutorial = false;
+}
+
 public class GameplayManager : MonoBehaviour
 {
     public static GameplayManager Instance = null;
@@ -57,6 +63,8 @@ public class GameplayManager : MonoBehaviour
     [SerializeField]
     Button retry;
 
+    [SerializeField] GameObject tutorialCanvas;
+    [SerializeField] GameObject h2oBoss;
     // Start is called before the first frame update
 
     private void Awake() {
@@ -68,6 +76,15 @@ public class GameplayManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+        if(TutorialTracker.didskipTutorial)
+        {
+            tutorialCanvas.SetActive(false);
+            h2oBoss.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 0;
         }
     }
     void Start()
@@ -213,6 +230,17 @@ public class GameplayManager : MonoBehaviour
     public void retryScene()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
+    }
+    public void exit()
+    {
+        Application.Quit();
+    }
+    public void moveOnTutorial()
+    {
+        Time.timeScale = 1;
+        tutorialCanvas.SetActive(false);
+        TutorialTracker.didskipTutorial = true;
+        h2oBoss.SetActive(true);
     }
 }
