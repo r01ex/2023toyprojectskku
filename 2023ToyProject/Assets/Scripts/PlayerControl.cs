@@ -50,29 +50,59 @@ public class PlayerControl : MonoBehaviour
             {
                 float moveX = 0;
                 float moveY = 0;
-                if (Input.GetKey(KeyCode.UpArrow))
+                if (Input.GetKey(KeyCode.LeftShift))
                 {
-                    moveY += 0.01f * speed * Time.deltaTime;
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        moveY += 0.01f * 600 * Time.deltaTime;
+                    }
+                    if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        moveY += -0.01f * 600 * Time.deltaTime;
+                    }
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        moveX += -0.01f * 600 * Time.deltaTime;
+                    }
+                    if (Input.GetKey(KeyCode.RightArrow))
+                    {
+                        moveX += 0.01f * 600 * Time.deltaTime;
+                    }
+                    if (Input.GetKeyDown(KeyCode.Z))
+                    {
+                        PlayerManager.Instance.Shoot();
+                    }
+                    if (Input.GetKey(KeyCode.X))
+                    {
+                        PlayerManager.Instance.Shield();
+                    }
                 }
-                if (Input.GetKey(KeyCode.DownArrow))
+                else
                 {
-                    moveY += -0.01f * speed * Time.deltaTime;
-                }
-                if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    moveX += -0.01f * speed * Time.deltaTime;
-                }
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    moveX += 0.01f * speed * Time.deltaTime;
-                }
-                if (Input.GetKeyDown(KeyCode.Z))
-                {
-                    PlayerManager.Instance.Shoot();
-                }
-                if (Input.GetKey(KeyCode.X))
-                {
-                    PlayerManager.Instance.Shield();
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        moveY += 0.01f * speed * Time.deltaTime;
+                    }
+                    if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        moveY += -0.01f * speed * Time.deltaTime;
+                    }
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        moveX += -0.01f * speed * Time.deltaTime;
+                    }
+                    if (Input.GetKey(KeyCode.RightArrow))
+                    {
+                        moveX += 0.01f * speed * Time.deltaTime;
+                    }
+                    if (Input.GetKeyDown(KeyCode.Z))
+                    {
+                        PlayerManager.Instance.Shoot();
+                    }
+                    if (Input.GetKey(KeyCode.X))
+                    {
+                        PlayerManager.Instance.Shield();
+                    }
                 }
                 transform.position = new Vector3(Mathf.Clamp(moveX + transform.position.x, -width, width), Mathf.Clamp(moveY + transform.position.y, -height, height), 0);
             }

@@ -12,14 +12,15 @@ public class SoundEffectManager : MonoBehaviour
     [SerializeField] AudioSource victory;
     [SerializeField] AudioSource bgm;
     public static SoundEffectManager Instance;
-    bool ison = true;
+    bool isMute = false;
     [SerializeField] UnityEngine.UI.Toggle bgmtoggle;
     private void Awake()
     {
         if (SettingsTracker.didTurnoffMusic)
         {
+            Debug.Log("in music off");
+            Debug.Log("ismute : "+isMute);
             bgmtoggle.isOn = true;
-            bgmonoff();
         }
         if (Instance == null)
         {
@@ -67,9 +68,10 @@ public class SoundEffectManager : MonoBehaviour
     }
     public void bgmonoff()
     {
-        bgm.mute = ison;
-        SettingsTracker.didTurnoffMusic = ison;
-        ison = !ison;
+        Debug.Log("bgm onoff");
+        isMute = !isMute;
+        bgm.mute = isMute;
+        SettingsTracker.didTurnoffMusic = isMute;
     }
     public void setBgmVolume(float setTo)
     {

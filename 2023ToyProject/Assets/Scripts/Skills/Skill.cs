@@ -90,7 +90,7 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[0];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Reduced Atomic Nucleus";
                 Panel.transform.Find("Description").GetComponent<Text>().text = "The size of the atomic" +
-                    " nucleus decreases. This will be useful for avoiding patterns.";
+                    " nucleus decreases. This effect lasts until the end of the game.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.decreaseNuclearSize(0.7f); nuclearsizeup++; });
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
@@ -99,8 +99,8 @@ public class Skill : MonoBehaviour
             case 1:
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[1];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Increased Atomic Number";
-                Panel.transform.Find("Description").GetComponent<Text>().text = "The size of the atomic" +
-                    " nucleus decreases. This will be useful for avoiding patterns.";
+                Panel.transform.Find("Description").GetComponent<Text>().text = "Able to hold more bullets." +
+                    " This effect lasts until the end of the game.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.addMaxBullet(5); maxbulletup++; });
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
@@ -120,7 +120,7 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[3];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Increased Movement Speed";
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Movement speed is slightly increased." +
-                    " This effect lasts until the end of the game.";
+                    " This effect lasts until the end of the game." + " Press LeftShift to move at base speed.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseSpeed(speedBaseInc); movespeedup++; });
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { GameplayManager.Instance.spawnNextBoss(); this.gameObject.SetActive(false); GameplayManager.Instance.isGameOver = false; });
@@ -161,7 +161,7 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[7];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Heavy Attack";
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Attack power is greatly increased." +
-                    " However, this effect is only effective in the next stage.";
+                    " This effect is only applied in the next stage.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseAttack(attackBaseInc*3); });
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { lastSuperUpgrade = 0; attackup += 3; });
@@ -172,7 +172,7 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[8];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Lightning Fast";
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Movement speed is greatly increased." +
-                    " However, this effect is only effective in the next stage.";
+                    " This effect is only applied in the next stage." + " Press LeftShift to move at base speed.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseSpeed(speedBaseInc * 3); });
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { lastSuperUpgrade = 1; movespeedup += 3; });
@@ -182,7 +182,7 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[9];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Unbreakable shield";
                 Panel.transform.Find("Description").GetComponent<Text>().text = "Shield time greatly increased." +
-                    " However, this effect is only effective in the next stage.";
+                    " This effect is only applied in the next stage.";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseShieldTime(shieldTimeBaseInc*3); });
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { lastSuperUpgrade = 2; shielddurationup += 3; });
@@ -192,7 +192,7 @@ public class Skill : MonoBehaviour
                 Panel.transform.Find("Image").GetComponent<Image>().sprite = skillIcon[10];
                 Panel.transform.Find("SkillName").GetComponent<Text>().text = "Magnetic Grab";
                 Panel.transform.Find("Description").GetComponent<Text>().text = "The grab range is greatly increased." +
-                    " However, this effect is only effective in the next stage.";
+                    " This effect is only applied in the next stage..";
                 Panel.GetComponent<MultiImageBtn>().onClick.RemoveAllListeners();
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { PlayerManager.Instance.increaseGrabRange(grabRangeBaseInc*3); });
                 Panel.GetComponent<MultiImageBtn>().onClick.AddListener(delegate { lastSuperUpgrade = 3; grabrangeup += 3; });
